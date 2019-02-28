@@ -5,7 +5,7 @@ require_once('mdlconection.php');
 class mdlusers {
 
     public static function getUsers($token) {
-        
+        mdlusers::searchUsers($token);
     }
 
     public static function searchUsers($token) {
