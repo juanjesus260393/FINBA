@@ -3,10 +3,9 @@
     session_start();
     ?>
 </div>
-
 <!DOCTYPE html>
 <html>
-    <!-- head -->
+        <!-- head -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +58,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a href="../views/vwmanageusers.php">
+                            <a href="../controllers/crtusers.php">
                                 <i class="fas fa-home"></i>
                                 Administrar Usuarios
                             </a>
@@ -108,7 +107,6 @@
 
                 </nav>
             </div>
-
             <!-- Page Content  -->
             <div id="content">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">

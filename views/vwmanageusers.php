@@ -1,6 +1,9 @@
-<?php
-session_start();
-?>
+<div hidden="true">
+    <?php
+    session_start();
+    ?>
+</div>
+
 <!DOCTYPE html>
 <html>
     <!-- head -->
@@ -56,7 +59,7 @@ session_start();
                             </a>
                         </li>
                         <li class="active">
-                            <a href="../views/vwmanageusers.php">
+                            <a href="../controllers/crtusers.php">
                                 <i class="fas fa-home"></i>
                                 Administrar Usuarios
                             </a>
@@ -117,23 +120,22 @@ session_start();
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>john@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>Mary</td>
-                                <td>Moe</td>
-                                <td>mary@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>July</td>
-                                <td>Dooley</td>
-                                <td>july@example.com</td>
-                            </tr>
+                            <?php
+                            $listofusers;
+                            for ($i = 0; $i < count($listofusers); $i++) {
+                                ?>
+                                <tr  class='btn-outline-primary'>
+                                    <td><?php echo $listofusers[$i]["username"]; ?></td>
+                                    <td><?php echo $listofusers[$i]["type_user"]; ?></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
                         </tbody>
                     </table></center>
+                <center><button type="button" class="btn btn-info btn-primary" id="myBtn" onclick="location.href='../views/vwadduser.php'" >
+                        Agregar Usuario</button></center> 
+
             </div>  
             <!-- Page Content  -->
             <div id="content">
@@ -143,7 +145,7 @@ session_start();
         </div>
         <div >
             <?php
-           echo $tokenuser = $_SESSION['token'];
+            echo $tokenuser = $_SESSION['token'];
             ?>
         </div>
     </body>
