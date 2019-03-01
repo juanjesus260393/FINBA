@@ -77,9 +77,27 @@ class Mdlauth {
         return $passdb;
     }
 
+    public static function searchIdtoken($username) {
+        $con = mdlconection::connect();
+        $searchpass = "select u.idtoken from users u where u.username ='" . $username . "'";
+        $resultofsearchpass = mysqli_query($con, $searchpass) or die(mysqli_error());
+        $rowtwo = mysqli_fetch_array($resultofsearchpass);
+        if (!$rowtwo[0]) {
+            echo '<script language = javascript>
+	alert("El token no existe")
+           self.location = "../index.php"
+	</script>';
+        } else {
+            $idtokendb = $rowtwo['idtoken'];
+        }
+        return $idtokendb;
+    }
+
     public static function searchToken($username) {
         $con = mdlconection::connect();
-        $searchtoken = "SELECT t.token FROM token t inner join users u  on u.username = t.username where t.username ='" . $username . "'";
+        $dbidtoken = Mdlauth::searchIdtoken($username);
+        $searchtoken = "select t.token from dbfinba.users u inner join dbfinba.token t on
+        u.idtoken=t.idtoken where t.idtoken =" . $dbidtoken . "";
         $resultofsearchtoken = mysqli_query($con, $searchtoken) or die(mysqli_error());
         $rowthree = mysqli_fetch_array($resultofsearchtoken);
         if (!$rowthree[0]) {

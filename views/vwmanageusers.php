@@ -126,14 +126,45 @@
                                 ?>
                                 <tr  class='btn-outline-primary'>
                                     <td><?php echo $listofusers[$i]["username"]; ?></td>
-                                    <td><?php echo $listofusers[$i]["type_user"]; ?></td>
+                                    <?php
+                                    if ($listofusers[$i]["type_user"] == 'Administrator') {
+                                        printf("<td height='80'  style='color: #EA1515 ;'><h5><b>Administrador</b></h5></td>");
+                                    } else if ($listofusers[$i]["type_user"] == 'Employee') {
+                                        printf("<td height='80'  style='color: blue ;'><h5><b>Empleado</b></h5></td>");
+                                    }
+                                    ?>
+                                    <td> 
+                                        <?php
+                                        $usernamedelete = $listofusers[$i]["username"];
+                                        $delete = true;
+                                        echo '<a href="../controllers/crtusers.php?username=' . $usernamedelete . '&delete=' . $delete . '" '
+                                        . 'onclick="if (!confirm(\'Estas seguro que quieres eliminar este usuario?\')) '
+                                        . '{ return false}"><img src="../resources/img/eliminar.jpg"></a>'
+                                        ?></td>
+                                    <td><form method="post" action="../controllers/crtusers.php">
+                                            <?php
+                                            $usernameupdate = $listofusers[$i]["username"];
+                                            $typeuserupdate = $listofusers[$i]["type_user"];
+                                            if($typeuserupdate == 'Administrator'){
+                                                $typeuserupdate = 'Administrador';
+                                            }
+                                            if($typeuserupdate == 'Employee'){
+                                                $typeuserupdate = 'Empleado';
+                                            }
+                                            $update = true;
+                                            echo "<input type='hidden' id='usernameupdate' name='usernameupdate' value='$usernameupdate'> "
+                                            . "<input type='hidden' id='update' name='update' value='$update'> "
+                                            . "<input type='hidden' id='typeuserupdate' name='typeuserupdate' value='$typeuserupdate'>"
+                                            . "<input type='submit' value='Actualizar'>"
+                                            ?>
+                                        </form></td>
                                 </tr>
                                 <?php
                             }
                             ?>
                         </tbody>
                     </table></center>
-                <center><button type="button" class="btn btn-info btn-primary" id="myBtn" onclick="location.href='../views/vwadduser.php'" >
+                <center><button type="button" class="btn btn-info btn-primary" id="myBtn" onclick="location.href = '../views/vwadduser.php'" >
                         Agregar Usuario</button></center> 
 
             </div>  
@@ -143,10 +174,7 @@
                 </nav>
             </div>
         </div>
-        <div >
-            <?php
-            echo $tokenuser = $_SESSION['token'];
-            ?>
+        <div>
         </div>
     </body>
 

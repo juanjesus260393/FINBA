@@ -13,8 +13,8 @@ class mdlusers {
     }
 
     public function getUsers() {
-        $checkusers = "SELECT u.username, t.type_user FROM users u inner join type_users t 
-            on u.id_type_user = t.id_type_user inner join token k on u.username = k.username where k.token <>'" . $_SESSION['token'] . "'";
+        $checkusers = "SELECT u.username, t.type_user FROM users u inner join type_users t on u.id_type_user = t.id_type_user
+            inner join token k on u.idtoken = k.idtoken where k.token <>'" . $_SESSION['token'] . "'";
         if (empty($this->dbh->query($checkusers))) {
             $this->users[] = NULL;
         } else {
@@ -22,7 +22,6 @@ class mdlusers {
                 $this->users[] = $usersarray;
             }
         }
-
         return $this->users;
     }
 
@@ -30,38 +29,155 @@ class mdlusers {
         mdlusers::validateUserdates($username, $password, $type_user);
     }
 
+    public static function updateUser($usernameforupdate, $usertypeprevious, $newtype_user) {
+        echo 'esta entrando a la funcion actualizar';
+        mdlusers::verifyTypeofuser($usernameforupdate, $usertypeprevious, $newtype_user);
+    }
+
+    public static function verifyTypeofuser($usernameforupdate, $usertypeprevious, $newtype_user) {
+        if ($usertypeprevious == 'Administrador') {
+            echo '<script language = javascript> alert("Solo se pueden modificar los usuarios de tipo empleado") </script>';
+            //Regresamos a la pagina anterior
+            echo "<html><head></head>" .
+            "<body onload=\"javascript:history.back()\">" .
+            "</body></html>";
+            exit;
+        } else {
+            mdlusers::updateIntousers($usernameforupdate, $newtype_user);
+        }
+    }
+
+    public static function updateIntousers($usernameforupdate, $newtype_user) {
+        $con = mdlconection::connect();
+        $newtypeuserdb = mdlusers::defineTypeuser($newtype_user);
+     echo   $updateintotableusers = "update users set id_type_user = '$newtypeuserdb' where username = '$usernameforupdate'";
+        if (!mysqli_query($con, $updateintotableusers)) {
+            die('Error: ' . mysqli_error($con));
+        }
+    }
+
+    public static function deleteUser($delete_username) {
+        $type_user = mdlusers::isAdministrator();
+        if ($type_user == 'Administrator') {
+            mdlusers::deleteUseroftable($delete_username);
+        } else {
+            echo '<script language = javascript> alert("Solo los administradores pueden eliminar usuarios") </script>';
+            //Regresamos a la pagina anterior
+            echo "<html><head></head>" .
+            "<body onload=\"javascript:history.back()\">" .
+            "</body></html>";
+            exit;
+        }
+    }
+
+    public static function deleteUseroftable($delete_username) {
+        $con = mdlconection::connect();
+        $idtoken = mdlusers::getTokenid($delete_username);
+        $deletetoken = "Delete from users where username = '" . $delete_username . "'";
+        $deleteuser = "Delete from token where idtoken = " . $idtoken . "";
+        if (!mysqli_query($con, $deletetoken)) {
+            die('Error: ' . mysqli_error($con));
+        }
+        if (!mysqli_query($con, $deleteuser)) {
+            die('Error: ' . mysqli_error($con));
+        }
+    }
+
+    public static function getTokenid($delete_username) {
+        $con = mdlconection::connect();
+        $checkuser = "SELECT u.idtoken FROM users u where username  ='" . $delete_username . "'";
+        $resultofcheckuser = mysqli_query($con, $checkuser) or die(mysqli_error());
+        $rowtypeofuser = mysqli_fetch_array($resultofcheckuser);
+        if (!$rowtypeofuser [0]) {
+            
+        } else {
+            $idtoken = $rowtypeofuser['idtoken'];
+        }
+        return $idtoken;
+    }
+
+    public static function isAdministrator() {
+        $con = mdlconection::connect();
+        $checkuser = "SELECT f.type_user FROM token t inner join users u on t.idtoken =u.idtoken inner join
+            type_users f on u.id_type_user =  f.id_type_user where t.token ='" . $_SESSION['token'] . "'";
+        $resultofcheckuser = mysqli_query($con, $checkuser) or die(mysqli_error());
+        $rowtypeofuser = mysqli_fetch_array($resultofcheckuser);
+        if (!$rowtypeofuser [0]) {
+            echo '<script language = javascript>
+	alert("El usuario no se encuenta registrado")
+           self.location = "../index.php"
+	</script>';
+        } else {
+            $type_user = $rowtypeofuser['type_user'];
+        }
+        return $type_user;
+    }
+
     public static function validateUserdates($username, $password, $type_user) {
         $userdata = mdlusers::validateUsername($username, $password);
         if ($userdata) {
             $userdataexist = mdlusers::userDateexist($username);
             if ($userdataexist) {
-                echo 'la informaciones correcta y el usuario no existe';
+                mdlusers::insertIntousers($username, $password, $type_user);
+            } else {
+                mdlusers::wrongData();
             }
         }
     }
 
-    public static function insertUser($username, $password, $type_user) {
-        $id_type_user = mdlusers::defineTypeuser($type_user);
-
+    public static function insertIntousers($username, $password, $type_user) {
         $con = mdlconection::connect();
-        $checkuser = "SELECT * FROM users WHERE username='" . $username . "'";
-        $resultofcheckuser = mysqli_query($con, $checkuser) or die(mysqli_error());
-        $rowone = mysqli_fetch_array($resultofcheckuser);
-        if (!$rowone[0]) {
-            $exist = true;
-        } else {
-            mdlusers::wrongData();
+        $passdb = mdlusers::generatePassword($password);
+        $idtoken = mdlusers::insertIntotoken();
+        $id_type_user = mdlusers::defineTypeuser($type_user);
+        $insertintotableusers = "INSERT INTO users(username,password,enabled,id_type_user,idtoken)
+        VALUES('$username','$passdb','1','$id_type_user','$idtoken')";
+        if (!mysqli_query($con, $insertintotableusers)) {
+            die('Error: ' . mysqli_error($con));
         }
-        return $exist;
     }
 
-    public static function insertIntousers($username, $password) {
+    public static function insertIntotoken() {
         $con = mdlconection::connect();
-        $insertintotableusers = "INSERT INTO revision_objeto(id_revision_objeto,id_empresa,fecha_creacion,fecha_actualizacion,status)
-        VALUES('$idro'," . $_SESSION['idemp'] . ",'$fa','0000-00-00','$status')";
-        if (!mysqli_query($con, $sql)) {
-            die('Error: ' . mysqli_error($pd));
+        $idtoken = mdlusers::generateIdtoken();
+        $token = mdlusers::generateToken();
+        $expiration = mdlusers::generateExpiration();
+        $insertintotabletoken = "INSERT INTO token(idtoken,token,expiration)
+        VALUES('$idtoken','$token','$expiration')";
+        if (!mysqli_query($con, $insertintotabletoken)) {
+            die('Error: ' . mysqli_error($con));
         }
+        return $idtoken;
+    }
+
+    public static function generateIdtoken() {
+        $rango = 9;
+        $longitud = $rango;
+        $id = '';
+        $pattern = '1234567890';
+        $max = strlen($pattern) - 1;
+        for ($i = 0; $i < $longitud; $i++) {
+            $id .= $pattern{mt_rand(0, $max)};
+        }
+        return $id;
+    }
+
+    public static function generatePassword($password) {
+        $pwd = password_hash($password, PASSWORD_DEFAULT);
+        return $pwd;
+    }
+
+    public static function generateToken() {
+        $token = bin2hex(openssl_random_pseudo_bytes(32));
+        return $token;
+    }
+
+    public static function generateExpiration() {
+        $fechaactual = date('Y-m-d H:i:s');
+        $dt = new DateTime($fechaactual);
+        $dt->modify('+ 1 year');
+        $expiration = $dt->format("Y-m-d H:i:s");
+        return $expiration;
     }
 
     public static function defineTypeuser($type_user) {
@@ -110,7 +226,7 @@ class mdlusers {
 
     public static function wrongData() {
         echo '<script language = javascript> alert("Datos Incorrectos") </script>';
-//Regresamos a la pagina anterior
+        //Regresamos a la pagina anterior
         echo "<html><head></head>" .
         "<body onload=\"javascript:history.back()\">" .
         "</body></html>";
