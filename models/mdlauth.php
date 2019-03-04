@@ -15,7 +15,11 @@ class Mdlauth {
     }
 
     public static function Logout() {
-        echo 'Estas entrando a la funcion logout';
+        session_destroy();
+        echo '<script language = javascript>    
+	self.location = "../index.php"
+	</script>';
+        exit();
     }
 
     public static function userExists($username) {

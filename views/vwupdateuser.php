@@ -37,15 +37,21 @@
                                     <input class="col-8" type="text" id="usernameforupdate" name="usernameforupdate" value="<?php echo $usernameforupdate;
 ?>">
                                 </div>
-                                    <div hidden="true">
+                                <div hidden="true">
                                     <!-- valor para la actualizacion -->
                                     <input class="col-8" type="text" id="valueupdate" name="valueupdate" value="true">
                                 </div>
                                 <div>
                                     <!-- tipo de usuario previo -->
                                     <span><label class="col-3" style="background-color:#f1f1f1;">Tipo de Usuario Previo:</label></span>
+                                    <input class="col-8" type="text" id="usertypepreviousview" name="usertypepreviousview" value="<?php echo $newtypeuserupdate;
+?>" disabled="true">
+                                </div>
+                                <div hidden="true">
+                                    <!-- tipo de usuario previo -->
+                                    <span><label class="col-3" style="background-color:#f1f1f1;">Tipo de Usuario Previo:</label></span>
                                     <input class="col-8" type="text" id="usertypeprevious" name="usertypeprevious" value="<?php echo $newtypeuserupdate;
-?>" enable ="false">
+?>">
                                 </div>
                                 <div>
                                     <!-- Tipo de Usuario -->

@@ -14,7 +14,7 @@ class mdlusers {
 
     public function getUsers() {
         $checkusers = "SELECT u.username, t.type_user FROM users u inner join type_users t on u.id_type_user = t.id_type_user
-            inner join token k on u.idtoken = k.idtoken where k.token <>'" . $_SESSION['token'] . "'";
+            inner join token k on u.idtoken = k.idtoken where t.type_user = 'Employee' and k.token <>'" . $_SESSION['token'] . "'";
         if (empty($this->dbh->query($checkusers))) {
             $this->users[] = NULL;
         } else {
@@ -30,7 +30,6 @@ class mdlusers {
     }
 
     public static function updateUser($usernameforupdate, $usertypeprevious, $newtype_user) {
-        echo 'esta entrando a la funcion actualizar';
         mdlusers::verifyTypeofuser($usernameforupdate, $usertypeprevious, $newtype_user);
     }
 
@@ -50,7 +49,7 @@ class mdlusers {
     public static function updateIntousers($usernameforupdate, $newtype_user) {
         $con = mdlconection::connect();
         $newtypeuserdb = mdlusers::defineTypeuser($newtype_user);
-     echo   $updateintotableusers = "update users set id_type_user = '$newtypeuserdb' where username = '$usernameforupdate'";
+        $updateintotableusers = "update users set id_type_user = '$newtypeuserdb' where username = '$usernameforupdate'";
         if (!mysqli_query($con, $updateintotableusers)) {
             die('Error: ' . mysqli_error($con));
         }
@@ -111,6 +110,36 @@ class mdlusers {
             $type_user = $rowtypeofuser['type_user'];
         }
         return $type_user;
+    }
+
+    public static function verifyIfisadministrator() {
+        $con = mdlconection::connect();
+        $checkuser = "SELECT f.type_user FROM token t inner join users u on t.idtoken =u.idtoken inner join
+            type_users f on u.id_type_user =  f.id_type_user where t.token ='" . $_SESSION['token'] . "'";
+        $resultofcheckuser = mysqli_query($con, $checkuser) or die(mysqli_error());
+        $rowtypeofuser = mysqli_fetch_array($resultofcheckuser);
+        if (!$rowtypeofuser [0]) {
+            echo '<script language = javascript>
+	alert("El usuario no se encuenta registrado")
+           self.location = "../index.php"
+	</script>';
+            exit;
+        } else {
+            $type_user = $rowtypeofuser['type_user'];
+            mdlusers::isNotadministrator($type_user);
+        }
+    }
+
+    public static function isNotadministrator($type_user) {
+        if ($type_user == 'administrator') {
+            //nothing
+        }
+        if ($type_user == 'Employee') {
+            echo '<script language = javascript>
+	alert("El usuario no se encuenta registrado")
+           self.location = "../views/vwmenuprincipal.php"
+	</script>';
+        }
     }
 
     public static function validateUserdates($username, $password, $type_user) {
@@ -226,7 +255,6 @@ class mdlusers {
 
     public static function wrongData() {
         echo '<script language = javascript> alert("Datos Incorrectos") </script>';
-        //Regresamos a la pagina anterior
         echo "<html><head></head>" .
         "<body onload=\"javascript:history.back()\">" .
         "</body></html>";

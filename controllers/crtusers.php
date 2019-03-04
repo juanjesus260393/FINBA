@@ -15,14 +15,11 @@ $usernameforupdate = filter_input(INPUT_POST, 'usernameforupdate');
 $usertypeprevious = filter_input(INPUT_POST, 'usertypeprevious');
 $newtype_user = filter_input(INPUT_POST, 'newtype_user');
 $valueupdate = filter_input(INPUT_POST, 'valueupdate');
-
-echo $usertypeprevious;
 //varaibles GET utilizadas para la eliminacion de usuario
 $delete_user = filter_input(INPUT_GET, 'delete');
 $delete_username = filter_input(INPUT_GET, 'username');
-if (!empty($username)) {
-    
-}
+// variable de sesion para regresar al usuario en caso de que sea empleado y no permita la administracion de usuarios
+
 if ($delete_user) {
     require_once("../models/mdlusers.php");
     mdlusers::deleteUser($delete_username);
@@ -47,12 +44,13 @@ if (!empty($username) && !empty($password) && !empty($type_user)) {
 if ($valueupdate == 'true' && !empty($usernameforupdate) && !empty($usertypeprevious) && !empty($newtype_user)) {
     require_once("../models/mdlusers.php");
     mdlusers::updateUser($usernameforupdate, $usertypeprevious, $newtype_user);
-    //$users = new mdlusers();
-    //$listofusers = $users->getUsers();
-    // require_once("../views/vwmanageusers.php");
+    $users = new mdlusers();
+    $listofusers = $users->getUsers();
+    require_once("../views/vwmanageusers.php");
 } else {
     require_once("../models/mdlusers.php");
     $users = new mdlusers();
+    $users->verifyIfisadministrator();
     $listofusers = $users->getUsers();
     require_once("../views/vwmanageusers.php");
 }
