@@ -60,7 +60,16 @@ $(document).ready(function(){
                        ">
     </div>
     <div class="col-5">
-        <textarea id="inputUbicacion"  cols="23" disabled></textarea>
+        <ul>
+           
+            <li id="dos"></li>
+            <li id="tres"></li>
+            <li id="cuatro"></li>
+            <li id="cinco"></li>
+            <li id="seis"></li>
+            <li id="siete"></li>
+            <li id="ocho"></li>
+        </ul>
      </div>    
             </div>
   

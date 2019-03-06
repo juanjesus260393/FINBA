@@ -32,6 +32,7 @@
 
                 $('#sidebar').on('mouseout', function () {
                     $('#sidebar').addClass('active');
+                    
                 });
 
 
