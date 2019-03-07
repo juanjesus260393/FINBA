@@ -1,9 +1,9 @@
-<div hidden="true">
-    <?php
-    require_once("../resources/helpers/mdlsecurity.php");
-    mdlsecurity::validationViews();
-    ?>
-</div>
+<?php
+session_start();
+echo $_SESSION['token'];
+require_once("../models/mdlsecurity.php");
+mdlsecurity::validateToken();
+?>
 <!DOCTYPE html>
 <html>
     <!-- head -->
@@ -55,23 +55,37 @@
                         <li class="active">
                             <a href="../views/vwmenuprincipal.php">
                                 <i class="fas fa-home"></i>
-                                Home
+                                Inicio
                             </a>
                         </li>
                         <li class="active"> 
                             <a href="#manageusers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <i class="fas fa-tachometer" ></i>
-                                Administrar Usuarios
+                                Usuarios
                             </a>
                             <ul class="collapse list-unstyled" id="manageusers">
                                 <li>
                                     <a href="../controllers/crtusers.php">Administrar Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="../controllers/crtauth.php">Cerrar Session</a>
+                                    <form action="../controllers/crtauth.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="closesesion" name="closesesion" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Cerrar Session</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form>
                                 </li>
                                 <li>
-                                    <a href="#">Cambiar Contraseña</a>
+                                     <form action="../controllers/crtauth.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="changedpass" name="changedpass" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Cambiar Contraseña</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form>
                                 </li>
                             </ul>
                         </li>

@@ -1,3 +1,10 @@
+<div hidden="true">
+  <?php
+session_start();
+require_once("../models/mdlsecurity.php");
+mdlsecurity::validateToken();
+?>  
+</div>
 <html lang="es">
     <head>
         <meta charset="UTF-8" />

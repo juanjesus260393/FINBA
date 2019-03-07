@@ -1,10 +1,11 @@
 <div hidden="true">
     <?php
     session_start();
-    include '../resources/helpers/mdlsecurity.php';
+    echo $_SESSION['token'];
+    require_once("../models/mdlsecurity.php");
+    mdlsecurity::validateToken();
     ?>
 </div>
-
 <!DOCTYPE html>
 <html>
     <!-- head -->
@@ -56,20 +57,27 @@
                         <li class="active">
                             <a href="../views/vwmenuprincipal.php">
                                 <i class="fas fa-home"></i>
-                                Home
+                                Inicio
                             </a>
                         </li>
                         <li class="active"> 
                             <a href="#manageusers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <i class="fas fa-tachometer" ></i>
-                                Administrar Usuarios
+                                Usuarios
                             </a>
                             <ul class="collapse list-unstyled" id="manageusers">
                                 <li>
                                     <a href="../controllers/crtusers.php">Administrar Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="../controllers/crtauth.php">Cerrar Session</a>
+                                    <form action="../controllers/crtauth.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="closesesion" name="closesesion" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Cerrar Session</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form>
                                 </li>
                                 <li>
                                     <a href="#">Cambiar Contraseña</a>
@@ -152,8 +160,9 @@
                                     <td> 
                                         <?php
                                         $usernamedelete = $listofusers[$i]["username"];
-                                        $delete = true;
-                                        echo '<a href="../controllers/crtusers.php?username=' . $usernamedelete . '&delete=' . $delete . '" '
+                                        $delete = '1';
+                                        $onydelete = '1';
+                                        echo '<a href="../controllers/crtusers.php?username=' . $usernamedelete . '&delete=' . $delete . '&onlydelete =' . $onydelete . '" '
                                         . 'onclick="if (!confirm(\'Estas seguro que quieres eliminar este usuario?\')) '
                                         . '{ return false}"><img src="../resources/img/eliminar.jpg"></a>'
                                         ?></td>
@@ -167,7 +176,7 @@
                                             if ($typeuserupdate == 'Employee') {
                                                 $typeuserupdate = 'Empleado';
                                             }
-                                            $update = true;
+                                            $update = '1';
                                             echo "<input type='hidden' id='usernameupdate' name='usernameupdate' value='$usernameupdate'> "
                                             . "<input type='hidden' id='update' name='update' value='$update'> "
                                             . "<input type='hidden' id='typeuserupdate' name='typeuserupdate' value='$typeuserupdate'>"
@@ -180,9 +189,23 @@
                             ?>
                         </tbody>
                     </table></center>
-                <center><button type="button" class="btn btn-info btn-primary" id="myBtn" onclick="location.href = '../views/vwadduser.php'" >
-                        Agregar Usuario</button></center> 
-
+                <center>
+                    <form method="post" action="../controllers/crtusers.php" name="form1" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="container">
+                                <center>
+                                    <div hidden="true">
+                                        <!-- value insert -->
+                                        <input class="col-8" type="text" id="insert" name="insert"  value="true">
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                        <center><div class="modal-footer">
+                                <input type="submit" class="btn btn-primary"value="Registrar Usuario" >
+                            </div></center>
+                    </form>
+                </center> 
             </div>  
             <!-- Page Content  -->
             <div id="content">

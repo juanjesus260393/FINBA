@@ -1,7 +1,7 @@
 <?php
 
-session_start();
 require_once('mdlconection.php');
+require_once("../models/mdlauth.php");
 
 class mdlusers {
 
@@ -13,6 +13,7 @@ class mdlusers {
     }
 
     public function getUsers() {
+        session_start();
         $checkusers = "SELECT u.username, t.type_user FROM users u inner join type_users t on u.id_type_user = t.id_type_user
             inner join token k on u.idtoken = k.idtoken where t.type_user = 'Employee' and k.token <>'" . $_SESSION['token'] . "'";
         if (empty($this->dbh->query($checkusers))) {
@@ -96,6 +97,7 @@ class mdlusers {
     }
 
     public static function isAdministrator() {
+        session_start();
         $con = mdlconection::connect();
         $checkuser = "SELECT f.type_user FROM token t inner join users u on t.idtoken =u.idtoken inner join
             type_users f on u.id_type_user =  f.id_type_user where t.token ='" . $_SESSION['token'] . "'";
@@ -113,20 +115,25 @@ class mdlusers {
     }
 
     public static function verifyIfisadministrator() {
-        $con = mdlconection::connect();
-        $checkuser = "SELECT f.type_user FROM token t inner join users u on t.idtoken =u.idtoken inner join
+        session_start();
+        if (isset($_SESSION['token'])) {
+            $con = mdlconection::connect();
+            $checkuser = "SELECT f.type_user FROM token t inner join users u on t.idtoken =u.idtoken inner join
             type_users f on u.id_type_user =  f.id_type_user where t.token ='" . $_SESSION['token'] . "'";
-        $resultofcheckuser = mysqli_query($con, $checkuser) or die(mysqli_error());
-        $rowtypeofuser = mysqli_fetch_array($resultofcheckuser);
-        if (!$rowtypeofuser [0]) {
-            echo '<script language = javascript>
+            $resultofcheckuser = mysqli_query($con, $checkuser) or die(mysqli_error());
+            $rowtypeofuser = mysqli_fetch_array($resultofcheckuser);
+            if (!$rowtypeofuser [0]) {
+                echo '<script language = javascript>
 	alert("El usuario no se encuenta registrado")
-           self.location = "../index.php"
+           self.location = "../views/vwmenuprincipal.php"
 	</script>';
-            exit;
+                exit;
+            } else {
+                $type_user = $rowtypeofuser['type_user'];
+                mdlusers::isNotadministrator($type_user);
+            }
         } else {
-            $type_user = $rowtypeofuser['type_user'];
-            mdlusers::isNotadministrator($type_user);
+            Mdlauth::Logout();
         }
     }
 
@@ -136,7 +143,7 @@ class mdlusers {
         }
         if ($type_user == 'Employee') {
             echo '<script language = javascript>
-	alert("El usuario no se encuenta registrado")
+	alert("Solo los administradores pueden acceder a esta seccion")
            self.location = "../views/vwmenuprincipal.php"
 	</script>';
         }
@@ -228,7 +235,7 @@ class mdlusers {
         if (!$rowone[0]) {
             $exist = true;
         } else {
-            mdlusers::wrongData();
+            mdlusers::wrongUserinformation();
         }
         return $exist;
     }
@@ -259,6 +266,12 @@ class mdlusers {
         "<body onload=\"javascript:history.back()\">" .
         "</body></html>";
         exit;
+    }
+
+    public static function wrongUserinformation() {
+        echo '<script language = javascript>
+	self.location = "../views/vwmenuprincipal.php"
+	</script>';
     }
 
 }

@@ -15,6 +15,14 @@ function showPassword() {
     }
 }
 
+function showPasswordupdate() {
+    var x = document.getElementById("newpassword");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
 /*
  * Funcion que valida la estructura del correo ingresado
  * por el usuario

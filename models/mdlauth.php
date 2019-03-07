@@ -1,6 +1,8 @@
 <?php
 
 require_once('mdlconection.php');
+require_once("../models/mdlsecurity.php");
+require_once("../models/mdlusers.php");
 
 class Mdlauth {
 
@@ -9,17 +11,58 @@ class Mdlauth {
         if ($userexist) {
             $validatetokendb = Mdlauth::validatePassword($username, $password);
             $_SESSION['token'] = $validatetokendb;
+            $_SESSION['loggedin'] = TRUE;
+            $_SESSION['token'];
+            echo '<script language = javascript>
+                	alert(' . $_SESSION['token'] . '); 
+		</script>';
         } else {
             $validatetokendb = null;
         }
     }
 
     public static function Logout() {
+        unset($_SESSION);
         session_destroy();
         echo '<script language = javascript>    
 	self.location = "../index.php"
 	</script>';
         exit();
+    }
+
+    public static function changedPassword($newpassword) {
+        $encrypetdpass = mdlusers::generatePassword($newpassword);
+        $usernamedb = Mdlauth::searchPass();
+        if (!empty($usernamedb) && !empty($encrypetdpass)) {
+            Mdlauth::updatePass($usernamedb, $encrypetdpass);
+        } else {
+            Mdlauth::Logout();
+        }
+    }
+
+    public static function searchPass() {
+        $con = mdlconection::connect();
+        $checkuser = "SELECT u.username FROM token t inner join users u on t.idtoken =u.idtoken inner join
+            type_users f on u.id_type_user =  f.id_type_user where t.token ='" . $_SESSION['token'] . "'";
+        $resultofcheckuser = mysqli_query($con, $checkuser) or die(mysqli_error());
+        $rowone = mysqli_fetch_array($resultofcheckuser);
+        if (!$rowone[0]) {
+            echo '<script language = javascript>
+	alert("El usuario no se encuenta registrado")
+           self.location = "../index.php"
+	</script>';
+        } else {
+            $passdb = $rowone['username'];
+        }
+        return $passdb;
+    }
+
+    public static function updatePass($usernamedb, $encrypetdpass) {
+        $con = mdlconection::connect();
+        $updateintotableusers = "update users set password = '$encrypetdpass' where username = '$usernamedb'";
+        if (!mysqli_query($con, $updateintotableusers)) {
+            Mdlauth::Logout();
+        }
     }
 
     public static function userExists($username) {
