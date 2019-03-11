@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ES">
     <head>
+     
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Proyecto FINBA</title>
@@ -13,7 +14,6 @@
         <!-- CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
-
     <body>
         <div class="container">
             <div class="card">

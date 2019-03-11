@@ -45,7 +45,7 @@
         <div class="wrapper">
             <div>
                 <!-- Sidebar  -->
-                <nav id="sidebar">
+<nav id="sidebar">
                     <div class="sidebar-header">
                         <h3>FINBA Monitoreo de Servicios</h3>
                         <strong>FINBA</strong>
@@ -54,42 +54,62 @@
                         <li class="active">
                             <a href="../views/vwmenuprincipal.php">
                                 <i class="fas fa-home"></i>
-                                Home
+                                Inicio
                             </a>
                         </li>
-                        <li class="active">
-                            <a href="../views/vwmanageusers.php">
-                                <i class="fas fa-home"></i>
-                                Administrar Usuarios
+                        <li class="active"> 
+                            <a href="#manageusers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-tachometer" ></i>
+                                Usuarios
                             </a>
-                        </li>
-                        <li class="active">
-                            <a href="../controllers/crtadddvc.php">
-                                <i class="fas fa-home"></i>
-                                Agregar Sensor
-                            </a>
+                            <ul class="collapse list-unstyled" id="manageusers">
+                                <li>
+                                    <a href="../controllers/crtusers.php">Administrar Usuarios</a>
+                                </li>
+                                <li>
+                                    <form action="../controllers/crtauth.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="closesesion" name="closesesion" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Cerrar Session</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form>
+                                </li>
+                                <li>
+                                     <form action="../controllers/crtauth.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="changedpass" name="changedpass" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Cambiar Contraseña</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
                         <li class="active">
                             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <i class="fas fa-tachometer"></i>
-                                Servicios
+                                Inventario
                             </a>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li>
-                                    <a href="#"><i class="fas fa-tint"></i>Agua</a>
-                                </li>
-                                <li>
-                                    <a href="#">Home 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Home 3</a>
+                                      <li>
+                                          <form action="../controllers/crtinventory.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="searchinventory" name="searchinventory" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Administrar Inventario</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="../controllers/crtadddvc.php">
                                 <i class="fas fa-briefcase"></i>
-                                About
+                                Dispositivos
                             </a> </li>
                         <li>
                             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
