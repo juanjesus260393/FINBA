@@ -3,6 +3,7 @@
     function back() {
         $("#imgplano").attr("src", "../resources/img/cic.jpg");
         $("#atrasLevels").addClass("d-none");
+        $("#atrasSchool").removeClass("d-none");
         $("#imgplano").attr("usemap", "#levels");
         $("#imgplano").attr("width", "600");
         $("#niveltext").text("");
@@ -47,13 +48,13 @@
         ubicacion[7] = "Num. Registro";
         $("#exampleModal").modal("hide");
 
-        $("#dos").text(ubicacion[1]);
-        $("#tres").text(ubicacion[2]);
-        $("#cuatro").text(ubicacion[3]);
-        $("#cinco").text(ubicacion[4]);
-        $("#seis").text(ubicacion[5]);
-        $("#siete").text(ubicacion[6]);
-        $("#ocho").text(ubicacion[7]);
+        $("#dos").val(ubicacion[1]);
+        $("#tres").val(ubicacion[2]);
+        $("#cuatro").val(ubicacion[3]);
+        $("#cinco").val(ubicacion[4]);
+        $("#seis").val(ubicacion[5]);
+        $("#siete").val(ubicacion[6]);
+        $("#ocho").val(ubicacion[7]);
     }
     ;
 </script>
