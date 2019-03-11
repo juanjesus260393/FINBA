@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ProyectoFINBA/views/vwmanageusers.php</file>
-            <file>file:/C:/xampp/htdocs/ProyectoFINBA/models/mdlauth.php</file>
-            <file>file:/C:/xampp/htdocs/ProyectoFINBA/views/vwmenuprincipal.php</file>
-            <file>file:/C:/xampp/htdocs/ProyectoFINBA/controllers/crtauth.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdlconection.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtusers.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdlusers.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdlauth.php</file>
         </group>
     </open-files>
 </project-private>
