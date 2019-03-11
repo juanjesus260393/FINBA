@@ -1,8 +1,7 @@
 <div hidden="true">
     <?php
     session_start();
-    echo $_SESSION['token'];
-    require_once("../models/mdlsecurity.php");
+    require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlsecurity.php");
     mdlsecurity::validateToken();
     ?>
 </div>
@@ -80,7 +79,13 @@
                                     </form>
                                 </li>
                                 <li>
-                                    <a href="#">Cambiar Contraseña</a>
+                                    <form action="../controllers/crtauth.php" method="post">
+                                        <div hidden="true">
+                                            <input class="col-8" type="text" id="changedpass" name="changedpass" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Cambiar Contraseña</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form>
                                 </li>
                             </ul>
                         </li>

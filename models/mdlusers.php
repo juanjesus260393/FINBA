@@ -1,16 +1,38 @@
 <?php
 
+/*
+ *   proyecto FINBA
+ *   Nombre: mdlusers
+ *   Autor: Juan Jesus Garcia Centeno
+ *   Fecha: 08-03-2011
+ *   Versión: 1.0
+ *   Descripcion: modelo en el que se establecen las funciones necesarias para la correcta administracion de los usuarios.
+ * 
+ *   por Fabrica de Software, CIC-IPN
+ */
+
+//Modelos adicionales que requiere el archivo, dado que algunas funciones se encuentran en dichos archivos
 require_once('mdlconection.php');
-require_once("../models/mdlauth.php");
+require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlauth.php");
+
+// Evitar Notificar todos los errores de PHP
+error_reporting(0);
 
 class mdlusers {
 
+    //variables para obtener la lista de usuarios y establecer la contexion
     private $users;
     private $dbh;
 
     public function __construct() {
         $this->dbh = mdlconection::connect();
     }
+
+    /*
+     *  getUsers
+     *  Funcion que realiza la busqueda de usuarios que se tienen registrados en la bd, siempre que no sean empleados y sean diferentes al token
+     *  que esta realizando la consulta
+     */
 
     public function getUsers() {
         session_start();
@@ -26,18 +48,33 @@ class mdlusers {
         return $this->users;
     }
 
+    /*
+     *  insertUser
+     *  Funcion a la que se accede por medio del controlador para registrar a un nuevo usuario
+     */
+
     public static function insertUser($username, $password, $type_user) {
         mdlusers::validateUserdates($username, $password, $type_user);
     }
+
+    /*
+     *  updateUser
+     *  Funcion a la que se accede por medio del controlador para actualizar el tipo de usuario a administrador
+     */
 
     public static function updateUser($usernameforupdate, $usertypeprevious, $newtype_user) {
         mdlusers::verifyTypeofuser($usernameforupdate, $usertypeprevious, $newtype_user);
     }
 
+    /*
+     *  verifyTypeofuser
+     *  Funcion que permite acceder al metodo actualizar usuarios siempre que el tipo previo no se adminisrtrador.
+     *   si el tipó previo es administrador regresa al usuario a la pagina anterior
+     */
+
     public static function verifyTypeofuser($usernameforupdate, $usertypeprevious, $newtype_user) {
         if ($usertypeprevious == 'Administrador') {
             echo '<script language = javascript> alert("Solo se pueden modificar los usuarios de tipo empleado") </script>';
-            //Regresamos a la pagina anterior
             echo "<html><head></head>" .
             "<body onload=\"javascript:history.back()\">" .
             "</body></html>";
@@ -47,6 +84,11 @@ class mdlusers {
         }
     }
 
+    /*
+     *  updateIntousers
+     *  funcion que actualiza el registro de un usuario asignandole un nuevo tipo de usuario
+     */
+
     public static function updateIntousers($usernameforupdate, $newtype_user) {
         $con = mdlconection::connect();
         $newtypeuserdb = mdlusers::defineTypeuser($newtype_user);
@@ -55,6 +97,12 @@ class mdlusers {
             die('Error: ' . mysqli_error($con));
         }
     }
+
+    /*
+     *  deleteuser
+     *  funcion en la cual dependiendo de si el tipo de usuario es administrador permite acceder a la funcion
+     *  encargada de eliminar al suaurio, en caso contrario  se regresa al usuario a la pagina anterior
+     */
 
     public static function deleteUser($delete_username) {
         $type_user = mdlusers::isAdministrator();
@@ -70,6 +118,11 @@ class mdlusers {
         }
     }
 
+    /*
+     *  deleteUseroftable
+     *  funcion que elimina el registro del usuario asi como el de la tabla token
+     */
+
     public static function deleteUseroftable($delete_username) {
         $con = mdlconection::connect();
         $idtoken = mdlusers::getTokenid($delete_username);
@@ -82,6 +135,11 @@ class mdlusers {
             die('Error: ' . mysqli_error($con));
         }
     }
+
+    /*
+     *  getTokenid
+     *  funcion que busca el identificador del token de un usuario en especifico y lo regresa a la funcion que lo necesita
+     */
 
     public static function getTokenid($delete_username) {
         $con = mdlconection::connect();
@@ -96,6 +154,11 @@ class mdlusers {
         return $idtoken;
     }
 
+    /* isAdminsitrator
+     * Funcion que se encarga de obtener el tipo de usuario en base a un token en especifico, si no existe
+     * regresa al usuario a la pagina de inicio de sesion
+     */
+
     public static function isAdministrator() {
         session_start();
         $con = mdlconection::connect();
@@ -104,15 +167,18 @@ class mdlusers {
         $resultofcheckuser = mysqli_query($con, $checkuser) or die(mysqli_error());
         $rowtypeofuser = mysqli_fetch_array($resultofcheckuser);
         if (!$rowtypeofuser [0]) {
-            echo '<script language = javascript>
-	alert("El usuario no se encuenta registrado")
-           self.location = "../index.php"
-	</script>';
+            Mdlauth::Logout();
         } else {
             $type_user = $rowtypeofuser['type_user'];
         }
         return $type_user;
     }
+
+    /*
+     * verifyIfisadministrator
+     *  funcion que se encarga de obtener el tipo de usuario en base a un oken en especifico
+     *  si el typo de usuario existe se envia a la funcion que lo requiere, en caso de que no se regresa a la vista principal 
+     */
 
     public static function verifyIfisadministrator() {
         session_start();
@@ -137,6 +203,12 @@ class mdlusers {
         }
     }
 
+    /*
+     *  isNoadministrator
+     *  funcion que se encarga de definir si un usuario es administrador o empleadio, en el caso de que sea empleado regresa al usuario a la vista 
+     *  principall
+     */
+
     public static function isNotadministrator($type_user) {
         if ($type_user == 'administrator') {
             //nothing
@@ -148,6 +220,12 @@ class mdlusers {
 	</script>';
         }
     }
+
+    /*
+     *  validationsUserdates
+     *  funcion que se encarga de validar la informacion del usuario, si el usuario no existe o esta registrado previamente
+     *  si la informacion no esta registrada previamente permite la realizacion del nuevo registro
+     */
 
     public static function validateUserdates($username, $password, $type_user) {
         $userdata = mdlusers::validateUsername($username, $password);
@@ -161,6 +239,11 @@ class mdlusers {
         }
     }
 
+    /*
+     *  insertIntousers
+     *  funcion que se encarga de generar el registro de un usuario nuevo por parte de un administrador
+     */
+
     public static function insertIntousers($username, $password, $type_user) {
         $con = mdlconection::connect();
         $passdb = mdlusers::generatePassword($password);
@@ -172,6 +255,11 @@ class mdlusers {
             die('Error: ' . mysqli_error($con));
         }
     }
+
+    /*
+     *  insertIntotoken
+     *  funcion que se encarga de insertar el token de un usuario que se acaba de registrar
+     */
 
     public static function insertIntotoken() {
         $con = mdlconection::connect();
@@ -186,6 +274,11 @@ class mdlusers {
         return $idtoken;
     }
 
+    /*
+     *  generateIdtoken
+     *  funcion que se encarga de generar el token de una longitud de 10 digitos
+     */
+
     public static function generateIdtoken() {
         $rango = 9;
         $longitud = $rango;
@@ -198,15 +291,30 @@ class mdlusers {
         return $id;
     }
 
+    /*
+     *  generatePassword
+     *  funcion que se encarga de encriptar la contraseña de un usuario
+     */
+
     public static function generatePassword($password) {
         $pwd = password_hash($password, PASSWORD_DEFAULT);
         return $pwd;
     }
 
+    /*
+     *  Generate Token
+     *  funcion que generar el oken en base hexadecimal
+     */
+
     public static function generateToken() {
         $token = bin2hex(openssl_random_pseudo_bytes(32));
         return $token;
     }
+
+    /*
+     *  generateExpiration
+     *  funcion que se encarga de generar la fecha de expiracion de un token
+     */
 
     public static function generateExpiration() {
         $fechaactual = date('Y-m-d H:i:s');
@@ -215,6 +323,11 @@ class mdlusers {
         $expiration = $dt->format("Y-m-d H:i:s");
         return $expiration;
     }
+
+    /*
+     *  defineTypeuser
+     *  funcion que se encarga de definir el identificador del tipo de usuario en base al tipo de usuario que detecta
+     */
 
     public static function defineTypeuser($type_user) {
         $id_type_user = "";
@@ -226,6 +339,11 @@ class mdlusers {
         }
         return $id_type_user;
     }
+
+    /*
+     *  userDateexist
+     *  funcion que verifica si un usuarios se encuentra registrado
+     */
 
     public static function userDateexist($username) {
         $con = mdlconection::connect();
@@ -240,6 +358,11 @@ class mdlusers {
         return $exist;
     }
 
+    /*
+     *  validateUsername
+     *  funcion que se encarga de validar si el usuario se encuentra registrado 
+     */
+
     public static function validateUsername($username, $password) {
         $usernamevalidate = false;
         if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
@@ -251,6 +374,11 @@ class mdlusers {
         return $usernamevalidate;
     }
 
+    /*
+     *  validatePassword
+     *  funcion que se encarga de verificas si la contraseña no se encuentra vacia
+     */
+
     public static function validatePassword($password) {
         if (strlen(trim($password)) == 0) {
             mdlusers::wrongData();
@@ -260,6 +388,11 @@ class mdlusers {
         return $passwordvalidate;
     }
 
+    /*
+     *  wrongData
+     *  Funcion que se regresa al usuario a la pagina antetior si los datos proporcionados no son los correctos
+     */
+
     public static function wrongData() {
         echo '<script language = javascript> alert("Datos Incorrectos") </script>';
         echo "<html><head></head>" .
@@ -268,9 +401,14 @@ class mdlusers {
         exit;
     }
 
+    /*
+     *  wrongUserinformation
+     *  funcion que regresa al usuario a la vista principal.
+     */
+
     public static function wrongUserinformation() {
         echo '<script language = javascript>
-	self.location = "../views/vwmenuprincipal.php"
+	self.location = "../views/users/vwmenuprincipal.php"
 	</script>';
     }
 

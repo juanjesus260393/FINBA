@@ -13,7 +13,7 @@ $newpassword = filter_input(INPUT_POST, 'newpassword');
 $valueforpassword = filter_input(INPUT_POST, 'valueforpassword');
 
 
-//La primera vez que se inicia sesion
+//Inicio de sesion
  if (!empty($username) && !empty($password)) {
     if (!isset($_SESSION['token']) && empty($_SESSION['token'])) {
         Mdlauth::Login($username, $password);
@@ -21,21 +21,27 @@ $valueforpassword = filter_input(INPUT_POST, 'valueforpassword');
 	self.location = "../views/vwmenuprincipal.php"
 	</script>';
     }
+    else{
+       // Mdlauth::Logout();
+    }
 }
  
-
+//Se llama a la funcion cerrar sesion
 if ($closesesion && empty($username) && empty($password)) {
     Mdlauth::Logout();
 }
+//Se llama a la vista cambiar contraseña
 if (!empty($changedpass) && $changedpass) {
-    require_once("../views/vwalterpassword.php");
+    require_once("../views/users/vwalterpassword.php");
 }
+//Se llama la funcion cambiar contraseña
 if (!empty($valueforpassword) && $valueforpassword == 'valueforpassword' && !empty($newpassword)) {
     Mdlauth::changedPassword($newpassword);
     echo '<script language = javascript>
 	self.location = "../views/vwmenuprincipal.php"
 	</script>';
 }
+//Validacion de seguridad para cuando un usuario externo accede
 if (empty($closesesion) && empty($changedpass) && empty($password) && empty($username) && empty($valueforpassword) && empty($newpassword)) {
     mdlsecurity::validationSecurity();
 }

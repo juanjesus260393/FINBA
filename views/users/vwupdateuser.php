@@ -1,9 +1,9 @@
 <div hidden="true">
-  <?php
-session_start();
-require_once("../models/mdlsecurity.php");
-mdlsecurity::validateToken();
-?>  
+    <?php
+    session_start();
+    require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlsecurity.php");
+    mdlsecurity::validateToken();
+    ?>  
 </div>
 <html lang="es">
     <head>
@@ -42,7 +42,7 @@ mdlsecurity::validateToken();
                                     <!-- nombre de usuario -->
                                     <span><label class="col-3" style="background-color:#f1f1f1;">Username(correo eletronico):</label></span>
                                     <input class="col-8" type="text" id="usernameforupdate" name="usernameforupdate" value="<?php echo $usernameforupdate;
-?>">
+    ?>">
                                 </div>
                                 <div hidden="true">
                                     <!-- valor para la actualizacion -->
@@ -52,13 +52,13 @@ mdlsecurity::validateToken();
                                     <!-- tipo de usuario previo -->
                                     <span><label class="col-3" style="background-color:#f1f1f1;">Tipo de Usuario Previo:</label></span>
                                     <input class="col-8" type="text" id="usertypepreviousview" name="usertypepreviousview" value="<?php echo $newtypeuserupdate;
-?>" disabled="true">
+    ?>" disabled="true">
                                 </div>
                                 <div hidden="true">
                                     <!-- tipo de usuario previo -->
                                     <span><label class="col-3" style="background-color:#f1f1f1;">Tipo de Usuario Previo:</label></span>
                                     <input class="col-8" type="text" id="usertypeprevious" name="usertypeprevious" value="<?php echo $newtypeuserupdate;
-?>">
+    ?>">
                                 </div>
                                 <div>
                                     <!-- Tipo de Usuario -->

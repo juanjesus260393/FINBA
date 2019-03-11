@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo $_SESSION['token'];
+//echo $_SESSION['token'];
 require_once("../models/mdlsecurity.php");
 mdlsecurity::validateToken();
 ?>
@@ -92,17 +92,18 @@ mdlsecurity::validateToken();
                         <li class="active">
                             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <i class="fas fa-tachometer"></i>
-                                Servicios
+                                Inventario
                             </a>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li>
-                                    <a href="#"><i class="fas fa-tint"></i>Agua</a>
-                                </li>
-                                <li>
-                                    <a href="#">Home 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Home 3</a>
+                                      <li>
+                                          <form action="../controllers/crtinventory.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="searchinventory" name="searchinventory" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Administrar Inventario</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form>
                                 </li>
                             </ul>
                         </li>
