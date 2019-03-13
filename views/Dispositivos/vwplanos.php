@@ -19,6 +19,8 @@
     }
     function settoCIC() {
         ubicacion[1] = "CIC";
+          ubicacion[4] = "Norte";
+         ubicacion[5] = "Interior";
 
         $("#imgplano").attr("src", "../resources/img/cic.jpg");
         $("#imgplano").attr("width", "600");
@@ -31,7 +33,7 @@
     function settoN1() {
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 1";
-
+       
         $("#imgplano").attr("src", "../resources/img/cicN1-nombres.png");
         $("#imgplano").attr("width", "1100");
         $("#imgplano").attr("usemap", "#mapn1");
@@ -42,10 +44,10 @@
     }
     ;
     function ubicacionFinal(a) {
-        ubicacion[4] = "(Norte/Sur)";
-        ubicacion[5] = "(Interior7Exterior)";
+        
+        
         ubicacion[6] = ($(a).attr("id"));
-        ubicacion[7] = "Num. Registro";
+        ubicacion[7] = 1;
         $("#exampleModal").modal("hide");
 
         $("#dos").val(ubicacion[1]);
