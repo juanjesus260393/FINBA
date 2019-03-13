@@ -1,4 +1,15 @@
 <?php
+
+/**
+ *  proyecto FINBA
+ *   Nombre: vwadddevice
+ *   Autor: Isidro Delgado Murillo
+ *   Fecha: 13-03-2019
+ *   Versión: 1.0
+ *   Descripcion: Vista principal del control de dispositivos , registro , eliminacino o consulta
+ *   por Fabrica de Software, CIC-IPN
+ **/
+
 include('../views/template1.php');
 ?>
 <?php
