@@ -5669,7 +5669,7 @@ a.close.disabled {
 }
 
 .modal1-open .modal1 {
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
 }
 .modal1-dialog2 {

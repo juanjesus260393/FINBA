@@ -5,9 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdlconection.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtusers.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtauth.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/vwadddevice.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtadddvc.php</file>
-            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/template1.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/users/vwadduser.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdladddvc.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdlusers.php</file>

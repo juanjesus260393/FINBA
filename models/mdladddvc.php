@@ -54,6 +54,7 @@ class mdladddvc {
                 $this->ErrorInsert($Nom);
             }
         } else {
+            $this->ErrorInsert($Nom);
             echo '<script language = javascript>
             alert("El dispositivo con esa Mac ya esta registrado");
 	self.location = "../controllers/crtadddvc.php"
@@ -90,7 +91,6 @@ class mdladddvc {
        if($resBorrar){
          echo '<script language = javascript>
             alert("Error al Registrar el Dispositivo, intente de nuevo");
-	self.location = "../controllers/crtadddvc.php"
        </script>';}
        else{
     $this->ErrorInsert($NomBorrar);

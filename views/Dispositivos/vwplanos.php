@@ -83,12 +83,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-10">
-                        <img id="imgplano" src="../resources/img/escuelas.jpg" width="645" height="645" alt="Escuelas" usemap="#schools">
+                    <div class="col-10" style="overflow-x: auto;">
+                        
+                        <img  id="imgplano" src="../resources/img/escuelas.jpg" width="645" height="645" alt="Escuelas" usemap="#schools">
 
                         <map name="schools">
-                            <area shape="rect" coords="11,21,258,258" alt="cic" nohref onclick="settoCIC();
-                                    return false;">
+                            <area shape="rect" coords="11,21,258,258" alt="cic" nohref onclick="settoCIC();return false;">
                         </map> 
 
                         <map name="levels">
@@ -96,10 +96,13 @@
                             <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
                             <area id="CICN1" shape="rect" coords="0,310,700,210" alt="Venus" nohref onclick="settoN1();return false;">
                         </map> 
+                        
                         <map name="mapn1">
                             <area id="Fabrica de Software" shape="rect" coords="870,476,1028,570" alt="Fabrica de Software" noherf onclick="ubicacionFinal(this);return false;">
                             <area id="SITE" shape="rect" coords="731,590,863,696" alt="SITE" noherf onclick="ubicacionFinal(this); return false;">
+                            <area id="Cafeteria" shape="rect" coords="56,480,264,698" alt="SITE" noherf onclick="ubicacionFinal(this); return false;">
                         </map>
+                        
                     </div>
                 </div>
             </div>  
