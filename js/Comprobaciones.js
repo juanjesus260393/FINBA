@@ -43,7 +43,8 @@ function validarCorreo() {
 /*
  * Funcion que revisa si en la contraseña se ha ingresado una
  * comtraeña vacia
- */function validarContraseña() {
+ */
+function validarContraseña() {
     document.getElementById('password').addEventListener('input', function () {
         campo = event.target;
         valido = document.getElementById('passOK');
@@ -54,4 +55,47 @@ function validarCorreo() {
             valido.innerText = "";
         }
     });
+}
+
+function cantidablanco() {
+    document.getElementById('quantity').addEventListener('input', function () {
+        campo = event.target;
+        valido = document.getElementById('quantityOk');
+        emailRegex = /[ ]/;
+        if (emailRegex.test(campo.value)) {
+            valido.innerText = "Espacio Vacio";
+        } else {
+            valido.innerText = "";
+        }
+    });
+}
+
+function  nombreblanco() {
+    document.getElementById('elementname').addEventListener('input', function () {
+        campo = event.target;
+        valido = document.getElementById('elementOk');
+        emailRegex = /[ ]/;
+        if (emailRegex.test(campo.value)) {
+            valido.innerText = "Espacio Vacio";
+        } else {
+            valido.innerText = "";
+        }
+    });
+}
+function  referenciablanco() {
+    document.getElementById('reference').addEventListener('textarea', function () {
+        campo = event.target;
+        valido = document.getElementById('referenceOk');
+        emailRegex = /[ ]/;
+        if (emailRegex.test(campo.value)) {
+            valido.innerText = "Espacio Vacio";
+        } else {
+            valido.innerText = "";
+        }
+    });
+}
+
+function soloNumeros(e){
+	var key = window.Event ? e.which : e.keyCode;
+	return (key >= 48 && key <= 57);
 }
