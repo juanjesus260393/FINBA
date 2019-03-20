@@ -35,7 +35,7 @@
         ubicacion[3] = "Nivel 1";
 
         $("#imgplano").attr("src", "../resources/img/cicN1-nombres.png");
-        $("#imgplano").attr("width", "1100");
+        $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("usemap", "#mapn1");
         $("#atrasLevels").removeClass("d-none");
         $("#atrasSchool").addClass("d-none");
@@ -45,11 +45,10 @@
     ;
     function ubicacionFinal(a) {
 
-
         ubicacion[6] = ($(a).attr("id"));
         ubicacion[7] = 1;
+        
         $("#exampleModal").modal("hide");
-
         $("#dos").val(ubicacion[1]);
         $("#tres").val(ubicacion[2]);
         $("#cuatro").val(ubicacion[3]);
@@ -57,8 +56,7 @@
         $("#seis").val(ubicacion[5]);
         $("#siete").val(ubicacion[6]);
         $("#ocho").val(ubicacion[7]);
-    }
-    ;
+    };
 </script>
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal1-dialog2" role="document">
@@ -68,6 +66,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+                
             </div>
             <div class="modal-body " >
                 <div class="row align-content-center text-center">
@@ -100,7 +99,10 @@
                         <map name="mapn1">
                             <area id="Fabrica de Software" shape="rect" coords="870,476,1028,570" alt="Fabrica de Software" noherf onclick="ubicacionFinal(this);return false;">
                             <area id="SITE" shape="rect" coords="731,590,863,696" alt="SITE" noherf onclick="ubicacionFinal(this); return false;">
-                            <area id="Cafeteria" shape="rect" coords="56,480,264,698" alt="SITE" noherf onclick="ubicacionFinal(this); return false;">
+                            <area id="Cafeteria" shape="rect" coords="56,480,264,698" alt="Cafeteria" noherf onclick="ubicacionFinal(this); return false;">
+                            <area id="Departamento de Tecnologias Educativas" shape="rect" coords="871,575,1030,700" alt="Dpto. de Tecnologias Educativas" noherf onclick="ubicacionFinal(this); return false;" >
+                            <area id="Salas de Usos Multiples" shape="rect" coords="50,15,356,148" alt="Salas de Usos Multiples" noherf onclick="ubicacionFinal(this); return false;" >
+                            
                         </map>
                         
                     </div>

@@ -107,8 +107,8 @@ class mdladddvc {
         $yaestaentabla = $this->yaexisteNomen($y);
         if ($yaestaentabla == 0) {
         $Nom1 = filter_input(INPUT_POST, 'dos');
-        $Nom2 = filter_input(INPUT_POST, 'tres');
-        $Nom3 = filter_input(INPUT_POST, 'cuatro');
+        $Nom2 = substr(filter_input(INPUT_POST, 'tres'), -1);
+        $Nom3 = substr(filter_input(INPUT_POST, 'cuatro'), -1);
         $Nom4 = substr(filter_input(INPUT_POST, 'cinco'), 0);
         $Nom5 = substr(filter_input(INPUT_POST, 'seis'), 0);
         $Nom6 = filter_input(INPUT_POST, 'siete');
