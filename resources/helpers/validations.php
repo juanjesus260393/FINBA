@@ -227,3 +227,44 @@ class inventoryhelper {
     }
 
 }
+
+/*
+ *   proyecto FINBA
+ *   Nombre: panelHelper
+ *   Autor: Juan Jesus Garcia Centeno
+ *   Fecha: 26-03-2011
+ *   Versión: 1.0
+ *   Descripcion: clase  en la que se definen funciones auxiliares para la administracion de los paneles
+ * 
+ *   por Fabrica de Software, CIC-IPN
+ */
+
+class panelHelper {
+    /*
+     *  validateInformationpanels
+     *  funcion que valida si el numero de registro que se esta agregando esta vacio
+     */
+
+    public static function validateInformationpanels($registry_number) {
+        $validation = FALSE;
+        if (empty($registry_number)) {
+            inventoryhelper::dataVoid();
+        } else {
+            $validation = TRUE;
+        }
+        return $validation;
+    }
+
+    /*
+     *  cantInsert
+     *  funcion que envia una alerta al usuario en caso de que un elemento no se pueda registrar
+     */
+
+    public static function cantInsert() {
+        echo '<script language = javascript>
+	alert("No se puede insertar este elemento")
+           self.location = "../views/vwmenuprincipal.php"
+	</script>';
+    }
+
+}

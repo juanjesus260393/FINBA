@@ -22,13 +22,19 @@ mdlsecurity::validateToken();
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
     </li>
+      <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#second">Home</a>
+    </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#Registrar">Registrar Nuevo Dispositivo</a>
     </li>
     
   </ul>
     <div class="tab-content">
-    <div id="home" class="container tab-pane active"><br>
+    <div id="second" class="container tab-pane active"><br>
+      
+    </div>
+         <div id="home" class="container tab-pane active"><br>
       
     </div>
     <div id="Registrar" class="container tab-pane fade"><br> 

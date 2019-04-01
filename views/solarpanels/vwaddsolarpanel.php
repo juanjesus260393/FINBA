@@ -7,18 +7,18 @@ mdlsecurity::validateToken();
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="../../css/bootstrap.css" rel="stylesheet">
-        <link href="../../css/bootstrap-grid.css" rel="stylesheet">
+        <link href="../css/bootstrap.css" rel="stylesheet">
+        <link href="../css/bootstrap-grid.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/Comprobaciones.js"></script>
-        <title>Agregar Elemento del Inventario</title>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/Comprobaciones.js"></script>
+        <title>Agregar Panel Solar</title>
     </head>
     <script>
         $(document).ready(function () {
             $('#adcuponmodal').modal("show");
             $('#adcuponmodal').on('hidden.bs.modal', function () {
-                document.location.href = '../../controllers/crtinventory.php';
+                document.location.href = '../controllers/crtsolarpanels.php';
             });
         });
 
@@ -26,9 +26,9 @@ mdlsecurity::validateToken();
     <div class="modal" id="adcuponmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <form method="post" action="../../controllers/crtinventory.php" name="form1" enctype="multipart/form-data">
+                <form method="post" action="../controllers/crtsolarpanels.php" name="form1" enctype="multipart/form-data">
                     <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel" style="text-align: center;">Agregar Elemento del Inventario</h3>
+                        <h3 class="modal-title" id="exampleModalLabel" style="text-align: center;">Agregar Panel Solar</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -38,20 +38,15 @@ mdlsecurity::validateToken();
                             <center>
                                 <div>
                                     <!-- Nombre del elemento -->
-                                    <label class="col-3"style="background-color:#f1f1f1;">Nombre del Elemento:</label>
-                                    <input class="col-8" type="text" id="elementname"  name="elementname"  onkeypress="nombreblanco()" required = "true">
+                                    <label class="col-3"style="background-color:#f1f1f1;">Nombre del Panel Solar:</label>
+                                    <input class="col-8" type="text" id="panelname"  name="panelname"  onkeypress="nombreblanco()" required = "true">
                                     <span id="elementOk"></span> 
                                 </div>
-                                <div>
-                                    <!-- cantidad del inventario -->
-                                    <span><label class="col-3" style="background-color:#f1f1f1;">Cantidad:</label></span>
-                                    <input class="col-8" type="text" id="quantity" name="quantity"  onkeypress=" return soloNumeros(event)" maxlength="6" required = "true"></span>
-                                </div> 
                                 <div hidden="true">
                                     <!-- Escuela-->
                                     <label class="col-3"style="background-color:#f1f1f1;">Edificio(escuela):</label>
                                     <input class="col-8" type="text" id="school"  name="school"  value= "<?php echo $_SESSION['Schoolsname'];
-                                    ?>" required = "true">
+?>" required = "true">
                                 </div> 
                                 <div>
                                     <!-- n° de Edificio -->
@@ -61,7 +56,6 @@ mdlsecurity::validateToken();
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
-                                        <option>5</option>
                                     </select>
                                 </div>
                                 <div>
@@ -110,12 +104,13 @@ mdlsecurity::validateToken();
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
                         <!-- En el boton registrar se encuentra una alerta para validar que efectivamente se quiere registrar el cupon-->
                         <input type="submit" class="btn btn-primary"
-                               onclick="if (!confirm('Estas seguro que quieres registrar este elemento?')) {
+                               onclick="if (!confirm('Estas seguro que quieres registrar este panel?')) {
                                            return false;
-                                       }" value="Registrar Elemento" >
+                                       }" value="Registrar Panel" >
                     </div>
                 </form>
             </div>
         </div>
     </div>            
 </html>
+

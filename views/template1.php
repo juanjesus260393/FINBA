@@ -1,5 +1,4 @@
-<?php
-?>
+<?php ?>
 <!DOCTYPE html>
 <html>
     <!-- head -->
@@ -19,21 +18,21 @@
 
         <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        
+
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <!-- script animacion Sidebar -->
     </head>
     <body>
         <!-- jQuery CDN - Slim version (=without AJAX) -->
-       
-    <script>
+
+        <script>
 
             $(document).ready(function () {
 
                 $('#sidebar').on('mouseout', function () {
                     $('#sidebar').addClass('active');
-                    
+
                 });
 
 
@@ -46,10 +45,12 @@
         <div class="wrapper">
             <div>
                 <!-- Sidebar  -->
-<nav id="sidebar">
+                <nav id="sidebar">
                     <div class="sidebar-header">
                         <h3>FINBA Monitoreo de Servicios</h3>
+                        <h3><?php echo $_SESSION['Schoolsname']; ?></h3>
                         <strong>FINBA</strong>
+                        <strong><?php echo $_SESSION['Schoolsname']; ?></strong>
                     </div>
                     <ul class="list-unstyled components">
                         <li class="active">
@@ -78,7 +79,7 @@
                                     </form>
                                 </li>
                                 <li>
-                                     <form action="../controllers/crtauth.php" method="post">
+                                    <form action="../controllers/crtauth.php" method="post">
                                         <div hidden="true">
                                             <!-- Variable para cerrar sesion -->
                                             <input class="col-8" type="text" id="changedpass" name="changedpass" value="true">
@@ -95,8 +96,8 @@
                                 Inventario
                             </a>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
-                                      <li>
-                                          <form action="../controllers/crtinventory.php" method="post">
+                                <li>
+                                    <form action="../controllers/crtinventory.php" method="post">
                                         <div hidden="true">
                                             <!-- Variable para cerrar sesion -->
                                             <input class="col-8" type="text" id="searchinventory" name="searchinventory" value="true">
@@ -106,6 +107,16 @@
                                     </form>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <form action="../controllers/crtsolarpanels.php" method="post">
+                                <div hidden="true">
+                                    <!-- Variable para cerrar sesion -->
+                                    <input class="col-8" type="text" id="searchpanels" name="searchpanels" value="true">
+                                </div>
+                                <a href="javascript:;" onclick="parentNode.submit();">Paneles Solares</a>
+                                <input type="hidden" name="mess" value= "">
+                            </form> 
                         </li>
                         <li>
                             <a href="../controllers/crtadddvc.php">
@@ -134,6 +145,6 @@
 
                 </nav>
             </div>
-                
-                
-            
+
+
+
