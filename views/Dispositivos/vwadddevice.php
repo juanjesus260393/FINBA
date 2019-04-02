@@ -20,7 +20,7 @@ mdlsecurity::validateToken();
     
     <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+      <a class="nav-link active" data-toggle="tab" href="#home">Administrar Dispositivos</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#Registrar">Registrar Nuevo Dispositivo</a>
@@ -29,7 +29,9 @@ mdlsecurity::validateToken();
   </ul>
     <div class="tab-content">
     <div id="home" class="container tab-pane active"><br>
-      
+       <?php 
+       include('../views/Dispositivos/vwsummarydevices.php');
+?>
     </div>
     <div id="Registrar" class="container tab-pane fade"><br> 
     <!-- Codigo de Vista-->
@@ -49,7 +51,18 @@ mdlsecurity::validateToken();
                             $('#dvcmac').val($('#dvcmac').val() + ":");
                         }
                     });
+                    
+                 
+  $("#updateubicacion").on('show.bs.modal', function(){
+   $("#updatemodal").modal("hide");
+  });
+          $("#updateubicacion").on('hidden.bs.modal', function(){
+   $("#updatemodal").modal("show");
+  });           
+                    
                 });
+                
+                
 
 
 
@@ -100,11 +113,11 @@ mdlsecurity::validateToken();
                             
                         <div class="custom-control custom-radio">
                             <input type="radio" class="custom-control-input" id="agua" name="tipo" value="Agua">
-                            <label class="custom-control-label" for="agua">Agua</label>
+                            <label class="custom-control-label" for="agua">Agua<i style="color: blue ;" class='fas fa-tint'></i></label>
                         </div>
                         <div class="custom-control custom-radio">
                             <input type="radio" class="custom-control-input" id="electricidad" name="tipo" value="Electricidad">
-                            <label class="custom-control-label" for="electricidad">Electricidad</label>
+                            <label class="custom-control-label" for="electricidad">Electricidad<i style="color: orange ;" class="fas fa-bolt"></i></label>
                             <hr>
                         </div>
                         
@@ -149,4 +162,5 @@ mdlsecurity::validateToken();
 
 <?php
 require('../views/Dispositivos/vwplanos.php');
+
 include('../views/template2.php');

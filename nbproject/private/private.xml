@@ -3,16 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/vwsummarydevices.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdlconection.php</file>
-            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtusers.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtauth.php</file>
-            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/vwadddevice.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/updateubi.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/users/vwalterpassword.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtadddvc.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/template1.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/vwupdatedevice.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/users/vwadduser.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdladddvc.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdlusers.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/vwplanos.php</file>
             <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/users/vwmanageusers.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtusers.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/vwadddevice.php</file>
         </group>
     </open-files>
 </project-private>

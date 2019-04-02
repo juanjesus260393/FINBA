@@ -60,7 +60,7 @@
                         </li>
                         <li class="active"> 
                             <a href="#manageusers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-tachometer" ></i>
+                                <i class="fas fa-users" ></i>
                                 Usuarios
                             </a>
                             <ul class="collapse list-unstyled" id="manageusers">
@@ -91,7 +91,7 @@
                         </li>
                         <li class="active">
                             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-tachometer"></i>
+                                <i class="fas fas fa-clipboard-list"></i>
                                 Inventario
                             </a>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -109,7 +109,7 @@
                         </li>
                         <li>
                             <a href="../controllers/crtadddvc.php">
-                                <i class="fas fa-briefcase"></i>
+                                <i class="fas fa-code-branch"></i>
                                 Dispositivos
                             </a> </li>
                         <li>
