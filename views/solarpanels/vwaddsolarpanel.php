@@ -93,6 +93,11 @@ mdlsecurity::validateToken();
                                     <textarea class="col-8" name="reference" id="reference" rows="5" minlength="1" maxlength="499" required="true"></textarea>
                                 </div>
                                 <div>
+                                    <!-- Imagen relacionada al panel solar -->
+                                    <label class="col-3" style="background-color:#f1f1f1;">Imagen del Panel:</label>
+                                    <input class="col-8" type="file" name="id_image_panel"  id="id_image_panel" accept=".jpg">
+                                </div>
+                                <div>
                                     <!-- Referencia -->
                                     <label class="col-3"style="background-color:#f1f1f1;">N° de salon o ubicacion:</label>
                                     <input class="col-8" type="text" id="registry_number"  name="registry_number" onkeypress=" return soloNumeros(event)" maxlength="14" required = "true">

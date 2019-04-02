@@ -18,8 +18,9 @@ $orientation = filter_input(INPUT_POST, 'orientation');
 $location = filter_input(INPUT_POST, 'location');
 $reference = filter_input(INPUT_POST, 'reference');
 $registry_number = filter_input(INPUT_POST, 'registry_number');
+$id_image_panel = $_FILES['d_image_panel']['name'];
 
-//variables utulizadas para llamar la visa de actualizar un panel solar 
+//variables utulizadas para llamar la vista de actualizar un panel solar 
 $id_solar_panel_update = filter_input(INPUT_POST, 'id_solar_panel_update');
 $id_nomenclatureupdate = filter_input(INPUT_POST, 'id_nomenclatureupdate');
 $updatepanel = filter_input(INPUT_POST, 'updatepanel');
@@ -44,7 +45,7 @@ $delete = filter_input(INPUT_GET, 'delete');
 if (!empty($panelname) && !empty($school) && !empty($building_number) && !empty($level) && !empty($orientation) && !empty($location) && !empty($reference) && !empty($registry_number)) {
     $validation = panelHelper::validateInformationpanels($registry_number);
     if ($validation) {
-        mdlsolarpanel::insertPanel($panelname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number);
+        mdlsolarpanel::insertPanel($panelname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number, $id_image_panel);
         $panels = new mdlsolarpanel;
         $listofsolarpanels = $panels->getSolarpanels();
         echo '<script language = javascript>

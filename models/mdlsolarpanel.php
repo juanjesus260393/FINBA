@@ -51,9 +51,9 @@ class mdlsolarpanel {
      *  Funcion que envia la informacion obtenida de la vista agregar panel a cada subfuncion encargada del registro de dicha informacion
      */
 
-    public static function insertPanel($panelname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number) {
+    public static function insertPanel($panelname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number, $id_image_panel) {
         $id_nomenclature = mdlsolarpanel::insertNomeclaturetable($school, $building_number, $level, $orientation, $location, $reference, $registry_number);
-        $id_solar_panel = mdlsolarpanel::insertPaneltable($id_nomenclature, $panelname);
+        $id_solar_panel = mdlsolarpanel::insertPaneltable($id_nomenclature, $panelname, $id_image_panel);
         if (empty($id_solar_panel) && empty($id_nomenclature)) {
             panelHelper::cantInsert();
         }
@@ -64,12 +64,25 @@ class mdlsolarpanel {
      *  funcion que crear un registro en la tabla solar_panel
      */
 
-    public static function insertPaneltable($id_nomenclature, $panelname) {
+    public static function uploadPanelimage($id_image_panel) {
+        $new_image_panel = validations::generateRamdonids();
+        if (move_uploaded_file($id_image_panel, "C:/xampp/htdocs/campeche-web2/Imagenes/Cupones/VistaPrevia/$new_image_panel")) {
+            $filename = "C:/xampp/htdocs/campeche-web2/Imagenes/Cupones/VistaPrevia/$new_image_panel";
+            
+        }
+    }
+
+    /*
+     *  insertPaneltable
+     *  funcion que crear un registro en la tabla solar_panel
+     */
+
+    public static function insertPaneltable($id_nomenclature, $panelname, $id_image_panel) {
         $con = mdlconection::connect();
         $id_solar_panel = validations::generateRamdonids();
         $username = validations::getUsername();
-        $insertintotableusers = "INSERT INTO solar_panel(id_solar_panel,solar_panel_name,enabled,username,id_nomenclature)
-        VALUES('$id_solar_panel','$panelname','1','$username','$id_nomenclature')";
+        $insertintotableusers = "INSERT INTO solar_panel(id_solar_panel,solar_panel_name,enabled,username,id_nomenclature,id_image_panel)
+        VALUES('$id_solar_panel','$panelname','1','$username','$id_nomenclature','$id_image_panel')";
         if (!mysqli_query($con, $insertintotableusers)) {
             die('Error: ' . mysqli_error($con));
         }
