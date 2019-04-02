@@ -36,9 +36,10 @@ class mdlinventory {
 
     public function getinventory() {
         session_start();
-        $getinventory = "SELECT e.spender_name, e.quantity, n.school,n.reference, i.enabled, i.username,i.id_inventory, e.id_spenders,n.id_nomenclature 
-FROM dbfinba.inventory i inner join dbfinba.energy_spenders e on i.id_spenders = e.id_spenders inner join dbfinba.nomenclature n 
-on i.id_nomenclature = n.id_nomenclature";
+        $getinventory = "SELECT e.spender_name, e.quantity, n.school,n.reference, i.enabled, i.username,i.id_inventory, 
+        e.id_spenders,n.id_nomenclature FROM dbfinba.inventory i inner join dbfinba.energy_spenders e 
+        on i.id_spenders = e.id_spenders inner join dbfinba.nomenclature n 
+        on i.id_nomenclature = n.id_nomenclature where n.school = '" . $_SESSION['Schoolsname'] . "'";
         if (empty($this->dbh->query($getinventory))) {
             $this->inventory[] = NULL;
         } else {

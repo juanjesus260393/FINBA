@@ -53,8 +53,8 @@ class mdlusers {
      *  Funcion a la que se accede por medio del controlador para registrar a un nuevo usuario
      */
 
-    public static function insertUser($username, $password, $type_user) {
-        mdlusers::validateUserdates($username, $password, $type_user);
+    public static function insertUser($username, $password, $type_user, $schooluser) {
+        mdlusers::validateUserdates($username, $password, $type_user, $schooluser);
     }
 
     /*
@@ -227,12 +227,15 @@ class mdlusers {
      *  si la informacion no esta registrada previamente permite la realizacion del nuevo registro
      */
 
-    public static function validateUserdates($username, $password, $type_user) {
+    public static function validateUserdates($username, $password, $type_user, $schooluser) {
+
         $userdata = mdlusers::validateUsername($username, $password);
         if ($userdata) {
+
             $userdataexist = mdlusers::userDateexist($username);
             if ($userdataexist) {
-                mdlusers::insertIntousers($username, $password, $type_user);
+
+                mdlusers::insertIntousers($username, $password, $type_user, $schooluser);
             } else {
                 mdlusers::wrongData();
             }
@@ -244,13 +247,14 @@ class mdlusers {
      *  funcion que se encarga de generar el registro de un usuario nuevo por parte de un administrador
      */
 
-    public static function insertIntousers($username, $password, $type_user) {
+    public static function insertIntousers($username, $password, $type_user, $schooluser) {
         $con = mdlconection::connect();
         $passdb = mdlusers::generatePassword($password);
         $idtoken = mdlusers::insertIntotoken();
+        $idschool = mdlusers::determinateSchoolid($schooluser);
         $id_type_user = mdlusers::defineTypeuser($type_user);
-        $insertintotableusers = "INSERT INTO users(username,password,enabled,id_type_user,idtoken)
-        VALUES('$username','$passdb','1','$id_type_user','$idtoken')";
+        $insertintotableusers = "INSERT INTO users(username,password,enabled,id_type_user,idtoken,idSchools)
+        VALUES('$username','$passdb','1','$id_type_user','$idtoken','$idschool')";
         if (!mysqli_query($con, $insertintotableusers)) {
             die('Error: ' . mysqli_error($con));
         }
@@ -299,6 +303,19 @@ class mdlusers {
     public static function generatePassword($password) {
         $pwd = password_hash($password, PASSWORD_DEFAULT);
         return $pwd;
+    }
+
+    public static function determinateSchoolid($schooluser) {
+        $con = mdlconection::connect();
+        $checkidschool = "SELECT s.idSchools FROM dbfinba.schools s where s.Schoolsname = '" . $schooluser . "'";
+        $resultofcheckschools = mysqli_query($con, $checkidschool) or die(mysqli_error());
+        $rowidschool = mysqli_fetch_array($resultofcheckschools);
+        if (!$rowidschool [0]) {
+            Mdlauth::Logout();
+        } else {
+            $idschool = $rowidschool['idSchools'];
+        }
+        return $idschool;
     }
 
     /*

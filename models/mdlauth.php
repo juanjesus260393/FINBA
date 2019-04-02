@@ -29,8 +29,9 @@ class Mdlauth {
         $userexist = Mdlauth::userExists($username);
         if ($userexist) {
             $validatetokendb = Mdlauth::validatePassword($username, $password);
+            $schoolname = Mdlauth::getSchoolname($validatetokendb);
             $_SESSION['token'] = $validatetokendb;
-            $_SESSION['loggedin'] = TRUE;
+            $_SESSION['Schoolsname'] = $schoolname;
         } else {
             mdlusers::wrongData();
         }
@@ -184,6 +185,27 @@ class Mdlauth {
             $passdb = $rowtwo['password'];
         }
         return $passdb;
+    }
+
+    /*
+     * 
+     */
+
+    public static function getSchoolname($validatetokendb) {
+        $con = mdlconection::connect();
+        $searchschoolname = "SELECT s.Schoolsname FROM dbfinba.users u inner join dbfinba.schools s on u.idSchools = s.idSchools 
+        inner join dbfinba.token t on u.idtoken = t.idtoken where t.token ='" . $validatetokendb . "'";
+        $resultofsearchschoolname = mysqli_query($con, $searchschoolname) or die(mysqli_error());
+        $rowschoolname = mysqli_fetch_array($resultofsearchschoolname);
+        if (!$rowschoolname[0]) {
+            echo '<script language = javascript>
+	alert("El usuario no se encuenta registrado")
+           self.location = "../index.php"
+	</script>';
+        } else {
+            $Schoolsname = $rowschoolname['Schoolsname'];
+        }
+        return $Schoolsname;
     }
 
     /*

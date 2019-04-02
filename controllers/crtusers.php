@@ -7,6 +7,7 @@ $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');
 $type_user = filter_input(INPUT_POST, 'type_user');
 $insert = filter_input(INPUT_POST, 'insert');
+$schooluser = filter_input(INPUT_POST, 'schooluser');
 
 //Variables utilizadas en la actualizacion de usuarios
 $update = filter_input(INPUT_POST, 'update');
@@ -50,9 +51,10 @@ if ($update && !empty($usernameupdate) && !empty($typeuserupdate)) {
 }
 
 // se llama a la funcion insertar usuario y se envia al usuario a la vista principal.
-if (!empty($username) && !empty($password) && !empty($type_user)) {
+if (!empty($username) && !empty($password) && !empty($type_user) && !empty($schooluser)) {
+    
     require_once("../models/mdlusers.php");
-    mdlusers::insertUser($username, $password, $type_user);
+    mdlusers::insertUser($username, $password, $type_user,$schooluser);
     $users = new mdlusers();
     $listofusers = $users->getUsers();
     echo '<script language = javascript>

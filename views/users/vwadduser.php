@@ -54,10 +54,19 @@ mdlsecurity::validateToken();
                                 <div>
                                     <!-- Tipo de Usuario -->
                                     <label class="col-3"style="background-color:#f1f1f1;">Tipo de Usuario:</label>
-                                    <fieldset id="type_user">
-                                        <p><input type="radio" name="type_user" value="administrator" required="true"> Administrador</p>
-                                        <p><input type="radio" name="type_user" value="employee"> Empleado</p>
-                                    </fieldset>
+                                    <select class="col-8" name="type_user" id="type_user" required="true">
+                                        <option value="administrator">Administrador</option>
+                                        <option value="employee">Empleado</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <!-- Escuela a la que pertenece el usuario -->
+                                    <span><label class="col-3" style="background-color:#f1f1f1;">Escuela</label></span>
+                                    <select class="col-8" name="schooluser" id="schooluser" required="true">
+                                        <option>CIC </option>
+                                        <option>CIDETEC</option>
+                                        <option>ESCOM</option>
+                                    </select>
                                 </div>
                             </center>
                         </div>

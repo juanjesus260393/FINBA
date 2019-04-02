@@ -22,6 +22,7 @@ mdlsecurity::validateToken();
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">Administrar Dispositivos</a>
     </li>
+     
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#Registrar">Registrar Nuevo Dispositivo</a>
     </li>
