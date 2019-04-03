@@ -39,7 +39,7 @@
                         ?>
                         <td><?php
                             $imagen_panel = $listofsolarpanels[$i]["id_image_panel"];
-                            echo ('<span><img src="../resources/solarpanel/' . $imagen_panel . '" width="152" height="118"></span>');
+                            echo ('<span><img src="../resources/img/paneles/' . $imagen_panel . '" width="152" height="118"></span>');
                             ?>
                         </td>
                         <td> 
