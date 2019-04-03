@@ -64,7 +64,7 @@ mdlsecurity::validateToken();
                             <h2><?php echo $_SESSION['Schoolsname']; ?></h2>
                         </div>
                         <div class="content">
-                            <img src="../resources/img/paneles/panelescom.jpg" height="200"/>
+                            <?php echo ('<img src="../resources/img/paneles/' . $_SESSION['id_image_panel'] . '"/ height="200">'); ?>
                         </div>
                     </a>
                 </span>

@@ -61,7 +61,7 @@
                         </li>
                         <li class="active"> 
                             <a href="#manageusers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-tachometer" ></i>
+                                <i class="fas fa-users" ></i>
                                 Usuarios
                             </a>
                             <ul class="collapse list-unstyled" id="manageusers">
@@ -92,7 +92,7 @@
                         </li>
                         <li class="active">
                             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-tachometer"></i>
+                                <i class="fas fas fa-clipboard-list"></i>
                                 Inventario
                             </a>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -114,13 +114,13 @@
                                     <!-- Variable para cerrar sesion -->
                                     <input class="col-8" type="text" id="searchpanels" name="searchpanels" value="true">
                                 </div>
-                                <a href="javascript:;" onclick="parentNode.submit();">Paneles Solares</a>
+                                <a href="javascript:;" onclick="parentNode.submit();"><i class="fas fa-sun"></i>Paneles Solares</a>
                                 <input type="hidden" name="mess" value= "">
                             </form> 
                         </li>
                         <li>
                             <a href="../controllers/crtadddvc.php">
-                                <i class="fas fa-briefcase"></i>
+                                <i class="fas fa-code-branch"></i>
                                 Dispositivos
                             </a> </li>
                         <li>

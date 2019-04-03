@@ -155,5 +155,105 @@ class mdladddvc {
         return mysqli_affected_rows($dbh2);
         $dbh2->close();
     }
+    
+    public function getDispositivo(){
+        $dbhDevice= mdlconection::connect();
+        
+        $querygetDevice="SELECT d.id_device_finba, d.device_name_finba, d.type_device, n.school, "
+                . "n.building_number, n.level, n.orientation, n.location, n.reference, n.id_nomenclature FROM device_finba d "
+                . "INNER JOIN nomenclature n ON d.id_nomenclature=n.id_nomenclature WHERE d.enabled='1'";
+        
+        
+        $resgetdevice= $dbhDevice->query($querygetDevice);
+        
+        
+        while ($filas = $resgetdevice->fetch_row()) {
+            $this->dispositivos[] = $filas;
+        }
+
+        $resgetdevice->close();
+       //Devuelve el resultado
+        return $this->dispositivos;
+    }
+    
+    public function deletedvc($mactodelete){
+        $dbhdelete= mdlconection::connect();
+        
+        $querydelete="UPDATE  device_finba SET enabled='0' WHERE id_device_finba='".$mactodelete."';";
+       
+        $resdelete=$dbhdelete->query($querydelete);
+        if(mysqli_affected_rows($dbhdelete)==1){
+        echo '<script language = javascript>
+            alert("Dispositivo deshabilitado");
+            self.location = "../controllers/crtadddvc.php"
+       </script>';
+        }
+    }
+    
+    public function getupdateinfo($mactoset){
+       $dbhgetinfo= mdlconection::connect();
+        $querygetinfo="SELECT d.id_device_finba, d.device_name_finba, d.type_device, "
+                . "n.school, n.building_number, n.level, n.orientation, "
+                . "n.location, n.reference, n.id_nomenclature FROM device_finba d INNER JOIN nomenclature n "
+                . "ON d.id_nomenclature=n.id_nomenclature WHERE d.id_device_finba='".$mactoset."'";
+        
+        $aux1=$dbhgetinfo->query($querygetinfo);
+ 
+         while ($filas = $aux1->fetch_row()) {
+            $infomactoupdate[] = $filas;
+        }
+       
+        return $infomactoupdate;
+    }
+
+
+    public function updatedvc($macupdate){
+       
+        $dbhactualizar= mdlconection::connect();
+        $dbhactualizar2= mdlconection::connect();
+        $Nome1 = filter_input(INPUT_POST, 'dos');
+        $Nome2 = substr(filter_input(INPUT_POST, 'tres'), -1);
+        $Nome3 = substr(filter_input(INPUT_POST, 'cuatro'), -1);
+        $Nome4 = substr(filter_input(INPUT_POST, 'cinco'), 0);
+        $Nome5 = substr(filter_input(INPUT_POST, 'seis'), 0);
+        $Nome6 = filter_input(INPUT_POST, 'siete');
+        $Nome7 =  filter_input(INPUT_POST, 'ocho');
+        
+        $upnamedvc = filter_input(INPUT_POST, 'namedvc');
+        $updvcmac1 = filter_input(INPUT_POST, 'dvcmac1');
+        $updvcmac2 = filter_input(INPUT_POST, 'dvcmac2');
+        $updvcmac3 = filter_input(INPUT_POST, 'dvcmac3');
+        $updvcmac4 = filter_input(INPUT_POST, 'dvcmac4');
+        $updvcmac5 = filter_input(INPUT_POST, 'dvcmac5');
+        $updvcmac6 = filter_input(INPUT_POST, 'dvcmac6');
+        $uptipodvc = filter_input(INPUT_POST, 'tipo');
+
+        $this->upmac = $updvcmac1 . ':' . $updvcmac2 . ':' . $updvcmac3 . ':' . $updvcmac4 . ':' . $updvcmac5 . ':' . $updvcmac6;
+         
+        $queryupdtNomen="UPDATE nomenclature SET school='".$Nome1."', building_number='".$Nome2."', "
+                . "level='".$Nome3."', orientation='".$Nome4."', location='".$Nome5."', reference='".$Nome6."' "
+                . "WHERE id_nomenclature='".$Nome7."'";
+      
+         
+         $queryResup = $dbhactualizar->query($queryupdtNomen);
+            if ($queryResup) {
+                
+        $queryactualizar2="UPDATE device_finba SET id_device_finba='".$this->upmac."', device_name_finba='".$upnamedvc."', type_device='".$uptipodvc."' WHERE id_device_finba='".$macupdate."'";
+        
+        $resactualizar=$dbhactualizar2->query($queryactualizar2);
+            
+        if($resactualizar){
+             echo '<script language = javascript>
+            alert("Dispositivo Actualizado correctamente");
+            self.location = "../controllers/crtadddvc.php"
+       </script>';
+        }
+        
+            }
+
+        
+        
+    }
+
 
 }

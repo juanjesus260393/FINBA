@@ -58,6 +58,11 @@
                                     <input class="col-8" type="text" id="referencepreviouspost" name="referencepreviouspost" value="<?php echo $referenceupdate;
     ?>">
                                 </div>
+                                    <div hidden="true">
+                                    <!-- Identificador Nomeclatura -->
+                                    <input class="col-8" type="text" id="imagepreviouspost" name="imagepreviouspost" value="<?php echo $image_prev;
+    ?>">
+                                </div>
                                 <div>
                                     <!-- Estado Previo -->
                                     <span><label class="col-3" style="background-color:#f1f1f1;">Estado Previo:</label></span>
@@ -80,7 +85,16 @@
                                         <option>Deshabilitado</option>
                                     </select>
                                 </div>
-
+                                <div>
+                                    <!-- imagen previa -->
+                                    <span><label class="col-3" style="background-color:#f1f1f1;">Imagen Previa:</label></span>
+                                     <?php echo ('<span><img src="../resources/img/paneles/' . $image_prev . '"/ width="152" height="118"></span>'); ?>
+                                </div>
+                                   <div>
+                                    <!-- nueva imagen panel -->
+                                    <label class="col-3" style="background-color:#f1f1f1;">Imagen del Panel:</label>
+                                    <input class="col-8" type="file" name="id_image_panel_new"  id="id_image_panel_new" accept=".jpg">
+                                </div>
                                 <div>
                                     <!-- Referencia previa -->
                                     <span><label class="col-3" style="background-color:#f1f1f1;">Referencia Previa:</label></span>
