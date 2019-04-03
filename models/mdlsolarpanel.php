@@ -52,8 +52,9 @@ class mdlsolarpanel {
      */
 
     public static function insertPanel($panelname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number, $id_image_panel) {
+        $newimage = mdlsolarpanel::uploadPanelimage($id_image_panel);
         $id_nomenclature = mdlsolarpanel::insertNomeclaturetable($school, $building_number, $level, $orientation, $location, $reference, $registry_number);
-        $id_solar_panel = mdlsolarpanel::insertPaneltable($id_nomenclature, $panelname, $id_image_panel);
+        $id_solar_panel = mdlsolarpanel::insertPaneltable($id_nomenclature, $panelname, $newimage);
         if (empty($id_solar_panel) && empty($id_nomenclature)) {
             panelHelper::cantInsert();
         }
@@ -65,11 +66,15 @@ class mdlsolarpanel {
      */
 
     public static function uploadPanelimage($id_image_panel) {
-        $new_image_panel = validations::generateRamdonids();
-        if (move_uploaded_file($id_image_panel, "C:/xampp/htdocs/campeche-web2/Imagenes/Cupones/VistaPrevia/$new_image_panel")) {
-            $filename = "C:/xampp/htdocs/campeche-web2/Imagenes/Cupones/VistaPrevia/$new_image_panel";
-            
+        if (empty($id_image_panel)) {
+            $image_name_insert = "";
+        } else {
+            $identificadornuevaimagen = validations::generateRamdonids();
+            $new_image_panel = $identificadornuevaimagen . ".jpg";
+            move_uploaded_file($_FILES['id_image_panel']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/solarpanel/$new_image_panel");
+            $image_name_insert = $new_image_panel;
         }
+        return $image_name_insert;
     }
 
     /*
@@ -77,12 +82,12 @@ class mdlsolarpanel {
      *  funcion que crear un registro en la tabla solar_panel
      */
 
-    public static function insertPaneltable($id_nomenclature, $panelname, $id_image_panel) {
+    public static function insertPaneltable($id_nomenclature, $panelname, $newimage) {
         $con = mdlconection::connect();
         $id_solar_panel = validations::generateRamdonids();
         $username = validations::getUsername();
         $insertintotableusers = "INSERT INTO solar_panel(id_solar_panel,solar_panel_name,enabled,username,id_nomenclature,id_image_panel)
-        VALUES('$id_solar_panel','$panelname','1','$username','$id_nomenclature','$id_image_panel')";
+        VALUES('$id_solar_panel','$panelname','1','$username','$id_nomenclature','$newimage')";
         if (!mysqli_query($con, $insertintotableusers)) {
             die('Error: ' . mysqli_error($con));
         }
@@ -111,11 +116,32 @@ class mdlsolarpanel {
      *  Funcion que se encarga de enviar la informacion que se actualizara de un registro de un panel solar
      */
 
-    public static function updatePanel($updateidpanel, $updatenomenclature, $enabledpreviouspost, $referencepreviouspost, $newenable, $newreference) {
-        echo $statusupdate = mdlsolarpanel::defineStatusupdate($enabledpreviouspost, $newenable);
+    public static function updatePanel($updateidpanel, $updatenomenclature, $enabledpreviouspost, $referencepreviouspost, $newenable, $newreference, $id_image_panel_new, $imagepreviouspost) {
+        $name_image_update = mdlsolarpanel::determinateImageupdate($id_image_panel_new, $imagepreviouspost);
+        $statusupdate = mdlsolarpanel::defineStatusupdate($enabledpreviouspost, $newenable);
         $referenceupdate = mdlinventory::definerReferenceupdate($referencepreviouspost, $newreference);
         mdlsolarpanel::updateNomeclaturetable($updatenomenclature, $referenceupdate);
-        mdlsolarpanel::updatePaneltable($updateidpanel, $statusupdate);
+        mdlsolarpanel::updatePaneltable($updateidpanel, $statusupdate, $name_image_update);
+    }
+
+    /*
+     *  updateNomeclaturetable
+     *  Funcion que actualizar la referencia de la tabla nomeclatura
+     */
+
+    public static function determinateImageupdate($id_image_panel_new, $imagepreviouspost) {
+        $name_image_update = '';
+        if (!empty($id_image_panel_new)) {
+            $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/solarpanel/";
+            unlink($ruta . $imagepreviouspost);
+            $identificadornuevaimagen = validations::generateRamdonids();
+            $id_image_panel_new = $identificadornuevaimagen . ".jpg";
+            move_uploaded_file($_FILES['id_image_panel_new']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/solarpanel/$id_image_panel_new");
+            $name_image_update = $id_image_panel_new;
+        } else {
+            $name_image_update = $imagepreviouspost;
+        }
+        return $name_image_update;
     }
 
     /*
@@ -136,9 +162,9 @@ class mdlsolarpanel {
      *  Funcion que actualiza el estado de un panel en la tabla solar_panel
      */
 
-    public static function updatePaneltable($updateidpanel, $statusupdate) {
+    public static function updatePaneltable($updateidpanel, $statusupdate, $name_image_update) {
         $con = mdlconection::connect();
-        $updateintotableusers = "update solar_panel set enabled = '$statusupdate' where id_solar_panel = '$updateidpanel'";
+        $updateintotableusers = "update solar_panel set enabled = '$statusupdate',id_image_panel = '$name_image_update' where id_solar_panel = '$updateidpanel'";
         if (!mysqli_query($con, $updateintotableusers)) {
             die('Error: ' . mysqli_error($con));
         }
@@ -150,9 +176,10 @@ class mdlsolarpanel {
      *  a la eliminacion del registro de dicho panel
      */
 
-    public static function deletePanel($id_solar_panel, $id_nomenclaturedelete, $status) {
+    public static function deletePanel($id_solar_panel, $id_nomenclaturedelete, $status, $image) {
         $definestatus = mdlsolarpanel::defineStatusdelete($status);
         if ($definestatus) {
+            mdlsolarpanel::deleteImagepanel($image);
             $con = mdlconection::connect();
             $deletenomenclature = "Delete from nomenclature where id_nomenclature = '" . $id_nomenclaturedelete . "'";
             $deletepanelsolar = "Delete from solar_panel where id_solar_panel = '" . $id_solar_panel . "'";
@@ -164,6 +191,18 @@ class mdlsolarpanel {
             }
         } else {
             inventoryhelper::isEnabled();
+        }
+    }
+
+    /*
+     *  defineStatusdelete
+     *  funcion que determina al estatu de un panel solar que se quiere eliminar
+     */
+
+    public static function deleteImagepanel($image) {
+        if (!empty($image)) {
+            $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/solarpanel/";
+            unlink($ruta . $image);
         }
     }
 

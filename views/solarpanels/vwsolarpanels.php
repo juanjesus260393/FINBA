@@ -13,6 +13,7 @@
                     <th>Nombre</th>
                     <th>Referencia</th>
                     <th>Estado</th>
+                    <th>Imagen</th>
                     <th>Eliminar</th>
                     <th>Modificar</th>
                 </tr>
@@ -36,13 +37,19 @@
                             printf("<td height='80'  style='color: blue ;'><h5><b>Habilitado</b></h5></td>");
                         }
                         ?>
+                        <td><?php
+                            $imagen_panel = $listofsolarpanels[$i]["id_image_panel"];
+                            echo ('<span><img src="../resources/solarpanel/' . $imagen_panel . '" width="152" height="118"></span>');
+                            ?>
+                        </td>
                         <td> 
                             <?php
                             $id_solar_panel = $listofsolarpanels[$i]["id_solar_panel"];
                             $id_nomenclature = $listofsolarpanels[$i]["id_nomenclature"];
                             $status = $listofsolarpanels[$i]["enabled"];
+                            $image = $listofsolarpanels[$i]["id_image_panel"];
                             $delete = TRUE;
-                            echo '<a href="../controllers/crtsolarpanels.php?id_solar_panel=' . $id_solar_panel . '&id_nomenclaturedelete=' . $id_nomenclature . '&status=' . $status . '&delete=' . $delete . '"'
+                            echo '<a href="../controllers/crtsolarpanels.php?id_solar_panel=' . $id_solar_panel . '&id_nomenclaturedelete=' . $id_nomenclature . '&status=' . $status . '&delete=' . $delete . '&image=' . $image . '"'
                             . 'onclick="if (!confirm(\'Estas seguro que quieres eliminar este panel?\')) '
                             . '{ return false}"><img src="../resources/img/eliminar.jpg"></a>'
                             ?></td>
@@ -52,12 +59,14 @@
                                 $id_nomenclatureupdate = $listofsolarpanels[$i]["id_nomenclature"];
                                 $enabledupdate = $listofsolarpanels[$i]["enabled"];
                                 $referenceupdate = $listofsolarpanels[$i]["reference"];
+                                $image_prev = $listofsolarpanels[$i]["id_image_panel"];
                                 $updatepanel = TRUE;
                                 echo "<input type='hidden' id='id_solar_panel_update' name='id_solar_panel_update' value='$id_solar_panelupdate'> "
                                 . "<input type='hidden' id='id_nomenclatureupdate' name='id_nomenclatureupdate' value='$id_nomenclatureupdate'>"
                                 . "<input type='hidden' id='enabledupdate' name='enabledupdate' value='$enabledupdate'>"
                                 . "<input type='hidden' id='referenceupdate' name='referenceupdate' value='$referenceupdate'>"
                                 . "<input type='hidden' id='updatepanel' name='updatepanel' value='$updatepanel'>"
+                                . "<input type='hidden' id='image_prev' name='image_prev' value='$image_prev'>"
                                 . "<input type='submit' value='Actualizar'>"
                                 ?>
                             </form></td>

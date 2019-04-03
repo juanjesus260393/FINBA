@@ -30,8 +30,10 @@ class Mdlauth {
         if ($userexist) {
             $validatetokendb = Mdlauth::validatePassword($username, $password);
             $schoolname = Mdlauth::getSchoolname($validatetokendb);
+            $image = Mdlauth::getImagepanel($validatetokendb);
             $_SESSION['token'] = $validatetokendb;
             $_SESSION['Schoolsname'] = $schoolname;
+            $_SESSION['id_image_panel'] = $image;
         } else {
             mdlusers::wrongData();
         }
@@ -206,6 +208,24 @@ class Mdlauth {
             $Schoolsname = $rowschoolname['Schoolsname'];
         }
         return $Schoolsname;
+    }
+
+    public static function getImagepanel($validatetokendb) {
+        $con = mdlconection::connect();
+        $searchschoolimage = "SELECT p.id_image_panel FROM dbfinba.users u inner join dbfinba.schools s on u.idSchools = s.idSchools 
+        inner join dbfinba.token t on u.idtoken = t.idtoken inner join dbfinba.solar_panel p on u.username = p.username
+        where t.token = '" . $validatetokendb . "' and p.id_image_panel <> '' limit 1";
+        $resultofsearchschoolimage = mysqli_query($con, $searchschoolimage) or die(mysqli_error());
+        $rowschoolimage = mysqli_fetch_array($resultofsearchschoolimage);
+        if (!$rowschoolimage[0]) {
+            echo '<script language = javascript>
+	alert("El usuario no se encuenta registrado")
+           self.location = "../index.php"
+	</script>';
+        } else {
+            $Schoolsimage = $rowschoolimage['id_image_panel'];
+        }
+        return $Schoolsimage;
     }
 
     /*
