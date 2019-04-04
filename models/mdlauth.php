@@ -29,11 +29,16 @@ class Mdlauth {
         $userexist = Mdlauth::userExists($username);
         if ($userexist) {
             $validatetokendb = Mdlauth::validatePassword($username, $password);
-            $schoolname = Mdlauth::getSchoolname($validatetokendb);
             $image = Mdlauth::getImagepanel($validatetokendb);
+            $schoolname = Mdlauth::getSchoolname($validatetokendb);
             $_SESSION['token'] = $validatetokendb;
             $_SESSION['Schoolsname'] = $schoolname;
-            $_SESSION['id_image_panel'] = $image;
+            if(!empty($image)){
+                 $_SESSION['id_image_panel'] = $image;
+            }
+           else{
+               $_SESSION['id_image_panel'] = '';
+           }
         } else {
             mdlusers::wrongData();
         }
@@ -218,10 +223,7 @@ class Mdlauth {
         $resultofsearchschoolimage = mysqli_query($con, $searchschoolimage) or die(mysqli_error());
         $rowschoolimage = mysqli_fetch_array($resultofsearchschoolimage);
         if (!$rowschoolimage[0]) {
-            echo '<script language = javascript>
-	alert("El usuario no se encuenta registrado")
-           self.location = "../index.php"
-	</script>';
+           $Schoolsimage = '';
         } else {
             $Schoolsimage = $rowschoolimage['id_image_panel'];
         }
