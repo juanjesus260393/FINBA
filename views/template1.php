@@ -123,6 +123,11 @@
                                 <i class="fas fa-code-branch"></i>
                                 Dispositivos
                             </a> </li>
+                            <li>
+                                <a href="../views/Grafica.php">
+                                <i class="fas fa-chart-bar"></i>
+                                Monitorieo
+                            </a> </li>
                         <li>
                             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <i class="fas fa-copy"></i>
