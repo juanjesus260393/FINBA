@@ -37,7 +37,7 @@ class mdlinventory {
     public function getinventory() {
         session_start();
         $getinventory = "SELECT e.spender_name, e.quantity, n.school,n.reference, i.enabled, i.username,i.id_inventory, 
-        e.id_spenders,n.id_nomenclature FROM dbfinba.inventory i inner join dbfinba.energy_spenders e 
+        e.id_spenders,n.id_nomenclature, i.img_inventory FROM dbfinba.inventory i inner join dbfinba.energy_spenders e 
         on i.id_spenders = e.id_spenders inner join dbfinba.nomenclature n 
         on i.id_nomenclature = n.id_nomenclature where n.school = '" . $_SESSION['Schoolsname'] . "'";
         if (empty($this->dbh->query($getinventory))) {
@@ -56,10 +56,10 @@ class mdlinventory {
      *  Funcion que registrar la informacion del invetario en las diferentes tablas involucradas
      */
 
-    public static function insertinventory($quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number) {
+    public static function insertinventory($quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number, $img_inventory) {
         $username = validations::getUsername();
         if (!empty($username)) {
-            mdlinventory::insertinventorytable($username, $quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number);
+            mdlinventory::insertinventorytable($username, $quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number, $img_inventory);
         } else {
             inventoryhelper::dataVoid();
         }
@@ -71,10 +71,10 @@ class mdlinventory {
      *  a dicha informacion.
      */
 
-    public static function deleteinventory($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $status, $cantidad) {
+    public static function deleteinventory($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $status, $cantidad,$image) {
         $candelete = inventoryhelper::validationDeleteinventory($status, $cantidad);
         if ($candelete) {
-            mdlinventory::deleteInventorytable($id_inventorydelete, $id_spendersdelete, $id_nomenclature);
+            mdlinventory::deleteInventorytable($id_inventorydelete, $id_spendersdelete, $id_nomenclature,$image );
         } else {
             inventoryhelper::cantDelete();
         }
@@ -85,8 +85,9 @@ class mdlinventory {
      *  Funcion encargada de eliminar los elementos del inventario esta funcion se manda a llamar en la funcion deleteinventory
      */
 
-    public static function deleteInventorytable($id_inventorydelete, $id_spendersdelete, $id_nomenclature) {
+    public static function deleteInventorytable($id_inventorydelete, $id_spendersdelete, $id_nomenclature,$image) {
         $con = mdlconection::connect();
+        mdlinventory::deleteImageinventory($image);
         $deleteenergyspenders = "Delete from energy_spenders where id_spenders = '" . $id_spendersdelete . "'";
         $deletenomenclature = "Delete from nomenclature where id_nomenclature = '" . $id_nomenclature . "'";
         $deleteinventory = "Delete from inventory where id_inventory = '" . $id_inventorydelete . "'";
@@ -100,22 +101,42 @@ class mdlinventory {
             die('Error: ' . mysqli_error($con));
         }
     }
-
+public static function deleteImageinventory($image) {
+        if (!empty($image)) {
+            $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/img/inventario/";
+            unlink($ruta . $image);
+        }
+    }
     /*
      *  insertinventorytable
      *  Funcion que inserta en las diferentes tablas relacionadas al inventario la informacion del registro del inventario
      */
 
-    public static function insertinventorytable($username, $quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number) {
+    public static function insertinventorytable($username, $quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number, $img_inventory) {
         $con = mdlconection::connect();
+        $image_name_insert = mdlinventory::uploadImageinventory($img_inventory);
         $id_invetory = validations::generateRamdonids();
         $id_spenders = mdlinventory::insertenergy_spenderstable($elementname, $quantity);
         $id_nomenclature = mdlinventory::insertnomenclaturetable($school, $building_number, $level, $orientation, $location, $reference, $registry_number);
-        $insertintotableusers = "INSERT INTO inventory(id_inventory,id_spenders,enabled,username,id_nomenclature)
-        VALUES('$id_invetory','$id_spenders','1','$username','$id_nomenclature')";
+        $insertintotableusers = "INSERT INTO inventory(id_inventory,id_spenders,enabled,username,id_nomenclature,img_inventory)
+        VALUES('$id_invetory','$id_spenders','1','$username','$id_nomenclature','$image_name_insert')";
         if (!mysqli_query($con, $insertintotableusers)) {
             die('Error: ' . mysqli_error($con));
         }
+    }
+
+    /*
+     *  insertenergy_spenderstable
+     *  Funcion que crea el registro en la tabla energy_spenders esta funcion se manda a llamar en el metodo insertinventorytable
+     */
+
+    public static function uploadImageinventory($img_inventory) {
+        $identificadornuevaimagen = validations::generateRamdonids();
+        $new_image_panel = $identificadornuevaimagen . ".jpg";
+        move_uploaded_file($_FILES['img_inventory']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/img/inventario/$new_image_panel");
+        $image_name_insert = $new_image_panel;
+
+        return $image_name_insert;
     }
 
     /*
@@ -143,8 +164,13 @@ class mdlinventory {
         $con = mdlconection::connect();
         $id_nomenclature = validations::generateRamdonids();
         $locationchar = inventoryhelper::defineLocation($location);
+        if (empty($building_number)) {
+            $building_number_insert = 0;
+        } else {
+            $building_number_insert = $building_number;
+        }
         $insertintotablenomenclature = "INSERT INTO nomenclature(id_nomenclature,school,building_number,level,orientation,location,reference,registry_number)
-        VALUES('$id_nomenclature','$school','$building_number','$level','$orientation','$locationchar','$reference','$registry_number')";
+        VALUES('$id_nomenclature','$school','$building_number_insert','$level','$orientation','$locationchar','$reference','$registry_number')";
         if (!mysqli_query($con, $insertintotablenomenclature)) {
             die('Error: ' . mysqli_error($con));
         }
