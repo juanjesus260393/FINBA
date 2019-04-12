@@ -353,6 +353,7 @@ class Mdlauth {
         } else {
             $idimg_user = $rowlogoimage['idimg_user'];
         }
+     
         return $idimg_user;
     }
 

@@ -43,7 +43,7 @@
             });
         </script>
         <div class="wrapper">
-            <div>
+            <div class="ps">
                 <!-- Sidebar  -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
@@ -96,6 +96,12 @@
                                 <i class="fas fa-code-branch"></i>
                                 STM
                             </a> </li>
+                            <li>
+                                <a href="../views/Grafica.php">
+                                <i class="fas fa-chart-bar"></i>
+                                Monitoreo
+                            </a> </li>
+                        
                         <li>
                             <a href="#" >
                                 <i class="fas fa-code-branch"></i>
@@ -127,6 +133,7 @@
                                         <a href="javascript:;" onclick="parentNode.submit();">Modificar Perfil</a>
                                         <input type="hidden" name="mess" value= "">
                                     </form>
+
                                 </li>
                             </ul>
                         </li>

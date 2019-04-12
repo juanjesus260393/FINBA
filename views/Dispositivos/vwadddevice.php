@@ -131,7 +131,7 @@ mdlsecurity::validateToken();
                         <hr>
                         <input type="submit" class='btn btn-primary'  name="AddDvc" value="Registrar Dispositivo">
                     </div>
-                    <div class="col-5">
+                    <div class="col-7">
 
 
                         <p><input type="text" id="dos" name="dos" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/></p>
