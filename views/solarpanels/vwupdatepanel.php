@@ -88,7 +88,7 @@
                                 <div>
                                     <!-- imagen previa -->
                                     <span><label class="col-3" style="background-color:#f1f1f1;">Imagen Previa:</label></span>
-                                     <?php echo ('<span><img src="../resources/solarpanel/' . $image_prev . '"/ width="152" height="118"></span>'); ?>
+                                     <?php echo ('<span><img src="../resources/img/paneles/' . $image_prev . '"/ width="152" height="118"></span>'); ?>
                                 </div>
                                    <div>
                                     <!-- nueva imagen panel -->

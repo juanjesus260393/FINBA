@@ -47,6 +47,10 @@
                 <!-- Sidebar  -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
+                        <?php   
+                        $imagen_panel =  $_SESSION['idimg_user'];
+                        echo ('<img src="../resources/img/logotipos/' . $imagen_panel . '" width="50" height="50">');
+                        ?>
                         <h3>FINBA Monitoreo de Servicios</h3>
                         <h3><?php echo $_SESSION['Schoolsname']; ?></h3>
                         <strong>FINBA</strong>
@@ -60,21 +64,57 @@
                             </a>
                         </li>
                         <li class="active"> 
-                            <a href="#manageusers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-users" ></i>
-                                Usuarios
+                            <?php 
+                            if($_SESSION['type_user'] == 'administrator'){
+                               include('../views/users/vwincludemanageusers.php');
+                            }else{
+                            }
+                            ?>
+                        </li>
+                            <li>
+                            <form action="../controllers/crtinventory.php" method="post">
+                                <div hidden="true">
+                                    <!-- Variable para cerrar sesion -->
+                                    <input class="col-8" type="text" id="searchinventory" name="searchinventory" value="true">
+                                </div>
+                                <a href="javascript:;" onclick="parentNode.submit();"><i class="fas fas fa-clipboard-list"></i>Inventario</a>
+                                <input type="hidden" name="mess" value= "">
+                            </form> 
+                        </li>
+                        <li>
+                            <form action="../controllers/crtsolarpanels.php" method="post">
+                                <div hidden="true">
+                                    <!-- Variable para cerrar sesion -->
+                                    <input class="col-8" type="text" id="searchpanels" name="searchpanels" value="true">
+                                </div>
+                                <a href="javascript:;" onclick="parentNode.submit();"><i class="fas fa-sun"></i>Sistema Fotovoltaico</a>
+                                <input type="hidden" name="mess" value= "">
+                            </form> 
+                        </li>
+                        <li>
+                            <a href="../controllers/crtadddvc.php">
+                                <i class="fas fa-code-branch"></i>
+                                STM
+                            </a> </li>
+                        <li>
+                            <a href="#" >
+                                <i class="fas fa-code-branch"></i>
+                                Dispositivos SEEDS
                             </a>
-                            <ul class="collapse list-unstyled" id="manageusers">
-                                <li>
-                                    <a href="../controllers/crtusers.php">Administrar Usuarios</a>
-                                </li>
+                        </li>
+                        <li>
+                            <a href="#config" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-cog"></i>
+                                Ajustes
+                            </a>
+                            <ul class="collapse list-unstyled" id="config">
                                 <li>
                                     <form action="../controllers/crtauth.php" method="post">
                                         <div hidden="true">
                                             <!-- Variable para cerrar sesion -->
                                             <input class="col-8" type="text" id="closesesion" name="closesesion" value="true">
                                         </div>
-                                        <a href="javascript:;" onclick="parentNode.submit();">Cerrar Session</a>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Cerrar Sesion</a>
                                         <input type="hidden" name="mess" value= "">
                                     </form>
                                 </li>
@@ -84,60 +124,9 @@
                                             <!-- Variable para cerrar sesion -->
                                             <input class="col-8" type="text" id="changedpass" name="changedpass" value="true">
                                         </div>
-                                        <a href="javascript:;" onclick="parentNode.submit();">Cambiar Contraseña</a>
+                                        <a href="javascript:;" onclick="parentNode.submit();">Modificar Perfil</a>
                                         <input type="hidden" name="mess" value= "">
                                     </form>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="active">
-                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fas fa-clipboard-list"></i>
-                                Inventario
-                            </a>
-                            <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li>
-                                    <form action="../controllers/crtinventory.php" method="post">
-                                        <div hidden="true">
-                                            <!-- Variable para cerrar sesion -->
-                                            <input class="col-8" type="text" id="searchinventory" name="searchinventory" value="true">
-                                        </div>
-                                        <a href="javascript:;" onclick="parentNode.submit();">Administrar Inventario</a>
-                                        <input type="hidden" name="mess" value= "">
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <form action="../controllers/crtsolarpanels.php" method="post">
-                                <div hidden="true">
-                                    <!-- Variable para cerrar sesion -->
-                                    <input class="col-8" type="text" id="searchpanels" name="searchpanels" value="true">
-                                </div>
-                                <a href="javascript:;" onclick="parentNode.submit();"><i class="fas fa-sun"></i>Paneles Solares</a>
-                                <input type="hidden" name="mess" value= "">
-                            </form> 
-                        </li>
-                        <li>
-                            <a href="../controllers/crtadddvc.php">
-                                <i class="fas fa-code-branch"></i>
-                                Dispositivos
-                            </a> </li>
-                        <li>
-                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-copy"></i>
-                                Pages
-                            </a>
-
-                            <ul class="collapse list-unstyled" id="pageSubmenu">
-                                <li>
-                                    <a href="#">Page 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Page 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Page 3</a>
                                 </li>
                             </ul>
                         </li>

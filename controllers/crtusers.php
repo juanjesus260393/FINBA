@@ -5,9 +5,13 @@ require_once("../models/mdlusers.php");
 //Varliables utilizadas en la insercion de usuarios
 $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');
-$type_user = filter_input(INPUT_POST, 'type_user');
 $insert = filter_input(INPUT_POST, 'insert');
 $schooluser = filter_input(INPUT_POST, 'schooluser');
+$work_position = filter_input(INPUT_POST, 'work_position');
+$name = filter_input(INPUT_POST, 'name');
+$first_name = filter_input(INPUT_POST, 'first_name');
+$second_name = filter_input(INPUT_POST, 'second_name');
+$idimg_user = $_FILES['idimg_user']['name'];
 
 //Variables utilizadas en la actualizacion de usuarios
 $update = filter_input(INPUT_POST, 'update');
@@ -37,7 +41,7 @@ if (!empty($delete_user)) {
 }
 // se llama a la funcion agregar usuario
 if (!empty($insert) && $insert) {
-    if (empty($username) && empty($password) && empty($type_user)) {
+    if (empty($username) && empty($password)) {
         echo '<script language = javascript>
 	self.location = "../views/users/vwadduser.php"
 	</script>';
@@ -51,14 +55,16 @@ if ($update && !empty($usernameupdate) && !empty($typeuserupdate)) {
 }
 
 // se llama a la funcion insertar usuario y se envia al usuario a la vista principal.
-if (!empty($username) && !empty($password) && !empty($type_user) && !empty($schooluser)) {
-    
+if (!empty($username) && !empty($password) && !empty($schooluser)) {
     require_once("../models/mdlusers.php");
-    mdlusers::insertUser($username, $password, $type_user,$schooluser);
+    mdlusers::insertUser($username, $password, $schooluser, $work_position, $name, $first_name, $second_name, $idimg_user);
+    $username = '';
+    $password = '';
+    $schooluser = '';
     $users = new mdlusers();
     $listofusers = $users->getUsers();
     echo '<script language = javascript>
-	self.location = "../views/vwmenuprincipal.php"
+	self.location = "../controllers/crtusers.php"
 	</script>';
 }
 // se llama a la funcion actualizar usuario y se regresa al usuario a la vista principal
@@ -75,7 +81,6 @@ if ($valueupdate == 'true' && !empty($usernameforupdate) && !empty($usertypeprev
 else {
     require_once("../models/mdlusers.php");
     $users = new mdlusers();
-    $users->verifyIfisadministrator();
     $listofusers = $users->getUsers();
     require_once("../views/users/vwmanageusers.php");
 }
