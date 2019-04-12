@@ -12,7 +12,7 @@
  */
 
 //Requieres adiionales
-require_once('../models/mdlconection.php');
+require_once('C:/xampp/htdocs/finbaproject/FINBA/models/mdlconection.php');
 require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlauth.php");
 
 class validations {
@@ -168,7 +168,7 @@ class inventoryhelper {
     public static function isEnabled() {
         echo '<script language = javascript>
 	alert("El elemento se encuentra habilitado no puede eliminarse")
-           self.location = "../views/vwmenuprincipal.php"
+           self.location = "../controllers/crtinventory.php"
 	</script>';
     }
 

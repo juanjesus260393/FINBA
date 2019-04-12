@@ -52,14 +52,6 @@ mdlsecurity::validateToken();
                                     </p>
                                 </div>
                                 <div>
-                                    <!-- Tipo de Usuario -->
-                                    <label class="col-3"style="background-color:#f1f1f1;">Tipo de Usuario:</label>
-                                    <select class="col-8" name="type_user" id="type_user" required="true">
-                                        <option value="administrator">Administrador</option>
-                                        <option value="employee">Empleado</option>
-                                    </select>
-                                </div>
-                                <div>
                                     <!-- Escuela a la que pertenece el usuario -->
                                     <span><label class="col-3" style="background-color:#f1f1f1;">Escuela</label></span>
                                     <select class="col-8" name="schooluser" id="schooluser" required="true">
@@ -67,6 +59,34 @@ mdlsecurity::validateToken();
                                         <option>CIDETEC</option>
                                         <option>ESCOM</option>
                                     </select>
+                                </div>
+                                <div>
+                                    <!-- Puesto del usuario -->
+                                    <span><label class="col-3" style="background-color:#f1f1f1;">Puesto</label></span>
+                                    <select class="col-8" name="work_position" id="work_position" required="true">
+                                        <option>Jefe de Departamento</option>
+                                        <option>Encargado de Departamento</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <!-- Nombre del usuario -->
+                                    <span><label class="col-3" style="background-color:#f1f1f1;">Nombre</label></span>
+                                    <input class="col-8" type="text" id="name" name="name" placeholder="nombre de usuario" maxlength="99" required = "true"></span>
+                                </div>
+                                <div>
+                                    <!-- Apellido Paterno del usuario -->
+                                    <span><label class="col-3" style="background-color:#f1f1f1;">Apellido Paterno</label></span>
+                                    <input class="col-8" type="text" id="first_name" name="first_name" placeholder="Apellido paterno" maxlength="99" required = "true"></span>
+                                </div>
+                                <div>
+                                    <!-- Apellido Materno del usuario -->
+                                    <span><label class="col-3" style="background-color:#f1f1f1;">Apellido Materno</label></span>
+                                    <input class="col-8" type="text" id="second_name" name="second_name" placeholder="Apellido Materno" maxlength="99" required = "true"></span>
+                                </div>
+                                <div>
+                                    <!-- Imagen relacionada al usuario -->
+                                    <label class="col-3" style="background-color:#f1f1f1;">Logotipo:</label>
+                                    <input class="col-8" type="file" name="idimg_user"  id="idimg_user" accept=".jpg">
                                 </div>
                             </center>
                         </div>

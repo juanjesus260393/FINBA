@@ -9,34 +9,57 @@ $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');
 $closesesion = filter_input(INPUT_POST, 'closesesion');
 $changedpass = filter_input(INPUT_POST, 'changedpass');
-$newpassword = filter_input(INPUT_POST, 'newpassword');
 $valueforpassword = filter_input(INPUT_POST, 'valueforpassword');
+
+//Variables para el resete de la contraseña
+$usernameresetpass = filter_input(INPUT_POST, 'usernameresetpass');
+$resetpass = filter_input(INPUT_POST, 'resetpass');
+
+//
+
+$newpassword = filter_input(INPUT_POST, 'newpassword');
+$passprevious = filter_input(INPUT_POST, 'passprevious');
+$nameprevious = filter_input(INPUT_POST, 'nameprevious');
+$newname = filter_input(INPUT_POST, 'newname');
+$firstnameprevious = filter_input(INPUT_POST, 'firstnameprevious');
+$newfirstname = filter_input(INPUT_POST, 'newfirstname');
+$secondnameprevious = filter_input(INPUT_POST, 'secondnameprevious');
+$newsecondname = filter_input(INPUT_POST, 'newsecondname');
+$workpositionprevious = filter_input(INPUT_POST, 'workpositionprevious');
+$workpositionnew = filter_input(INPUT_POST, 'workpositionnew');
 
 
 //Inicio de sesion
- if (!empty($username) && !empty($password)) {
+if (!empty($username) && !empty($password)) {
     if (!isset($_SESSION['token']) && empty($_SESSION['token'])) {
         Mdlauth::Login($username, $password);
         echo '<script language = javascript>
 	self.location = "../views/vwmenuprincipal.php"
 	</script>';
-    }
-    else{
-       //Mdlauth::Logout();
+    } else {
+        Mdlauth::closeSession();
     }
 }
- 
+
 //Se llama a la funcion cerrar sesion
-if ($closesesion && empty($username) && empty($password)) {
+if ($closesesion) {
     Mdlauth::Logout();
 }
 //Se llama a la vista cambiar contraseña
 if (!empty($changedpass) && $changedpass) {
+    $passsearch = Mdlauth::searchPassprevious();
     require_once("../views/users/vwalterpassword.php");
 }
+
+if (!empty($usernameresetpass) && !empty($resetpass) && $resetpass == '1') {
+    Mdlauth::prepareResetpass($usernameresetpass);
+    echo '<script language = javascript>
+	self.location = "../index.php"
+	</script>';
+}
 //Se llama la funcion cambiar contraseña
-if (!empty($valueforpassword) && $valueforpassword == 'valueforpassword' && !empty($newpassword)) {
-    Mdlauth::changedPassword($newpassword);
+if (!empty($valueforpassword) && $valueforpassword == 'valueforpassword') {
+    Mdlauth::changedPassword($newpassword, $nameprevious, $newname, $firstnameprevious, $newfirstname, $secondnameprevious, $newsecondname, $workpositionprevious, $workpositionnew,$passprevious);
     echo '<script language = javascript>
 	self.location = "../views/vwmenuprincipal.php"
 	</script>';
