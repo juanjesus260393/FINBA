@@ -22,7 +22,7 @@ $valueforpassword = filter_input(INPUT_POST, 'valueforpassword');
 	</script>';
     }
     else{
-       // Mdlauth::Logout();
+       //Mdlauth::Logout();
     }
 }
  
