@@ -101,7 +101,23 @@
                             <area id="SITE" shape="rect" coords="731,590,863,696" alt="SITE" noherf onclick="ubicacionFinal(this); return false;">
                             <area id="Cafeteria" shape="rect" coords="56,480,264,698" alt="Cafeteria" noherf onclick="ubicacionFinal(this); return false;">
                             <area id="Departamento de Tecnologias Educativas" shape="rect" coords="871,575,1030,700" alt="Dpto. de Tecnologias Educativas" noherf onclick="ubicacionFinal(this); return false;" >
-                            <area id="Salas de Usos Multiples" shape="rect" coords="50,15,356,148" alt="Salas de Usos Multiples" noherf onclick="ubicacionFinal(this); return false;" >
+                            <area id="Salas de Usos Multiples" shape="rect" coords="50,15,356,144" alt="Salas de Usos Multiples" noherf onclick="ubicacionFinal(this); return false;" >
+                            <area id="Sala de Video Conferencias" shape="rect" coords="53,188,194,227" alt="Sala de Video Conferencias" noherf onclick="ubicacionFinal(this); return false;" >
+                            <area id="Aula E4" shape="rect" coords="261,487,348,616" alt="Aula E4" noherf onclick="ubicacionFinal(this); return false;" >
+                            <area id="Aula E5" shape="rect" coords="595,594,726,696" alt="Aula E5" noherf onclick="ubicacionFinal(this); return false;" >
+                            <area id="Aula E3" shape="rect" coords="408,488,468,589" alt="Aula E3" nohref onclick="ubicacionFinal(this); return false;"> 
+                            <area id="Aula 1" shape="rect" coords="336,619,391,695" alt="Aula 1" nohref onclick="ubicacionFinal(this); return false;"> 
+                            <area id="Aula 2" shape="rect" coords="401,614,455,694" alt="Aula 2" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="Aula 3" shape="rect" coords="463,619,526,696" alt="Aula 3" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="Aula 4" shape="rect" coords="533,617,590,695" alt="Aula 4" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="Aula E1" shape="rect" coords="595,132,729,220" alt="Aula E1" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="Biblioteca" shape="poly" coords="360,17,654,17,654,95,614,95,614,122,472,122,472,221,360,220" alt="Biblioteca" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="Fuente" shape="circle" coords="540,355,66" alt="Fuente" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="Laboratorio de Prototipos de Hardware" shape="rect" coords="777,492,866,548" alt="Laboratorio de Prototipos de Hardware" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="Conmutador" shape="rect" coords="54,152,123,177" alt="Conmutador" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="Aula 6" shape="rect" coords="737,19,861,122" alt="Aula 6" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="IDF" shape="rect" coords="476,563,502,582" alt="IDF" nohref onclick="ubicacionFinal(this); return false;">
+                            <area id="IDF N-N1" shape="rect" coords="505,564,563,588" alt="IDF N-N1 " nohref onclick="ubicacionFinal(this); return false;">
                             
                         </map>
                         

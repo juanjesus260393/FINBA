@@ -43,7 +43,7 @@
             });
         </script>
         <div class="wrapper">
-            <div>
+            <div class="ps">
                 <!-- Sidebar  -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
@@ -126,7 +126,7 @@
                             <li>
                                 <a href="../views/Grafica.php">
                                 <i class="fas fa-chart-bar"></i>
-                                Monitorieo
+                                Monitoreo
                             </a> </li>
                         <li>
                             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
