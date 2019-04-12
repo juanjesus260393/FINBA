@@ -41,6 +41,20 @@ function validarCorreo() {
 }
 
 /*
+ * Funcion que valida la estructura del correo ingresado
+ * por el usuario
+ */
+function validarCorreoresetpass() {
+    var url = document.getElementById("usernameresetpass").value;
+    var pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (pattern.test(url)) {
+    } else {
+        alert("Correo electronico incorrecto");
+    }
+    return false;
+}
+
+/*
  * Funcion que revisa si en la contraseña se ha ingresado una
  * comtraeña vacia
  */
@@ -95,7 +109,7 @@ function  referenciablanco() {
     });
 }
 
-function soloNumeros(e){
-	var key = window.Event ? e.which : e.keyCode;
-	return (key >= 48 && key <= 57);
+function soloNumeros(e) {
+    var key = window.Event ? e.which : e.keyCode;
+    return (key >= 48 && key <= 57);
 }

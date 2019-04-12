@@ -12,6 +12,7 @@ $searchinventory = filter_input(INPUT_POST, 'searchinventory');
 $insert = filter_input(INPUT_POST, 'insert');
 $elementname = filter_input(INPUT_POST, 'elementname');
 $quantity = filter_input(INPUT_POST, 'quantity');
+$img_inventory = $_FILES['img_inventory']['name'];
 $school = filter_input(INPUT_POST, 'school');
 $building_number = filter_input(INPUT_POST, 'building_number');
 $level = filter_input(INPUT_POST, 'level');
@@ -29,6 +30,7 @@ $id_nomenclature = filter_input(INPUT_GET, 'id_nomenclaturedelete');
 $status = filter_input(INPUT_GET, 'status');
 $cantidad = filter_input(INPUT_GET, 'cantidad');
 $delete = filter_input(INPUT_GET, 'delete');
+$image = filter_input(INPUT_GET, 'image');
 
 //
 //variables utulizadas para llamar la visa de actualizar elemento del inventario
@@ -65,11 +67,11 @@ if ($registry_number == $cerotwo || $quantity == $ceroone) {
 if (!empty($quantity) && !empty($elementname) && !empty($reference) && !empty($registry_number)) {
     $validation = inventoryhelper::validationInsertinventory($quantity, $elementname, $reference, $registry_number);
     if ($validation) {
-        mdlinventory::insertinventory($quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number);
+        mdlinventory::insertinventory($quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number, $img_inventory);
         $inventory = new mdlinventory;
         $listofinventario = $inventory->getinventory();
         echo '<script language = javascript>
-	self.location = "../views/vwmenuprincipal.php"
+	self.location = "../controllers/crtinventory.php"
 	</script>';
     } else {
         inventoryhelper::dataVoid();
@@ -77,11 +79,11 @@ if (!empty($quantity) && !empty($elementname) && !empty($reference) && !empty($r
 }
 //Eliminacion del registro de un elemento del inventario
 if ($delete && !empty($id_inventorydelete) && !empty($id_spendersdelete) && !empty($id_nomenclature)) {
-    mdlinventory::deleteinventory($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $status, $cantidad);
+    mdlinventory::deleteinventory($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $status, $cantidad,$image);
     $inventory = new mdlinventory;
     $listofinventario = $inventory->getinventory();
     echo '<script language = javascript>
-	self.location = "../views/vwmenuprincipal.php"
+	self.location = "../controllers/crtinventory.php"
 	</script>';
 }
 
@@ -95,7 +97,7 @@ if (!empty($updateinventorynew) && !empty($id_spendersupdatenew) && !empty($id_n
     $inventory = new mdlinventory;
     $listofinventario = $inventory->getinventory();
     echo '<script language = javascript>
-	self.location = "../views/vwmenuprincipal.php"
+	self.location = "../controllers/crtinventory.php"
 	</script>';
 }
 //busqueda del inventario

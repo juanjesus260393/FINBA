@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ES">
     <head>
-     
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Proyecto FINBA</title>
@@ -11,8 +11,14 @@
         <script src="js/Comprobaciones.js"></script>
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+        <script src="js/bootstrap.min.js"></script>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-grid.css" rel="stylesheet">
         <!-- CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
+        <!-- AJAX -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="container">
@@ -44,7 +50,13 @@
                                     <input type="submit" class="btn-primary" value="Iniciar Sesion">
                                 </p>
                             </center> 
-                        </form>         
+                        </form>   
+                        <div class="col-2">
+                            <center>
+                                <input class="btn-primary" type="button" data-toggle='modal' data-target='#resetpass' value='Restablecer contraseña'>
+                                <?php include 'views/users/vwresetpassword.php'; ?>
+                            </center>
+                        </div>
                     </div>   
                 </div>
             </div>

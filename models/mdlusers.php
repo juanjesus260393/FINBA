@@ -14,6 +14,7 @@
 //Modelos adicionales que requiere el archivo, dado que algunas funciones se encuentran en dichos archivos
 require_once('mdlconection.php');
 require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlauth.php");
+require_once("C:/xampp/htdocs/finbaproject/FINBA/resources/helpers/validations.php");
 
 // Evitar Notificar todos los errores de PHP
 error_reporting(0);
@@ -36,7 +37,7 @@ class mdlusers {
 
     public function getUsers() {
         session_start();
-        $checkusers = "SELECT u.username, t.type_user FROM users u inner join type_users t on u.id_type_user = t.id_type_user
+        $checkusers = "SELECT u.username, u.name, u.first_name, u.work_position, u.idimg_user FROM users u inner join type_users t on u.id_type_user = t.id_type_user
             inner join token k on u.idtoken = k.idtoken where t.type_user = 'Employee' and k.token <>'" . $_SESSION['token'] . "'";
         if (empty($this->dbh->query($checkusers))) {
             $this->users[] = NULL;
@@ -53,8 +54,8 @@ class mdlusers {
      *  Funcion a la que se accede por medio del controlador para registrar a un nuevo usuario
      */
 
-    public static function insertUser($username, $password, $type_user, $schooluser) {
-        mdlusers::validateUserdates($username, $password, $type_user, $schooluser);
+    public static function insertUser($username, $password, $schooluser, $work_position, $name, $first_name, $second_name, $idimg_user) {
+        mdlusers::validateUserdates($username, $password, $schooluser, $work_position, $name, $first_name, $second_name, $idimg_user);
     }
 
     /*
@@ -227,15 +228,12 @@ class mdlusers {
      *  si la informacion no esta registrada previamente permite la realizacion del nuevo registro
      */
 
-    public static function validateUserdates($username, $password, $type_user, $schooluser) {
-
+    public static function validateUserdates($username, $password, $schooluser, $work_position, $name, $first_name, $second_name, $idimg_user) {
         $userdata = mdlusers::validateUsername($username, $password);
         if ($userdata) {
-
             $userdataexist = mdlusers::userDateexist($username);
             if ($userdataexist) {
-
-                mdlusers::insertIntousers($username, $password, $type_user, $schooluser);
+                mdlusers::insertIntousers($username, $password, $schooluser, $work_position, $name, $first_name, $second_name, $idimg_user);
             } else {
                 mdlusers::wrongData();
             }
@@ -247,14 +245,15 @@ class mdlusers {
      *  funcion que se encarga de generar el registro de un usuario nuevo por parte de un administrador
      */
 
-    public static function insertIntousers($username, $password, $type_user, $schooluser) {
+    public static function insertIntousers($username, $password, $schooluser, $work_position, $name, $first_name, $second_name, $idimg_user) {
         $con = mdlconection::connect();
         $passdb = mdlusers::generatePassword($password);
         $idtoken = mdlusers::insertIntotoken();
         $idschool = mdlusers::determinateSchoolid($schooluser);
-        $id_type_user = mdlusers::defineTypeuser($type_user);
-        $insertintotableusers = "INSERT INTO users(username,password,enabled,id_type_user,idtoken,idSchools)
-        VALUES('$username','$passdb','1','$id_type_user','$idtoken','$idschool')";
+        $newimage = mdlusers::uploadLogoimage($idimg_user);
+        $id_type_user = '987654321';
+        $insertintotableusers = "INSERT INTO users(username,password,enabled,id_type_user,idtoken,idSchools,work_position,name,first_name,second_name,idimg_user)
+        VALUES('$username','$passdb','1','$id_type_user','$idtoken','$idschool','$work_position','$name','$first_name','$second_name','$newimage')";
         if (!mysqli_query($con, $insertintotableusers)) {
             die('Error: ' . mysqli_error($con));
         }
@@ -276,6 +275,18 @@ class mdlusers {
             die('Error: ' . mysqli_error($con));
         }
         return $idtoken;
+    }
+
+    public static function uploadLogoimage($idimg_user) {
+        if (empty($idimg_user)) {
+            $image_name_insert = "";
+        } else {
+            $identificadornuevaimagen = validations::generateRamdonids();
+            $new_image_panel = $identificadornuevaimagen . ".jpg";
+            move_uploaded_file($_FILES['idimg_user']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/img/logotipos/$new_image_panel");
+            $image_name_insert = $new_image_panel;
+        }
+        return $image_name_insert;
     }
 
     /*

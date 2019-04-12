@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/models/mdlsolarpanel.php</file>
-            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/solarpanels/vwsolarpanels.php</file>
-            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtsolarpanels.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/solarpanels/vwmanagesolarpanels.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/inventory/vwaddinventory.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/vwadddevice.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/template1.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/controllers/crtinventory.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/inventory/vwincludeinventory.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/users/vwadduser.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/inventory/vwmanageinventory.php</file>
+            <file>file:/C:/xampp/htdocs/finbaproject/FINBA/views/Dispositivos/vwplanos.php</file>
         </group>
     </open-files>
 </project-private>

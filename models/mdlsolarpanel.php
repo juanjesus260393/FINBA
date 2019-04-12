@@ -71,7 +71,7 @@ class mdlsolarpanel {
         } else {
             $identificadornuevaimagen = validations::generateRamdonids();
             $new_image_panel = $identificadornuevaimagen . ".jpg";
-            move_uploaded_file($_FILES['id_image_panel']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/solarpanel/$new_image_panel");
+            move_uploaded_file($_FILES['id_image_panel']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/img/paneles/$new_image_panel");
             $image_name_insert = $new_image_panel;
         }
         return $image_name_insert;
@@ -132,11 +132,11 @@ class mdlsolarpanel {
     public static function determinateImageupdate($id_image_panel_new, $imagepreviouspost) {
         $name_image_update = '';
         if (!empty($id_image_panel_new)) {
-            $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/solarpanel/";
+            $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/img/paneles/";
             unlink($ruta . $imagepreviouspost);
             $identificadornuevaimagen = validations::generateRamdonids();
             $id_image_panel_new = $identificadornuevaimagen . ".jpg";
-            move_uploaded_file($_FILES['id_image_panel_new']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/solarpanel/$id_image_panel_new");
+            move_uploaded_file($_FILES['id_image_panel_new']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/img/paneles/$id_image_panel_new");
             $name_image_update = $id_image_panel_new;
         } else {
             $name_image_update = $imagepreviouspost;
@@ -201,7 +201,7 @@ class mdlsolarpanel {
 
     public static function deleteImagepanel($image) {
         if (!empty($image)) {
-            $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/solarpanel/";
+            $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/img/paneles/";
             unlink($ruta . $image);
         }
     }
