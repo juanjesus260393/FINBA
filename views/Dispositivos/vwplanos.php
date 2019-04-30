@@ -1,11 +1,14 @@
+
 <script>
     var ubicacion = ["", "", "", "", "", "", "", ""];
     function back() {
-        $("#imgplano").attr("src", "../resources/img/cic.jpg");
+        $("#imgplano").attr("src", "../resources/img/cic2.jpg");
         $("#atrasLevels").addClass("d-none");
+        $("#datos").addClass("d-none");
         $("#atrasSchool").removeClass("d-none");
         $("#imgplano").attr("usemap", "#levels");
-        $("#imgplano").attr("width", "600");
+        $("#imgplano").attr("width", "850");
+        $("#imgplano").attr("height", "600");
         $("#niveltext").text("");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
@@ -14,6 +17,7 @@
         $("#atrasSchool").addClass("d-none");
         $("#imgplano").attr("usemap", "#schools");
         $("#imgplano").attr("width", "645");
+        $("#imgplano").attr("height", "645");
         $("#niveltext").text("");
         $("#info").text("Selecciona en la imgen en la escuela donde se colocara el sensor");
     }
@@ -22,27 +26,57 @@
         ubicacion[4] = "Norte";
         ubicacion[5] = "Interior";
 
-        $("#imgplano").attr("src", "../resources/img/cic.jpg");
-        $("#imgplano").attr("width", "600");
-        $("#imgplano").attr("height", "720");
+        $("#imgplano").attr("src", "../resources/img/cic2.jpg");
+        $("#imgplano").attr("width", "850");
+        $("#imgplano").attr("height", "600");
         $("#imgplano").attr("usemap", "#levels");
         $("#atrasSchool").removeClass("d-none");
         $("#niveltext").text("CIC");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+    
     function settoN1() {
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 1";
 
         $("#imgplano").attr("src", "../resources/img/cicN1-nombres.png");
         $("#imgplano").attr("width", "1080");
+        $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mapn1");
         $("#atrasLevels").removeClass("d-none");
         $("#atrasSchool").addClass("d-none");
+        $("#datos").removeClass("d-none");
         $("#niveltext").text("Nivel 1");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
-    ;
+      function settoN0() {
+        ubicacion[2] = "Ediicio 1";
+        ubicacion[3] = "Nivel 0";
+
+        $("#imgplano").attr("src", "../resources/img/CIC-N0.jpg");
+        $("#imgplano").attr("width", "1080");
+        $("#imgplano").attr("height", "720");
+        $("#imgplano").attr("usemap", "#mapn0");
+        $("#atrasLevels").removeClass("d-none");
+        $("#atrasSchool").addClass("d-none");
+        $("#datos").removeClass("d-none");
+        $("#niveltext").text("Nivel 0");
+        $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
+    }
+    function settoN2() {
+        ubicacion[2] = "Ediicio 1";
+        ubicacion[3] = "Nivel 2";
+
+        $("#imgplano").attr("src", "../resources/img/CIC-N2.jpg");
+        $("#imgplano").attr("width", "1080");
+        $("#imgplano").attr("height", "720");
+        $("#imgplano").attr("usemap", "#mapn2");
+        $("#atrasLevels").removeClass("d-none");
+        $("#atrasSchool").addClass("d-none");
+        $("#datos").removeClass("d-none");
+        $("#niveltext").text("Nivel 2");
+        $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
+    }
     function ubicacionFinal(a) {
 
         ubicacion[6] = ($(a).attr("id"));
@@ -56,6 +90,12 @@
         $("#seis").val(ubicacion[5]);
         $("#siete").val(ubicacion[6]);
         $("#ocho").val(ubicacion[7]);
+    };
+        function getinfo(a) {
+        $("#infolugar").text($(a).attr("id"));
+    };
+    function limpia(b) {
+        $("#infolugar").text('');
     };
 </script>
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -83,21 +123,27 @@
                         </div>
                     </div>
                     <div class="col-10" style="overflow-x: auto;">
-                        
+                        <div class="row" >
+                        <div class="col-2">
+                            <div id="datos" class="d-none" style="margin-top: 20%; border: 1px solid #040505;">
+                                <p id="infolugar" style="color: #000; font-size:20px;"></p>
+                            </div>
+                        </div>
+                        <div class="col-10">
                         <img  id="imgplano" src="../resources/img/escuelas.jpg" width="645" height="645" alt="Escuelas" usemap="#schools">
 
                         <map name="schools">
                             <area shape="rect" coords="11,21,258,258" alt="cic" nohref onclick="settoCIC();return false;">
                         </map> 
 
-                        <map name="levels">
-                            <area shape="rect" coords="0,0,82,126" alt="N3" href="sun.htm">
-                            <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
-                            <area id="CICN1" shape="rect" coords="0,310,700,210" alt="Venus" nohref onclick="settoN1();return false;">
+                        <map name="levels"> 
+                            <area id="CICN1" shape="rect" coords="175,305,835,440" alt="Venus" nohref onclick="settoN1();return false;">
+                            <area id="CICN0" shape="rect" coords="175,450,835,585" alt="Venus" nohref onclick="settoN0();return false;">
+                            <area id="CICN2" shape="rect" coords="175,165,835,300" alt="Venus" nohref onclick="settoN2();return false;">
                         </map> 
                         
                         <map name="mapn1">
-                            <area id="Fabrica de Software" shape="rect" coords="870,476,1028,570" alt="Fabrica de Software" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Fabrica de Software" shape="rect" coords="870,476,1028,570" alt="Fabrica de Software" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
                             <area id="SITE" shape="rect" coords="731,590,863,696" alt="SITE" noherf onclick="ubicacionFinal(this); return false;">
                             <area id="Cafeteria" shape="rect" coords="56,480,264,698" alt="Cafeteria" noherf onclick="ubicacionFinal(this); return false;">
                             <area id="Departamento de Tecnologias Educativas" shape="rect" coords="871,575,1030,700" alt="Dpto. de Tecnologias Educativas" noherf onclick="ubicacionFinal(this); return false;" >
@@ -118,10 +164,32 @@
                             <area id="Aula 6" shape="rect" coords="737,19,861,122" alt="Aula 6" nohref onclick="ubicacionFinal(this); return false;">
                             <area id="IDF" shape="rect" coords="476,563,502,582" alt="IDF" nohref onclick="ubicacionFinal(this); return false;">
                             <area id="IDF N-N1" shape="rect" coords="505,564,563,588" alt="IDF N-N1 " nohref onclick="ubicacionFinal(this); return false;">
-                            
                         </map>
-                        
-                    </div>
+                        <map name="mapn0">
+                            <area id="Almacen Refrigeracion" shape="rect" coords="190,505,255,535" alt="Almacen Refrigeracion" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Montacargas" shape="rect" coords="148,500,170,520" alt="Montacargas" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Area de Lavado" shape="rect" coords="130,521,185,548" alt="Area de Lavado" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Almacen 2" shape="rect" coords="130,425,250,500" alt="Almacen 2" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Limpieza" shape="rect" coords="198,390,250,423" alt="Limpieza" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="AlmacenCafeteria" shape="rect" coords="130,550,165,600" alt="Almacen Cafeteria" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Almacen Proyectos" shape="rect" coords="130,602,260,700" alt="Almacen Proyectos" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Ups" shape="poly" coords="805,515,860,515,860,582,931,582,931,705,805,705" alt="Ups" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Subestacion" shape="rect" coords="861,515,931,578" alt="Subestacion" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Servicio LAB MICRO SE" shape="rect" coords="820,339,870,370" alt="Servicio LAB MICRO SE" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="LAB Comunicaciones" shape="rect" coords="820,260,935,337" alt="LAB Comunicaciones" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Almacen1" shape="rect" coords="820,418,935,500" alt="Almacen1" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Jardineria" shape="rect" coords="132,55,250,150" alt="Jardineria" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Archivo de Tramite" shape="rect" coords="132,152,250,257" alt="Jardineria" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Mantenimiento" shape="rect" coords="132,260,250,350" alt="Mantenimiento" noherf onclick="ubicacionFinal(this);return false;">
+                            <area id="Almacen Activo Fijo" shape="rect" coords="820,55,935,150" alt="LAB Comunicaciones" noherf onclick="ubicacionFinal(this);return false;">
+                        </map> 
+                        <map name="mapn2">
+                            <area id="Area Secretarial Recursos Financieros" shape="rect" coords="153,75,435,202" alt="Area Secretarial Recursos Financieros" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
+                            <area id="Area Secretarial Recursos Financieros" shape="rect" coords="437,45,535,152" alt="Area Secretarial Recursos Financieros" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
+                            <area id="Almacen Refrigeracion" shape="rect" coords="190,505,255,535" alt="Almacen Refrigeracion" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
+                         
+                        </map>
+                        </div></div></div>
                 </div>
             </div>  
             <div  class="modal-footer">
