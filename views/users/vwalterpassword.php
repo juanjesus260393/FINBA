@@ -131,7 +131,7 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
                         <!-- En el boton registrar se encuentra una alerta para validar que efectivamente se quiere registrar el cupon-->
                         <input type="submit" class="btn btn-primary"
-                               onclick="if (!confirm('Estas seguro que quieres cambiar tu contraseña?')) {
+                               onclick="if (!confirm('Estas seguro que quieres actualizar tu perfil?')) {
                                            return false;
                                        }" value="Actualizar perfil" >
                     </div>

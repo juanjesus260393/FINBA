@@ -101,6 +101,12 @@ class mdlinventory {
             die('Error: ' . mysqli_error($con));
         }
     }
+    
+     /*
+     *  deleteImageinventory
+     *  Funcion que elimina la imagen vinculada al inventario
+     */
+    
 public static function deleteImageinventory($image) {
         if (!empty($image)) {
             $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/img/inventario/";
@@ -126,8 +132,8 @@ public static function deleteImageinventory($image) {
     }
 
     /*
-     *  insertenergy_spenderstable
-     *  Funcion que crea el registro en la tabla energy_spenders esta funcion se manda a llamar en el metodo insertinventorytable
+     *  uploadImageinventory
+     *  Funcion que almacena la imagen de un elemento del inventario
      */
 
     public static function uploadImageinventory($img_inventory) {

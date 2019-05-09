@@ -66,6 +66,11 @@ class Mdlauth {
         exit();
     }
 
+    /*
+     *  closeSession
+     *  Funcion cerrar session
+     */
+
     public static function closeSession() {
         unset($_SESSION);
         session_destroy();
@@ -75,6 +80,11 @@ class Mdlauth {
 	</script>';
         exit();
     }
+
+    /*
+     *  wrongPass
+     *  Funcion contraseña equivocada en caso de que sea incorrecta
+     */
 
     public static function wrongPass() {
         unset($_SESSION);
@@ -110,15 +120,8 @@ class Mdlauth {
     }
 
     /*
-     *  searchPass
-     *  funcion que busca la contraseña de un usuario que ha iniciado sesion, si no se obtiene un resultado acorde 
-     *  a la busquedad se regresa al usuario a la pagina principal, en caso contrario regresa el nombre de usuario.
-     */
-
-    /*
-     *  searchPass
-     *  funcion que busca la contraseña de un usuario que ha iniciado sesion, si no se obtiene un resultado acorde 
-     *  a la busquedad se regresa al usuario a la pagina principal, en caso contrario regresa el nombre de usuario.
+     *  decideName
+     *  funcion en la que se decie cual nombre se empleara en la actualizacion de informacion
      */
 
     public static function decideName($nameprevious, $newname) {
@@ -132,9 +135,8 @@ class Mdlauth {
     }
 
     /*
-     *  searchPass
-     *  funcion que busca la contraseña de un usuario que ha iniciado sesion, si no se obtiene un resultado acorde 
-     *  a la busquedad se regresa al usuario a la pagina principal, en caso contrario regresa el nombre de usuario.
+     *  decideFirstname
+     *  funcion en la que se decide el nombre que se empleara al momento de actualizar informacion del usuario
      */
 
     public static function decideFirstname($firstnameprevious, $newfirstname) {
@@ -148,9 +150,8 @@ class Mdlauth {
     }
 
     /*
-     *  searchPass
-     *  funcion que busca la contraseña de un usuario que ha iniciado sesion, si no se obtiene un resultado acorde 
-     *  a la busquedad se regresa al usuario a la pagina principal, en caso contrario regresa el nombre de usuario.
+     *  decideSecondtname
+     *  funcion en la que se decide el nombre que se guardara cuando se actualice la informacion del usuario
      */
 
     public static function decideSecondtname($secondnameprevious, $newsecondname) {
@@ -164,9 +165,9 @@ class Mdlauth {
     }
 
     /*
-     *  searchPass
-     *  funcion que busca la contraseña de un usuario que ha iniciado sesion, si no se obtiene un resultado acorde 
-     *  a la busquedad se regresa al usuario a la pagina principal, en caso contrario regresa el nombre de usuario.
+     *  decideWorkposition
+     *  funcion en la que se decide la posicion del trabajo que se guardara cuando se actualice la informacion
+     *  de un usuario
      */
 
     public static function decideWorkposition($workpositionprevious, $workpositionnew) {
@@ -200,9 +201,8 @@ class Mdlauth {
     }
 
     /*
-     *  searchPass
-     *  funcion que busca la contraseña de un usuario que ha iniciado sesion, si no se obtiene un resultado acorde 
-     *  a la busquedad se regresa al usuario a la pagina principal, en caso contrario regresa el nombre de usuario.
+     *  searchPassprevious
+     *  funcion en la que se busca la contraseña previa del usuario
      */
 
     public static function searchPassprevious() {
@@ -228,6 +228,19 @@ class Mdlauth {
         $con = mdlconection::connect();
         $updateintotableusers = "update users set password = '$newpass', name ='$name', first_name = '$firsname', "
                 . "second_name = '$secondname', work_position = '$workposition' where username = '$usernamedb'";
+        if (!mysqli_query($con, $updateintotableusers)) {
+            Mdlauth::Logout();
+        }
+    }
+
+    /*
+     *  updatePassreset
+     *  funcion que actualiza la contraseña por una nueva.
+     */
+
+    public static function updatePassreset($usernameresetpass, $newpass) {
+        $con = mdlconection::connect();
+        $updateintotableusers = "update users set password = '$newpass' where username = '$usernameresetpass'";
         if (!mysqli_query($con, $updateintotableusers)) {
             Mdlauth::Logout();
         }
@@ -310,7 +323,8 @@ class Mdlauth {
     }
 
     /*
-     * 
+     * getSchoolname
+     * Funcion qen la que se obtiene el nombre de la escuela para asignarlo en la variable de sesion
      */
 
     public static function getSchoolname($validatetokendb) {
@@ -327,6 +341,11 @@ class Mdlauth {
         return $Schoolsname;
     }
 
+    /*
+     * getImagepanel
+     * Funcion qen la que se obtiene la imagen de un panel para mostrarse en la vision global
+     */
+
     public static function getImagepanel($validatetokendb) {
         $con = mdlconection::connect();
         $searchschoolimage = "SELECT p.id_image_panel FROM dbfinba.users u inner join dbfinba.schools s on u.idSchools = s.idSchools 
@@ -342,6 +361,11 @@ class Mdlauth {
         return $Schoolsimage;
     }
 
+    /*
+     * getImagelogo
+     * Funcion qen la que se obtiene la imagen del logo de la escuela para mostrase en el menu principal
+     */
+
     public static function getImagelogo($validatetokendb) {
         $con = mdlconection::connect();
         $searchlogoimage = "SELECT u.idimg_user FROM dbfinba.users u inner join dbfinba.token t on u.idtoken = t.idtoken 
@@ -353,9 +377,14 @@ class Mdlauth {
         } else {
             $idimg_user = $rowlogoimage['idimg_user'];
         }
-     
+
         return $idimg_user;
     }
+
+    /*
+     * getTypeofuser
+     * Funcion en la que se obtiene el tipo de usuario para mostrar las opciones dependiendo del tipo de usuario
+     */
 
     public static function getTypeofuser($validatetokendb) {
         $con = mdlconection::connect();
@@ -371,6 +400,11 @@ class Mdlauth {
         return $typeofuser;
     }
 
+    /*
+     * getNameofuser
+     * Funcion en la que se obtiene el nombre de usuario para mostrase en el menu principal
+     */
+
     public static function getNameofuser($validatetokendb) {
         $con = mdlconection::connect();
         $searchusername = "SELECT u.name FROM dbfinba.users u inner join dbfinba.type_users y on y.id_type_user=u.id_type_user
@@ -384,6 +418,11 @@ class Mdlauth {
         }
         return $name;
     }
+
+    /*
+     * getFirstnameofuser
+     * Funcion en la que se obtiene el principal nombre de usuario
+     */
 
     public static function getFirstnameofuser($validatetokendb) {
         $con = mdlconection::connect();
@@ -399,6 +438,11 @@ class Mdlauth {
         return $firstname;
     }
 
+    /*
+     * getSecondnameofuser
+     * Funcion en la que se obtiene el apellido de un usuario para emplearse en una actualizacion de informacion
+     */
+
     public static function getSecondnameofuser($validatetokendb) {
         $con = mdlconection::connect();
         $searchsecondname = "SELECT u.second_name FROM dbfinba.users u inner join dbfinba.type_users y on y.id_type_user=u.id_type_user
@@ -412,6 +456,11 @@ class Mdlauth {
         }
         return $secondname;
     }
+
+    /*
+     * getWorkpositionofuser
+     * Funcion en la que se obtiene la posicion  de trabajo de un usuario
+     */
 
     public static function getWorkpositionofuser($validatetokendb) {
         $con = mdlconection::connect();
@@ -471,9 +520,8 @@ class Mdlauth {
     }
 
     /*
-     *  searchToken
-     *  funcion que busca el token de un usuario en base al identificador del token, si existe el token se regresa
-     *  en caso contrario se regresa añ usuario a la pagina principal.
+     *  prepareResetpass
+     *  funcion en la que se prepara el reseteo de la conraseña
      */
 
     public static function prepareResetpass($usernameresetpass) {
@@ -481,7 +529,7 @@ class Mdlauth {
         if ($userexist) {
             $newpassreset = Mdlauth::generate_password($usernameresetpass);
             $newpass = password_hash($newpassreset, PASSWORD_DEFAULT);
-            Mdlauth::updatePass($usernameresetpass, $newpass);
+            Mdlauth::updatePassreset($usernameresetpass, $newpass);
             mailer::sendPassmail($usernameresetpass, $newpassreset, 0);
         } if (empty($userexist)) {
             echo '<script language = javascript> alert("El usuario no existe") </script>';
@@ -493,9 +541,8 @@ class Mdlauth {
     }
 
     /*
-     *  searchToken
-     *  funcion que busca el token de un usuario en base al identificador del token, si existe el token se regresa
-     *  en caso contrario se regresa añ usuario a la pagina principal.
+     *  generate_password
+     *  funcion en la que se genera una nueva contraseña
      */
 
     public static function generate_password($usernameresetpass) {

@@ -13,7 +13,11 @@ include('../views/template1.php');
             </li>
             <li><a class="nav-link active" href="#balance" data-toggle="tab">Balance Energetico</a>
             </li>
-            <li><a class="nav-link active" href="#administracion" data-toggle="tab">Administracion de los Paneles</a>
+            <li><a class="nav-link active" href="#administracion" data-toggle="tab">Sistemas Fotovolaticos</a>
+            </li>
+            <li><a class="nav-link active" href="#registrar" data-toggle="tab">Registrar Panel</a>
+            </li>
+            <li><a class="nav-link active" href="#inversor" data-toggle="tab">Registrar Inversor</a>
             </li>
         </ul>
     </div>
@@ -34,6 +38,16 @@ include('../views/template1.php');
         <div class="tab-pane" id="administracion">
             <?php
             include('../views/solarpanels/vwsolarpanels.php');
+            ?>
+        </div>
+        <div class="tab-pane" id="registrar">
+            <?php
+            include('../views/solarpanels/vwaddsolarpanel.php');
+            ?>
+        </div>
+             <div class="tab-pane" id="inversor">
+            <?php
+            include('../views/solarpanels/investor/vwaddinversor.php');
             ?>
         </div>
     </div>

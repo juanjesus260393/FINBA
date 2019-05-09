@@ -4,19 +4,22 @@ require_once("../models/mdlauth.php");
 
 session_start();
 
-//Variables post
+//Variables para iniciar sesion
 $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');
+
+//Variables para serrar sesion
 $closesesion = filter_input(INPUT_POST, 'closesesion');
+
+//Variables para el cambio de contraseña
 $changedpass = filter_input(INPUT_POST, 'changedpass');
 $valueforpassword = filter_input(INPUT_POST, 'valueforpassword');
 
-//Variables para el resete de la contraseña
+//Variables para el reseteo de la contraseña
 $usernameresetpass = filter_input(INPUT_POST, 'usernameresetpass');
 $resetpass = filter_input(INPUT_POST, 'resetpass');
 
-//
-
+//Variables para el cambio de informacion del usuario
 $newpassword = filter_input(INPUT_POST, 'newpassword');
 $passprevious = filter_input(INPUT_POST, 'passprevious');
 $nameprevious = filter_input(INPUT_POST, 'nameprevious');
@@ -50,14 +53,14 @@ if (!empty($changedpass) && $changedpass) {
     $passsearch = Mdlauth::searchPassprevious();
     require_once("../views/users/vwalterpassword.php");
 }
-
+//Se llama a la funcion resetear la contraseña
 if (!empty($usernameresetpass) && !empty($resetpass) && $resetpass == '1') {
     Mdlauth::prepareResetpass($usernameresetpass);
     echo '<script language = javascript>
 	self.location = "../index.php"
 	</script>';
 }
-//Se llama la funcion cambiar contraseña
+//Se llama la funcion cambiar contraseña y/o informacion del usuario
 if (!empty($valueforpassword) && $valueforpassword == 'valueforpassword') {
     Mdlauth::changedPassword($newpassword, $nameprevious, $newname, $firstnameprevious, $newfirstname, $secondnameprevious, $newsecondname, $workpositionprevious, $workpositionnew,$passprevious);
     echo '<script language = javascript>
