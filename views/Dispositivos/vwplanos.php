@@ -562,7 +562,7 @@
                         ?>
                         
                         <img  id="imgplano" src="../resources/img/cidetec.jpg" width="850" height="600" alt="Escuelas"  usemap="#levelsCidetec">
-                        
+
                             <?php 
                                         }
                         
@@ -593,6 +593,7 @@
                             <area id="Edificio 3" shape="rect" coords="258,303,428,575" alt="Venus" nohref onclick="settoE3();return false;">
                             <area id="Edificio 4" shape="rect" coords="644,299,818,580" alt="Venus" nohref onclick="settoE4();return false;">
                             <area id="Edificio 5" shape="rect" coords="456,247,623,506" alt="Venus" nohref onclick="settoE5();return false;">
+
                             
                         </map>
                         <map name="levelsEscomE1"> 

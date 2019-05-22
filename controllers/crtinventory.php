@@ -1,6 +1,6 @@
 <?php
 
-//requieres
+//requieres adicionales
 require_once("C:/xampp/htdocs/finbaproject/FINBA/resources/helpers/validations.php");
 require_once("../models/mdlinventory.php");
 
@@ -32,7 +32,7 @@ $cantidad = filter_input(INPUT_GET, 'cantidad');
 $delete = filter_input(INPUT_GET, 'delete');
 $image = filter_input(INPUT_GET, 'image');
 
-//
+
 //variables utulizadas para llamar la visa de actualizar elemento del inventario
 $id_inventoryupdate = filter_input(INPUT_POST, 'id_inventoryupdate');
 $id_spendersupdate = filter_input(INPUT_POST, 'id_spendersupdate');
@@ -59,7 +59,7 @@ if (!empty($insert) && $insert == TRUE) {
 	self.location = "../views/inventory/vwaddinventory.php"
 	</script>';
 }
-//Validacion por si los numericos son ingresados con un valor cero
+//Validacion por si los numeros son ingresados con un valor cero
 if ($registry_number == $cerotwo || $quantity == $ceroone) {
     inventoryhelper::numberCero();
 }
@@ -79,7 +79,7 @@ if (!empty($quantity) && !empty($elementname) && !empty($reference) && !empty($r
 }
 //Eliminacion del registro de un elemento del inventario
 if ($delete && !empty($id_inventorydelete) && !empty($id_spendersdelete) && !empty($id_nomenclature)) {
-    mdlinventory::deleteinventory($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $status, $cantidad,$image);
+    mdlinventory::deleteinventory($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $status, $cantidad, $image);
     $inventory = new mdlinventory;
     $listofinventario = $inventory->getinventory();
     echo '<script language = javascript>

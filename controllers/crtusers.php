@@ -1,6 +1,8 @@
 <?php
 
+//Modelo usuario al que se llaman las funciones
 require_once("../models/mdlusers.php");
+
 //variables POST a utilizar en la administracion de usuarios
 //Varliables utilizadas en la insercion de usuarios
 $username = filter_input(INPUT_POST, 'username');
@@ -39,6 +41,7 @@ if (!empty($delete_user)) {
 	self.location = "../views/vwmenuprincipal.php"
 	</script>';
 }
+
 // se llama a la funcion agregar usuario
 if (!empty($insert) && $insert) {
     if (empty($username) && empty($password)) {
@@ -47,6 +50,7 @@ if (!empty($insert) && $insert) {
 	</script>';
     }
 }
+
 // se llama a la vista actualizar usuario
 if ($update && !empty($usernameupdate) && !empty($typeuserupdate)) {
     $usernameforupdate = $usernameupdate;
@@ -67,6 +71,7 @@ if (!empty($username) && !empty($password) && !empty($schooluser)) {
 	self.location = "../controllers/crtusers.php"
 	</script>';
 }
+
 // se llama a la funcion actualizar usuario y se regresa al usuario a la vista principal
 if ($valueupdate == 'true' && !empty($usernameforupdate) && !empty($usertypeprevious) && !empty($newtype_user)) {
     require_once("../models/mdlusers.php");
@@ -77,6 +82,7 @@ if ($valueupdate == 'true' && !empty($usernameforupdate) && !empty($usertypeprev
 	self.location = "../views/vwmenuprincipal.php"
 	</script>';
 }
+
 // se llama a la funcion obtener usuario y se llama a la vista adminsitrar usuarios
 else {
     require_once("../models/mdlusers.php");

@@ -277,6 +277,11 @@ class mdlusers {
         return $idtoken;
     }
 
+    /*
+     *  uploadLogoimage
+     *  funcion que se encarga de determinar el nombre de la imagen el cual sera ingresado en la base de datos.
+     */
+
     public static function uploadLogoimage($idimg_user) {
         if (empty($idimg_user)) {
             $image_name_insert = "";
@@ -315,6 +320,11 @@ class mdlusers {
         $pwd = password_hash($password, PASSWORD_DEFAULT);
         return $pwd;
     }
+
+    /*
+     *  determinateSchoolid
+     *  funcion determina el identificador de la escuela
+     */
 
     public static function determinateSchoolid($schooluser) {
         $con = mdlconection::connect();

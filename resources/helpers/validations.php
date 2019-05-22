@@ -173,6 +173,18 @@ class inventoryhelper {
     }
 
     /*
+     *  isEnableds
+     *  Funcion que enviar alerta si el elemento se encuentra habilitado
+     */
+
+    public static function isEnableds() {
+        echo '<script language = javascript>
+	alert("El elemento se encuentra habilitado no puede eliminarse")
+           self.location = "../controllers/crtsolarpanels.php"
+	</script>';
+    }
+
+    /*
      *  dataVoid
      *  Funcion que envia alerta en caso de que algun dato se encuentre vacio
      */
@@ -263,8 +275,84 @@ class panelHelper {
     public static function cantInsert() {
         echo '<script language = javascript>
 	alert("No se puede insertar este elemento")
-           self.location = "../views/vwmenuprincipal.php"
 	</script>';
+        echo '<script language = javascript>
+	self.location = "../controllers/crtsolarpanels.php"
+	</script>';
+    }
+
+    /*
+     *  cantInsertinversor
+     *  funcion que envia una alerta para que no se pueda agregar un investor
+     */
+
+    public static function cantInsertinversor() {
+        echo '<script language = javascript>
+	alert("No se puede agregar este inversor")
+           	</script>';
+        echo "<html><head></head>" .
+        "<body onload=\"javascript:history.back()\">" .
+        "</body></html>";
+    }
+    
+      /*
+     *  cantInsertpanel
+     *  funcion que envia una alerta para que no se pueda agregar un investor
+     */
+
+    public static function cantInsertpanel() {
+        echo '<script language = javascript>
+	alert("El edificio del panel no es igual al del inversor")
+           	</script>';
+        echo '<script language = javascript>
+	self.location = "../controllers/crtsolarpanels.php"
+	</script>';
+    }
+
+    /*
+     *  canDelete
+     *  funcion que envia una alerta al usuario en caso de que un inversor no se pueda eliminar
+     */
+
+    public static function canDelete() {
+        echo '<script language = javascript>
+	alert("No se puede eliminar este inversor")
+           	</script>';
+        echo "<html><head></head>" .
+        "<body onload=\"javascript:history.back()\">" .
+        "</body></html>";
+    }
+
+    /*
+     *  defineBuildnumber
+     *  funcion que define el numero de edificio
+     */
+
+    public static function defineBuildnumber($number_build_solar) {
+        $buildnumber = '';
+        if (empty($number_build_solar)) {
+            $buildnumber = '1';
+        }
+        if (!empty($number_build_solar)) {
+            $buildnumber = $number_build_solar;
+        }
+        return $buildnumber;
+    }
+
+    /*
+     *  defineLocation
+     *  funcion que define la localizacion de un investor ya sea techo o estacionamiento
+     */
+
+    public static function defineLocation($location_investor) {
+        $location = '';
+        if (empty($location_investor)) {
+            $location = 'techo';
+        }
+        if (!empty($location_investor)) {
+            $location = $location_investor;
+        }
+        return $location;
     }
 
 }
