@@ -1,6 +1,33 @@
-
 <script>
+/**
+ * 
+ * Scripts que manejan todo el funcionamiento
+ * dentro del modal de seleccion de ubicacion
+ * de los dispositivos.
+ * 
+ */
+/**
+ * 
+ * Se inicializa un array donde se guardara 
+ * provisionalmente la informacion de la ubicacion
+ * 
+ * @type Array
+ */
+
     var ubicacion = ["", "", "", "", "", "", "", ""];
+    
+/**
+ * 
+ * Las funciones back.. tienen la funcion de regresar
+ * entre las imagenes para seleccionar otro piso, otro
+ * nivel, otro edificio, etc
+ * 
+ */
+
+
+/**
+ * Regresa a la seleccion de niveles del CIC
+*/
     function back() {
         $("#imgplano").attr("src", "../resources/img/cic2.jpg");
         $("#atrasLevels").addClass("d-none");
@@ -11,6 +38,9 @@
         $("#niveltext").text("");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Regresa a la seleccion de niveles del CIDETEC
+ */
     function back2() {
         $("#imgplano").attr("src", "../resources/img/cidetec.jpg");
         $("#atrasLevels2").addClass("d-none");
@@ -21,6 +51,9 @@
         $("#niveltext").text("");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Regresa a la seleccion de niveles del Edificio 1 de ESCOM
+ */    
     function back3() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
         $("#atrasLevels3").addClass("d-none");
@@ -32,6 +65,9 @@
         $("#niveltext").text("Edificio 1");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Regresa a la seleccion de niveles del Edificio 2 de ESCOM
+ */     
         function back4() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
         $("#atrasLevels4").addClass("d-none");
@@ -43,6 +79,9 @@
         $("#niveltext").text("Edificio 2");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Regresa a la seleccion de niveles del Edificio 3 de ESCOM
+ */     
    function back5() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
         $("#atrasLevels5").addClass("d-none");
@@ -54,6 +93,9 @@
         $("#niveltext").text("Edificio 3");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Regresa a la seleccion de niveles del Edificio 4 de ESCOM
+ */     
     function back6() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
         $("#atrasLevels6").addClass("d-none");
@@ -65,6 +107,9 @@
         $("#niveltext").text("Edificio 4");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Regresa a la seleccion de niveles del Edificio 5 de ESCOM
+ */     
     function back7() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom2.jpg");
         $("#atrasLevels7").addClass("d-none");
@@ -76,6 +121,9 @@
         $("#niveltext").text("Edificio 5");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Regresa a la seleccion de Edificios de ESCOM
+ */     
    function backS() {
         $("#imgplano").attr("src", "../resources/img/escom.jpg");
         $("#atrasSchool").addClass("d-none");
@@ -85,6 +133,9 @@
         $("#niveltext").text("ESCOM");
         $("#info").text("Selecciona en la imgen en el edificio donde se colocara el sensor");
     }
+/**
+ * Muestra los niveles del CIC
+ */     
     function settoCIC() {
         ubicacion[1] = "CIC";
         ubicacion[4] = "Norte";
@@ -98,6 +149,9 @@
         $("#niveltext").text("CIC");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Muestra los niveles del Edificio 1 de ESCOM
+ */     
     function settoE1() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
         $("#imgplano").attr("width", "850");
@@ -108,6 +162,9 @@
         
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Muestra los niveles del Edificio 2 de ESCOM
+ */        
     function settoE2() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
         $("#imgplano").attr("width", "850");
@@ -118,6 +175,9 @@
         
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }   
+/**
+ * Muestra los niveles del Edificio 3 de ESCOM
+ */        
     function settoE3() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
         $("#imgplano").attr("width", "850");
@@ -128,6 +188,9 @@
         
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Muestra los niveles del Edificio 4 de ESCOM
+ */        
     function settoE4() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
         $("#imgplano").attr("width", "850");
@@ -138,6 +201,9 @@
         
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     } 
+/**
+ * Muestra los niveles del Edificio 5 de ESCOM
+ */        
     function settoE5() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom2.jpg");
         $("#imgplano").attr("width", "850");
@@ -148,6 +214,9 @@
         
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+/**
+ * Muestra el plano del Nivel 1 del CIC
+ */        
     function settoN1() {
         ubicacion[1] = "CIC";
         ubicacion[2] = "Edificio 1";
@@ -163,6 +232,9 @@
         $("#niveltext").text("Nivel 1");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 1 del Edificio 1 de ESCOM
+ */     
      function settoN1E1ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 1";
@@ -178,6 +250,9 @@
         $("#niveltext").text("Nivel 1");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 2 del Edificio 1 de ESCOM
+ */       
     function settoN2E1ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 1";
@@ -193,6 +268,9 @@
         $("#niveltext").text("Nivel 2");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 3 del Edificio 1 de ESCOM
+ */       
     function settoN3E1ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 1";
@@ -208,6 +286,9 @@
         $("#niveltext").text("Nivel 3");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 1 del Edificio 2 de ESCOM
+ */       
      function settoN1E2ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 2";
@@ -223,6 +304,9 @@
         $("#niveltext").text("Nivel 1");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 2 del Edificio 2 de ESCOM
+ */       
      function settoN2E2ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 2";
@@ -237,7 +321,10 @@
         $("#datos").removeClass("d-none");
         $("#niveltext").text("Nivel 2");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
-    }    
+    } 
+/**
+ * Muestra el plano del Nivel 3 del Edificio 2 de ESCOM
+ */       
      function settoN3E2ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 2";
@@ -253,6 +340,9 @@
         $("#niveltext").text("Nivel 3");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }  
+/**
+ * Muestra el plano del Nivel 1 del Edificio 3 de ESCOM
+ */       
     function settoN1E3ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 3";
@@ -268,6 +358,9 @@
         $("#niveltext").text("Nivel 1");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }     
+/**
+ * Muestra el plano del Nivel 2 del Edificio 3 de ESCOM
+ */       
     function settoN2E3ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 3";
@@ -283,6 +376,9 @@
         $("#niveltext").text("Nivel 2");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }   
+/**
+ * Muestra el plano del Nivel 3 del Edificio 3 de ESCOM
+ */       
     function settoN3E3ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 3";
@@ -298,6 +394,9 @@
         $("#niveltext").text("Nivel 3");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }   
+/**
+ * Muestra el plano del Nivel 1 del Edificio 4 de ESCOM
+ */       
     function settoN1E4ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 4";
@@ -313,6 +412,9 @@
         $("#niveltext").text("Nivel 1");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     } 
+/**
+ * Muestra el plano del Nivel 2 del Edificio 4 de ESCOM
+ */       
     function settoN2E4ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 4";
@@ -328,6 +430,9 @@
         $("#niveltext").text("Nivel 2");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 3 del Edificio 4 de ESCOM
+ */       
         function settoN3E4ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 4";
@@ -343,6 +448,9 @@
         $("#niveltext").text("Nivel 3");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 1 del Edificio 5 de ESCOM
+ */       
     function settoN1E5ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 5";
@@ -358,6 +466,9 @@
         $("#niveltext").text("Nivel 1");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 2 del Edificio 5 de ESCOM
+ */   
     function settoN2E5ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 5";
@@ -373,6 +484,9 @@
         $("#niveltext").text("Nivel 2");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 3 del Edificio 5 de ESCOM
+ */       
     function settoN3E5ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 5";
@@ -388,6 +502,9 @@
         $("#niveltext").text("Nivel 3");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Sotano del Edificio 5 de ESCOM
+ */       
     function settoNSE5ESCOM() {
          ubicacion[1] = "ESCOM";
         ubicacion[2] = "Edificio 5";
@@ -403,6 +520,9 @@
         $("#niveltext").text("Sotano");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 1 de CIDETEC
+ */   
     function settoN1CIDETEC() {
         ubicacion[1] = "CIDETEC";
         ubicacion[2] = "Edificio 1";
@@ -417,6 +537,9 @@
         $("#niveltext").text("Nivel 1");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 2 de CIDETEC
+ */     
     function settoN2CIDETEC() {
         ubicacion[1] = "CIDETEC";
         ubicacion[2] = "Edificio 1";
@@ -431,6 +554,9 @@
         $("#niveltext").text("Nivel 2");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 3 de CIDETEC
+ */     
     function settoN3CIDETEC() {
         ubicacion[1] = "CIDETEC";
         ubicacion[2] = "Edificio 1";
@@ -445,6 +571,9 @@
         $("#niveltext").text("Nivel 3");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 0 del CIC
+ */     
       function settoN0() {
           ubicacion[1] = "CIC";
         ubicacion[2] = "Ediicio 1";
@@ -460,6 +589,9 @@
         $("#niveltext").text("Nivel 0");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 2 del CIC
+ */       
     function settoN2() {
         ubicacion[1] = "CIC";
         ubicacion[2] = "Ediicio 1";
@@ -475,6 +607,9 @@
         $("#niveltext").text("Nivel 2");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * Muestra el plano del Nivel 3 del CIC
+ */       
     function settoN3() {
         ubicacion[1] = "CIC";
         ubicacion[2] = "Ediicio 1";
@@ -490,6 +625,14 @@
         $("#niveltext").text("Nivel 3");
         $("#info").text("Selecciona en que area se colocara el nuevo Sensor");
     }
+/**
+ * 
+ * Envia la informacion de la ubicacion final
+ * del dispositivo a la pantalla de registro 
+ * de dispositivos
+ * 
+ * @param {String} a
+ */      
     function ubicacionFinal(a) {
         
         ubicacion[4] = "Norte";
@@ -506,13 +649,35 @@
         $("#siete").val(ubicacion[6]);
         $("#ocho").val(ubicacion[7]);
     };
+/**
+ * 
+ * Muestra la Informacion del plano en el recuadro
+ * del lado Izquierdo
+ * @param {String} a
+ */    
         function getinfo(a) {
         $("#infolugar").text($(a).attr("id"));
     };
+/**
+ * 
+ * Limpia la informacion del recuadro del lado
+ * izquierdo dejandolo vacio
+ * 
+ * @param {String} b
+ */      
     function limpia(b) {
         $("#infolugar").text('');
     };
 </script>
+
+<!--
+*
+*Modal de seleccion de ubicacion del Dispositivo
+*Dentro de este se encuentra todo el mapeo de los
+*niveles, edificios y planos del CIC, CIDETEC y ESCOM
+*
+-->
+
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal1-dialog2" role="document">
         <div class="modal-content">
@@ -531,6 +696,12 @@
                             <div class="col-12">
                                 <h1 id="niveltext"></h1>
                                 <hr/>
+<!--
+*
+*Botones que invocan el retroceso para seleccionar
+*otro nivel u otro edificio
+*
+-->
                                 <button id="atrasSchool" class="d-none btn-primary" onclick="backS();">Elegir otro Edificio</button>
                                 <button id="atrasLevels" class="d-none btn-primary" onclick="back();">Elegir otro nivel</button>
                                 <button id="atrasLevels2" class="d-none btn-primary" onclick="back2();">Elegir otro nivel</button>
@@ -552,6 +723,12 @@
                             <div id="datos" class="d-none" style="margin-top: 20%; border: 1px solid #040505;">
                                 <p id="infolugar" style="color: #000; font-size:20px;"></p>
                             </div>
+<!--
+*
+*Muestra los niveles o edificos de la Escuela
+*de la sesión iniciada
+*
+-->
                         <?php 
                                         if( $_SESSION['Schoolsname']=='CIC'){                                      
                                         ?>
@@ -575,57 +752,100 @@
                                         }
                         ?>
                         
-
+<!--
+*
+*Mapeo de los niveles del CIC
+*
+-->
                         <map name="levelsCic"> 
                             <area id="CICN1" shape="rect" coords="175,305,835,440" alt="Venus" nohref onclick="settoN1();return false;">
                             <area id="CICN0" shape="rect" coords="175,450,835,585" alt="Venus" nohref onclick="settoN0();return false;">
                             <area id="CICN2" shape="rect" coords="175,165,835,300" alt="Venus" nohref onclick="settoN2();return false;">
                             <area id="CICN3" shape="rect" coords="175,15,835,150" alt="Venus" nohref onclick="settoN3();return false;">
                         </map> 
+<!--
+*
+*Mapeo de los niveles del CIDETEC
+*
+-->
                         <map name="levelsCidetec"> 
                             <area id="CIDETECN1" shape="rect" coords="175,305,835,440" alt="Venus" nohref onclick="settoN1CIDETEC();return false;">
                             <area id="CIDETECN2" shape="rect" coords="175,165,835,300" alt="Venus" nohref onclick="settoN2CIDETEC();return false;">
                             <area id="CIDETECN3" shape="rect" coords="175,15,835,150" alt="Venus" nohref onclick="settoN3CIDETEC();return false;">
                         </map> 
+<!--
+*
+*Mapeo de los edificos de ESCOM
+*
+-->
                         <map name="edificiosEscom">
                             <area id="Edificio 1" shape="rect" coords="256,19,431,298" alt="Venus" nohref onclick="settoE1();return false;">
                             <area id="Edificio 2" shape="rect" coords="639,19,816,296" alt="Venus" nohref onclick="settoE2();return false;">
                             <area id="Edificio 3" shape="rect" coords="258,303,428,575" alt="Venus" nohref onclick="settoE3();return false;">
                             <area id="Edificio 4" shape="rect" coords="644,299,818,580" alt="Venus" nohref onclick="settoE4();return false;">
                             <area id="Edificio 5" shape="rect" coords="456,247,623,506" alt="Venus" nohref onclick="settoE5();return false;">
-
-                            
                         </map>
+<!--
+*
+*Mapeo de los niveles del Edificio 1 de ESCOM
+*
+-->
+
                         <map name="levelsEscomE1"> 
                             <area id="ESCOM2" shape="rect" coords="175,305,835,440" alt="Venus" nohref onclick="settoN2E1ESCOM();return false;">
                             <area id="ESCOM1" shape="rect" coords="175,450,835,585" alt="Venus" nohref onclick="settoN1E1ESCOM();return false;">
                             <area id="ESCOM3" shape="rect" coords="175,165,835,300" alt="Venus" nohref onclick="settoN3E1ESCOM();return false;">
                             <!--<area id="ESCOM4" shape="rect" coords="175,15,835,150" alt="Venus" nohref onclick="settoN4ESCOM();return false;"> -->
                         </map> 
+<!--
+*
+*Mapeo de los niveles del Edificio 2 de ESCOM
+*
+-->
                         <map name="levelsEscomE2"> 
                             <area id="ESCOM2" shape="rect" coords="175,305,835,440" alt="Venus" nohref onclick="settoN2E2ESCOM();return false;">
                             <area id="ESCOM1" shape="rect" coords="175,450,835,585" alt="Venus" nohref onclick="settoN1E2ESCOM();return false;">
                             <area id="ESCOM3" shape="rect" coords="175,165,835,300" alt="Venus" nohref onclick="settoN3E2ESCOM();return false;">
                             <!--<area id="ESCOM4" shape="rect" coords="175,15,835,150" alt="Venus" nohref onclick="settoN4ESCOM();return false;"> -->
                         </map> 
+<!--
+*
+*Mapeo de los niveles del Edificio 3 de ESCOM
+*
+-->
                         <map name="levelsEscomE3"> 
                             <area id="ESCOM2" shape="rect" coords="175,305,835,440" alt="Venus" nohref onclick="settoN2E3ESCOM();return false;">
                             <area id="ESCOM1" shape="rect" coords="175,450,835,585" alt="Venus" nohref onclick="settoN1E3ESCOM();return false;">
                             <area id="ESCOM3" shape="rect" coords="175,165,835,300" alt="Venus" nohref onclick="settoN3E3ESCOM();return false;">
                             <!--<area id="ESCOM4" shape="rect" coords="175,15,835,150" alt="Venus" nohref onclick="settoN4ESCOM();return false;"> -->
                         </map>
+<!--
+*
+*Mapeo de los niveles del Edificio 4 de ESCOM
+*
+-->
                         <map name="levelsEscomE4"> 
                             <area id="ESCOM2" shape="rect" coords="175,305,835,440" alt="Venus" nohref onclick="settoN2E4ESCOM();return false;">
                             <area id="ESCOM1" shape="rect" coords="175,450,835,585" alt="Venus" nohref onclick="settoN1E4ESCOM();return false;">
                             <area id="ESCOM3" shape="rect" coords="175,165,835,300" alt="Venus" nohref onclick="settoN3E4ESCOM();return false;">
                             <!--<area id="ESCOM4" shape="rect" coords="175,15,835,150" alt="Venus" nohref onclick="settoN4ESCOM();return false;"> -->
                         </map>
+<!--
+*
+*Mapeo de los niveles del Edificio 5 de ESCOM
+*
+-->
                         <map name="levelsEscomE5"> 
                             <area id="ESCOM1" shape="rect" coords="175,305,835,440" alt="Venus" nohref onclick="settoN1E5ESCOM();return false;">
                             <area id="ESCOMSotano" shape="rect" coords="175,450,835,585" alt="Venus" nohref onclick="settoNSE5ESCOM();return false;">
                             <area id="ESCOM2" shape="rect" coords="175,165,835,300" alt="Venus" nohref onclick="settoN2E5ESCOM();return false;">
                             <area id="ESCOM3" shape="rect" coords="175,15,835,150" alt="Venus" nohref onclick="settoN3E5ESCOM();return false;">
                         </map>
+<!--
+*
+*Mapeo del nivel 1 del CIC
+*
+-->
                         <map name="mapn1">
                             <area id="Fabrica de Software" shape="rect" coords="870,476,1028,570" alt="Fabrica de Software" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
                             <area id="SITE" shape="rect" coords="731,590,863,696" alt="SITE" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this); return false;">
@@ -662,10 +882,13 @@
                             <area id="Departamento de Viculacion Sectoral" shape="rect" coords="872,173,975,229" alt="5" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Sanitario Mujeres Norte N1" shape="rect" coords="474,484,522,553" alt="Sanitario Mujeres Norte N2" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
                             <area id="Ducto Norte N1" shape="rect" coords="527,484,544,557" alt="Ducto Norte N1" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
-                            <area id="Sanitario Hombres Norte N1" shape="rect" coords="546,484,592,556" alt="Sanitario Hombres Norte N1" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
-                            
-                            
+                            <area id="Sanitario Hombres Norte N1" shape="rect" coords="546,484,592,556" alt="Sanitario Hombres Norte N1" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">   
                         </map>
+<!--
+*
+*Mapeo del nivel 0 del CIC
+*
+-->
                         <map name="mapn0">
                             <area id="Almacen Refrigeracion" shape="rect" coords="190,505,255,535" alt="Almacen Refrigeracion" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
                             <area id="Montacargas" shape="rect" coords="148,500,170,520" alt="Montacargas" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
@@ -684,6 +907,11 @@
                             <area id="Mantenimiento" shape="rect" coords="132,260,250,350" alt="Mantenimiento" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
                             <area id="Almacen Activo Fijo" shape="rect" coords="820,55,935,150" alt="LAB Comunicaciones" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
                         </map> 
+<!--
+*
+*Mapeo del nivel 2 del CIC
+*
+-->
                         <map name="mapn2">
                             <area id="Area Secretarial Recursos Financieros" shape="rect" coords="153,75,440,202" alt="Area Secretarial Recursos Financieros" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
                             <area id="Departamento Recursos Financieros" shape="rect" coords="445,37,650,100" alt="Area Secretarial Recursos Financieros" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">
@@ -769,6 +997,11 @@
                             <area id="IDF Norte A N2" shape="rect" coords="529,580,582,593" alt="IDF Norte A N2" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Tablero Norte N2" shape="rect" coords="587,580,610,593" alt="Tablero Norte N2" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                         </map>
+<!--
+*
+*Mapeo del nivel 3 del CIC
+*
+-->
                         <map name="mapn3"> 
                             <area id="Almacen NorOriente N3" shape="poly" coords="413,511,440,493,468,493,468,531,443,531" alt="Almacen NorOriente N3" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Sanitario Mujeres Norte N3" shape="rect" coords="472,518,514,575" alt="Sanitario Mujeres Norte N3" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
@@ -851,6 +1084,11 @@
                             <area id="Aula Oriente N3" shape="rect" coords="127,366,199,412" alt="Aula Oriente N3" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Laboratorio Poniente N3" shape="rect" coords="856,306,928,353" alt="Laboratorio Poniente N3" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                         </map>
+<!--
+*
+*Mapeo del nivel 1 del CIDETEC
+*
+-->
                         <map name="mapn1cidetec">
                             <area id="Direccion" shape="poly" coords="96,38,259,38,259,136,212,136,212,111,96,111" alt="45" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Sanitario Direccion" shape="rect" coords="96,117,204,148" alt="Sanitario Direccion" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
@@ -883,6 +1121,11 @@
                             <area id="Bodega Escalera" shape="rect" coords="895,603,983,661" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Tableros Escalera N1" shape="rect" coords="989,591,1009,663" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                         </map>
+<!--
+*
+*Mapeo del nivel 2 del CIDETEC
+*
+-->
                         <map name="mapn2cidetec">
                             <area id="Cubiculo 23" shape="rect" coords="48,24,153,94" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Cubiculo 22" shape="rect" coords="48,99,153,161" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
@@ -916,6 +1159,11 @@
                             <area id="Profesores Invitados y Tesistas" shape="rect" coords="722,200,981,354" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Laboratorio de Redes" shape="rect" coords="814,24,981,195" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                         </map>
+<!--
+*
+*Mapeo del nivel 3 del CIDETEC
+*
+-->
                         <map name="mapn3cidetec">
                             <area id="Aula 6" shape="rect" coords="75,35,182,197" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Centro de Computo 3" shape="rect" coords="189,35,293,197" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
@@ -938,7 +1186,11 @@
                             <area id="Centro de Computo 4" shape="rect" coords="85,359,295,434" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;"> 
                             <area id="Sala MIGUEL LANDIG BOS" shape="rect" coords="85,439,295,677" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                         </map>
-
+<!--
+*
+*Mapeo del nivel 1 del Edificio 1 de ESCOM
+*
+-->
                         <map name="mape1n1escom">
                             <area id="Servicios Administrativos N1" shape="rect" coords="6,279,86,414" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Subdireccion Administrativa" shape="rect" coords="6,419,90,510" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -967,6 +1219,11 @@
                             <area id="Sanitario Hombres E1 N1" shape="rect" coords="947,396,996,507" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E1 N1" shape="rect" coords="1007,425,1027,510" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                         </map>
+<!--
+*
+*Mapeo del nivel 2 del Edificio 1 de ESCOM
+*
+-->
                         <map name="mape1n2escom">
                             <area id="Unidad de Informatica" shape="rect" coords="6,364,79,562" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="SITE" shape="rect" coords="6,568,82,635" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -985,6 +1242,11 @@
                             <area id="Sanitario Hombres E1 N2" shape="rect" coords="903,497,954,632" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E1 N2" shape="rect" coords="960,532,981,632" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                           
                         </map>
+<!--
+*
+*Mapeo del nivel 3 del Edificio 1 de ESCOM
+*
+-->
                         <map name="mape1n3escom">
                             <area id="Recepcion" shape="rect" coords="2,298,75,380" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Subdireccion de Servicios Educativos de Integracion Social" shape="rect" coords="2,386,75,557" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1001,6 +1263,11 @@
                             <area id="Sanitario Hombres E1 N3" shape="rect" coords="896,427,948,552" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E1 N3" shape="rect" coords="955,458,973,554" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                           
                         </map>
+<!--
+*
+*Mapeo del nivel 1 del Edificio 2 de ESCOM
+*
+-->
                         <map name="mape2n1escom">
                             <area id="SITE E2" shape="rect" coords="38,99,109,201" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Jefatura Gestion Escolar" shape="rect" coords="38,207,109,281" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1018,6 +1285,11 @@
                             <area id="Sanitario Hombres E2 N1" shape="rect" coords="898,104,947,219" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E2 N1" shape="rect" coords="954,104,975,192" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                           
                         </map> 
+<!--
+*
+*Mapeo del nivel 2 del Edificio 2 de ESCOM
+*
+-->
                         <map name="mape2n2escom">
                             <area id="Jefatura de Enlace y Gestion Tecnica" shape="rect" coords="19,181,93,260" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Coordinacion de Enlace y Gestion Tecnica" shape="rect" coords="19,264,93,433" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1037,6 +1309,11 @@
                             <area id="Sanitario Hombres E2 N2" shape="rect" coords="899,185,950,321" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E2 N2" shape="rect" coords="957,186,978,282" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                                                       
                         </map>
+<!--
+*
+*Mapeo del nivel 3 del Edificio 2 de ESCOM
+*
+-->
                         <map name="mape2n3escom">
                             <area id="Jefatura de Enlace y Gestion Tecnica" shape="rect" coords="19,181,93,260" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Coordinacion de Enlace y Gestion Tecnica" shape="rect" coords="19,264,93,433" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1056,6 +1333,11 @@
                             <area id="Sanitario Hombres E2 N3" shape="rect" coords="899,185,950,321" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E2 N3" shape="rect" coords="957,186,978,282" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                                                                                
                         </map>
+<!--
+*
+*Mapeo del nivel 1 del Edificio 3 de ESCOM
+*
+-->
                         <map name="mape3n1escom">
                             <area id="Area Secretarial Unidad de Tecnologia Educativa y Campus Virtual" shape="rect" coords="44,285,117,472" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Oficina de Unidad de Tecnologia y Campus Virtual" shape="poly" coords="44,477,117,477,117,505,82,505,82,547,44,547" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1074,6 +1356,11 @@
                             <area id="Sanitario Hombres E3 N1" shape="rect" coords="940,405,990,544" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E3 N1" shape="rect" coords="997,450,1019,544" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                                                                                
                         </map>
+<!--
+*
+*Mapeo del nivel 2 del Edificio 3 de ESCOM
+*
+-->
                         <map name="mape3n2escom">
                             <area id="Area Secretarial de Direccion" shape="rect" coords="37,312,113,396" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Direccion ESCOM" shape="rect" coords="37,400,113,496" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1091,6 +1378,11 @@
                             <area id="Sanitario Hombres E3 N2" shape="rect" coords="937,432,989,570" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E3 N2" shape="rect" coords="993,478,1019,579" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                                                                                
                         </map>
+<!--
+*
+*Mapeo del nivel 3 del Edificio 3 de ESCOM
+*
+-->
                         <map name="mape3n3escom">
                             <area id="Departamento de Extension y Apoyos Educativos" shape="rect" coords="42,248,117,445" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Jefatura de Extension y Apoyos Educativos" shape="rect" coords="45,449,119,511" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1106,6 +1398,11 @@
                             <area id="Sanitario Hombres E3 N3" shape="rect" coords="941,369,993,509" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E3 N3" shape="rect" coords="996,413,1021,514" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                                                                                
                         </map>
+<!--
+*
+*Mapeo del nivel 1 del Edificio 4 de ESCOM
+*
+-->
                         <map name="mape4n1escom">
                             <area id="SITE de Estudios de Posgrado e Investigacion" shape="rect" coords="23,69,61,147" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Jefatura de Posgrado" shape="rect" coords="65,69,103,147" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1126,6 +1423,11 @@
                             <area id="Sanitario Hombres E4 N1" shape="rect" coords="941,77,994,242" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E4 N1" shape="rect" coords="996,69,1021,191" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                                                                                
                         </map> 
+<!--
+*
+*Mapeo del nivel 2 del Edificio 4 de ESCOM
+*
+-->
                         <map name="mape4n2escom">
                             <area id="SITE Sala de Profesores" shape="rect" coords="43,93,81,168" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Cubiculo Norte Sala de Profesores" shape="rect" coords="85,93,118,168" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1142,6 +1444,11 @@
                             <area id="Sanitario Hombres E4 N2" shape="rect" coords="940,90,992,270" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E4 N2" shape="rect" coords="996,90,1021,221" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                                                                                
                         </map>
+<!--
+*
+*Mapeo del nivel 3 del Edificio 4 de ESCOM
+*
+-->
                         <map name="mape4n3escom">
                             <area id="SITE Sala de Profesore Ciencias Basicas" shape="rect" coords="17,130,59,220" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Cubiculo Sala de Profesores Ciencias Basicas" shape="rect" coords="62,130,98,220" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1157,6 +1464,11 @@
                             <area id="Sanitario Hombres E4 N3" shape="rect" coords="970,138,1026,325" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Septico Hombres E4 N3" shape="rect" coords="1031,138,1060,267" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                                                                                
                         </map>
+<!--
+*
+*Mapeo del nivel 1 del Edificio 5 de ESCOM
+*
+-->
                         <map name="mape5n1escom">
                             <area id="Actividades Culturales y Deportivas" shape="rect" coords="66,152,214,306" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Subestacion Electrica" shape="rect" coords="66,425,214,581" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1180,6 +1492,11 @@
                             <area id="Cabina de Audio Biblioteca" shape="rect" coords="742,363,775,413" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Biblioteca" shape="rect" coords="780,203,992,530" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                         </map>
+<!--
+*
+*Mapeo del nivel 2 del Edificio 5 de ESCOM
+*
+-->
                         <map name="mape5n2escom">
                             <area id="Subdireccion Academica" shape="rect" coords="90,113,163,170" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Area Secretarial Subdireccion Academica" shape="poly" coords="91,173,167,173,167,115,224,115,224,267,91,267" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1207,6 +1524,11 @@
                             <area id="Cubiculo 20" shape="rect" coords="958,394,1004,446" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                              
                             <area id="Cubiculo 21" shape="rect" coords="958,450,1004,505" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                              
                         </map> 
+<!--
+*
+*Mapeo del nivel 3 del Edificio 5 de ESCOM
+*
+-->
                         <map name="mape5n3escom">
                             <area id="Tutorias" shape="rect" coords="78,95,140,154" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
                             <area id="Jefatura de Evaluacion y Seguimiento Academico" shape="rect" coords="143,100,220,153" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">  
@@ -1255,6 +1577,11 @@
                             <area id="Cubiculo 36" shape="rect" coords="969,400,1023,435" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                              
                             <area id="Cubiculo 35" shape="rect" coords="969,439,1023,480" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                              
                         </map>
+<!--
+*
+*Mapeo del Sotano del Edificio 5 de ESCOM
+*
+-->
                         <map name="mape5nsescom">
                             <area id="Departamento de Mantenimiento" shape="rect" coords="86,107,211,269" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                              
                             <area id="Planta de Emergencia" shape="rect" coords="84,383,218,551" alt="47" noherf onmouseout="limpia(this);return false;" onmouseover="getinfo(this);return false;" onclick="ubicacionFinal(this);return false;">                              
