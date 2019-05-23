@@ -1,6 +1,18 @@
+<!--
+ *   Proyecto FINBA
+ *   Nombre: vwsummarydevices.php
+ *   Autor: Isidro Delgado Murillo
+ *   Fecha: 23-05-2019
+ *   Versión: 1.0
+ *   Descripcion: Vista de la Administracion de los
+ *   dispositivos
+ *   por Fabrica de Software, CIC-IPN
+ * 
+ -->
 
-
-
+<!--
+*Tabla donde se muestran los dispositivos ya registrados
+-->
 <div>
                 <center><h2>Administracion de Dispositivos</h2></center>   
                 <center> <table class="table">

@@ -1,9 +1,14 @@
 <script>
 /**
- * 
- * Scripts que manejan todo el funcionamiento
+ *   Proyecto FINBA
+ *   Nombre: vwplanos.php
+ *   Autor: Isidro Delgado Murillo
+ *   Fecha: 23-05-2019
+ *   Versión: 1.0
+ *   Descripcion: Scripts que manejan todo el funcionamiento
  * dentro del modal de seleccion de ubicacion
  * de los dispositivos.
+ * por Fabrica de Software, CIC-IPN
  * 
  */
 /**

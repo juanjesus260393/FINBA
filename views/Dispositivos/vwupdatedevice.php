@@ -1,4 +1,15 @@
 <?php
+/**
+ *   Proyecto FINBA
+ *   Nombre: vwupdatedevice.php
+ *   Autor: Isidro Delgado Murillo
+ *   Fecha: 23-05-2019
+ *   Versión: 1.0
+ *   Descripcion: Vista(modal) de Actualizacion de la 
+ *   informacion de los dispositvos
+ *   por Fabrica de Software, CIC-IPN
+ * 
+ */
 session_start();
 require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlsecurity.php");
 require_once '../../models/mdladddvc.php';
