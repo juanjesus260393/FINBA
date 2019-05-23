@@ -98,6 +98,9 @@ class mdlsolarpanel {
                 panelHelper::cantInsert();
             } else {
                 $numberbuild = mdlsolarpanel::getRowp($number_investorp);
+                if (empty($number_build_solar)) {
+                    $number_build_solar = '1';
+                }
                 if ($numberbuild == $number_build_solar) {
                     $newimage = mdlsolarpanel::uploadPanelimage($id_image_panel);
                     $id_nomenclature = mdlsolarpanel::insertNomeclaturetable($school_investor, $location_investor, $number_build_solar);

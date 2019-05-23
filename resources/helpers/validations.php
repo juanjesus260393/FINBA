@@ -156,7 +156,7 @@ class inventoryhelper {
     public static function quantityDiferrentcero() {
         echo '<script language = javascript>
 	alert("La cantidad tiene que ser cero para poder eliminarse")
-           self.location = "../views/vwmenuprincipal.php"
+           self.location = "../controllers/crtinventory.php"
 	</script>';
     }
 

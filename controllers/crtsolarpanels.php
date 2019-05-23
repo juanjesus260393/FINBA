@@ -105,7 +105,12 @@ if ($disabled && !empty($number_investoru)) {
 //Insetar panel
 if ($insert_panel && !empty($panelname) && !empty($number_panel)) {
     mdlsolarpanel::insertPanel($panelname, $number_panel, $number_investorp, $row, $id_image_panel, $school_investor, $location_investorp, $number_build_solarp);
-   
+    $panels = new mdlsolarpanel;
+    $listofsolarpanels = $panels->getSolarpanels();
+    $listofinvestors = $panels->getInvestor();
+    echo '<script language = javascript>
+	self.location = "../controllers/crtsolarpanels.php"
+	</script>';
 }
 
 //se llama la funcion insetar investor
