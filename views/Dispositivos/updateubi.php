@@ -31,6 +31,7 @@
         $("#niveltext").text("Edificio 1");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+    
         function back4() {
         $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#atrasLevels4").addClass("d-none");
