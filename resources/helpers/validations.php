@@ -308,6 +308,20 @@ class panelHelper {
 	self.location = "../controllers/crtsolarpanels.php"
 	</script>';
     }
+    
+          /*
+     *  cantInsertpanel
+     *  funcion que envia una alerta para que no se pueda agregar un investor
+     */
+
+    public static function cantInsertlocation() {
+        echo '<script language = javascript>
+	alert("La ubicacion del panel no es igual a la del inversor")
+           	</script>';
+        echo '<script language = javascript>
+	self.location = "../controllers/crtsolarpanels.php"
+	</script>';
+    }
 
     /*
      *  canDelete
