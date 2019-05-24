@@ -41,13 +41,10 @@ $macarray= explode(":", $infodvc[0][0]);
             $('#updatemodal').on('hidden.bs.modal', function () {
                 document.location.href = '../../controllers/crtadddvc.php';
             });
-            
-            
-            
+   
         });
 
     </script>
-
     <body>
         
 <div class="modal" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >

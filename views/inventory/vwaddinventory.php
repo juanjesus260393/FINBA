@@ -31,59 +31,27 @@ mdlsecurity::validateToken();
                         <label class="col-3" style="background-color:#f1f1f1;">Imagen:</label>
                         <input class="col-8" type="file" name="img_inventory"  id="img_inventory" accept=".jpg" required="true">
                     </div>
-                    <div hidden="true">
-                        <!-- Escuela-->
-                        <label class="col-3"style="background-color:#f1f1f1;">Edificio(escuela):</label>
-                        <input class="col-8" type="text" id="school"  name="school"  value= "<?php echo $_SESSION['Schoolsname'];
-?>" required = "true">
-                    </div> 
                     <div>
-                        <!-- N° de edificio en caso de que la escuela sea escom-->
-                        <?php
-                        if ($_SESSION['Schoolsname'] == 'ESCOM') {
-                            include('../views/inventory/vwnumerodeedificion.php');
-                        }
-                        ?>
+                        <button type="button" class='btn btn-success'  data-toggle='modal' id='idcup' data-target='#exampleModal'>Ubicación</button>
+                        <br><br>
                     </div>
                     <div>
-                        <!-- Nivel -->
+                        <label class="col-3"style="background-color:#f1f1f1;">Escuela:</label>
+                        <input class="col-8" type="text" id="school" name="school" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+                        <label class="col-3"style="background-color:#f1f1f1;">N° de Edificio:</label>
+                        <input class="col-8" type="text" id="building_number" name="building_number" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
                         <label class="col-3"style="background-color:#f1f1f1;">Nivel:</label>
-                        <select class="col-8" name="level" id="level" required="true">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                    <div>
-                        <!-- Orientacion -->
+                        <input class="col-8" type="text" id="level" name="level"readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
                         <label class="col-3"style="background-color:#f1f1f1;">Orientacion:</label>
-                        <select class="col-8" name="orientation" id="orientation" required="true">
-                            <option>NORTE</option>
-                            <option>SUR</option>
-                            <option>ESTE</option>
-                            <option>OESTE</option>
-                        </select>
-                    </div>
-                    <div>
-                        <!-- Locacion -->
-                        <label class="col-3"style="background-color:#f1f1f1;">Locacion (interior/exterior):</label>
-                        <select class="col-8" name="location" id="location" required="true">
-                            <option>INTERIOR</option>
-                            <option>EXTERIOR</option>
-                        </select>
-                    </div>
-                    <div>
-                        <!-- Referencia -->
+                        <input class="col-8" type="text" id="orientation" name="orientation" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+                        <label class="col-3"style="background-color:#f1f1f1;">Locacion I/E:</label>
+                        <input class="col-8" type="text" id="location" name="location" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
                         <label class="col-3"style="background-color:#f1f1f1;">Referencia:</label>
-                        <textarea class="col-8" name="reference" id="reference" rows="5" minlength="1" maxlength="499" required="true"></textarea>
-                    </div>
-                    <div>
-                        <!-- Referencia -->
-                        <label class="col-3"style="background-color:#f1f1f1;">N° de salon o ubicacion:</label>
-                        <input class="col-8" type="text" id="registry_number"  name="registry_number" onkeypress=" return soloNumeros(event)" maxlength="14" required = "true">
-                    </div>
+                        <input class="col-8" type="text" id="reference" name="reference" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+                        <label class="col-3"style="background-color:#f1f1f1;">N° de Ubicacion:</label>
+                        <input class="col-8" type="text" id="registry_number" name="registry_number" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+
+                    </div>    
                 </center>
             </div>
             <center><input type="submit" class="btn btn-primary"
@@ -93,3 +61,6 @@ mdlsecurity::validateToken();
         </form>
     </div>       
 </html>
+<?php
+require('../views/inventory/vwlocation.php');
+include('../views/template2.php');

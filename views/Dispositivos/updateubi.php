@@ -34,7 +34,7 @@
  * Regresa a la seleccion de niveles del CIC
 */
     function back() {
-        $("#imgplano").attr("src", "../resources/img/cic2.jpg");
+        $("#imgplano").attr("src", "../../resources/img/cic2.jpg");
         $("#atrasLevels").addClass("d-none");
         $("#datos").addClass("d-none");   
         $("#imgplano").attr("usemap", "#levelsCic");
@@ -47,7 +47,7 @@
  * Regresa a la seleccion de niveles del CIDETEC
  */
     function back2() {
-        $("#imgplano").attr("src", "../resources/img/cidetec.jpg");
+        $("#imgplano").attr("src", "../../resources/img/cidetec.jpg");
         $("#atrasLevels2").addClass("d-none");
         $("#datos").addClass("d-none"); 
         $("#imgplano").attr("usemap", "#levelsCidetec");
@@ -60,7 +60,7 @@
  * Regresa a la seleccion de niveles del Edificio 1 de ESCOM
  */    
     function back3() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#atrasLevels3").addClass("d-none");
         $("#datos").addClass("d-none"); 
         $("#atrasSchool").removeClass("d-none");
@@ -70,11 +70,13 @@
         $("#niveltext").text("Edificio 1");
         $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
     }
+
 /**
  * Regresa a la seleccion de niveles del Edificio 2 de ESCOM
  */     
+
         function back4() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#atrasLevels4").addClass("d-none");
         $("#datos").addClass("d-none"); 
         $("#atrasSchool").removeClass("d-none");
@@ -88,7 +90,7 @@
  * Regresa a la seleccion de niveles del Edificio 3 de ESCOM
  */     
    function back5() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#atrasLevels5").addClass("d-none");
         $("#datos").addClass("d-none"); 
         $("#atrasSchool").removeClass("d-none");
@@ -102,7 +104,7 @@
  * Regresa a la seleccion de niveles del Edificio 4 de ESCOM
  */     
     function back6() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#atrasLevels6").addClass("d-none");
         $("#datos").addClass("d-none"); 
         $("#atrasSchool").removeClass("d-none");
@@ -116,7 +118,7 @@
  * Regresa a la seleccion de niveles del Edificio 5 de ESCOM
  */     
     function back7() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom2.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom2.jpg");
         $("#atrasLevels7").addClass("d-none");
         $("#datos").addClass("d-none"); 
         $("#atrasSchool").removeClass("d-none");
@@ -130,7 +132,7 @@
  * Regresa a la seleccion de Edificios de ESCOM
  */     
    function backS() {
-        $("#imgplano").attr("src", "../resources/img/escom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/escom.jpg");
         $("#atrasSchool").addClass("d-none");
         $("#imgplano").attr("usemap", "#edificiosEscom");
         $("#imgplano").attr("width", "850");
@@ -146,7 +148,7 @@
         ubicacion[4] = "Norte";
         ubicacion[5] = "Interior";
 
-        $("#imgplano").attr("src", "../resources/img/cic2.jpg");
+        $("#imgplano").attr("src", "../../resources/img/cic2.jpg");
         $("#imgplano").attr("width", "850");
         $("#imgplano").attr("height", "600");
         $("#imgplano").attr("usemap", "#levels");
@@ -158,7 +160,7 @@
  * Muestra los niveles del Edificio 1 de ESCOM
  */     
     function settoE1() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#imgplano").attr("width", "850");
         $("#imgplano").attr("height", "600");
         $("#imgplano").attr("usemap", "#levelsEscomE1");
@@ -171,7 +173,7 @@
  * Muestra los niveles del Edificio 2 de ESCOM
  */        
     function settoE2() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#imgplano").attr("width", "850");
         $("#imgplano").attr("height", "600");
         $("#imgplano").attr("usemap", "#levelsEscomE2");
@@ -184,7 +186,7 @@
  * Muestra los niveles del Edificio 3 de ESCOM
  */        
     function settoE3() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#imgplano").attr("width", "850");
         $("#imgplano").attr("height", "600");
         $("#imgplano").attr("usemap", "#levelsEscomE3");
@@ -197,7 +199,7 @@
  * Muestra los niveles del Edificio 4 de ESCOM
  */        
     function settoE4() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom.jpg");
         $("#imgplano").attr("width", "850");
         $("#imgplano").attr("height", "600");
         $("#imgplano").attr("usemap", "#levelsEscomE4");
@@ -210,7 +212,7 @@
  * Muestra los niveles del Edificio 5 de ESCOM
  */        
     function settoE5() {
-        $("#imgplano").attr("src", "../resources/img/lvlsescom2.jpg");
+        $("#imgplano").attr("src", "../../resources/img/lvlsescom2.jpg");
         $("#imgplano").attr("width", "850");
         $("#imgplano").attr("height", "600");
         $("#imgplano").attr("usemap", "#levelsEscomE5");
@@ -227,7 +229,7 @@
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 1";
 
-        $("#imgplano").attr("src", "../resources/img/cicN1-nombres.png");
+        $("#imgplano").attr("src", "../../resources/img/cicN1-nombres.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mapn1");
@@ -245,7 +247,7 @@
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 1";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E1-N1.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E1-N1.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape1n1escom");
@@ -263,7 +265,7 @@
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 2";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E1-N2.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E1-N2.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape1n2escom");
@@ -281,7 +283,7 @@
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 3";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E1-N3.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E1-N3.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape1n3escom");
@@ -299,7 +301,7 @@
         ubicacion[2] = "Edificio 2";
         ubicacion[3] = "Nivel 1";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E2-N1.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E2-N1.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape2n1escom");
@@ -317,7 +319,7 @@
         ubicacion[2] = "Edificio 2";
         ubicacion[3] = "Nivel 2";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E2-N2.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E2-N2.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape2n2escom");
@@ -335,7 +337,7 @@
         ubicacion[2] = "Edificio 2";
         ubicacion[3] = "Nivel 3";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E2-N3.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E2-N3.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape2n3escom");
@@ -353,7 +355,7 @@
         ubicacion[2] = "Edificio 3";
         ubicacion[3] = "Nivel 1";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E3-N1.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E3-N1.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape3n1escom");
@@ -371,7 +373,7 @@
         ubicacion[2] = "Edificio 3";
         ubicacion[3] = "Nivel 2";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E3-N2.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E3-N2.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape3n2escom");
@@ -389,7 +391,7 @@
         ubicacion[2] = "Edificio 3";
         ubicacion[3] = "Nivel 3";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E3-N3.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E3-N3.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape3n3escom");
@@ -407,7 +409,7 @@
         ubicacion[2] = "Edificio 4";
         ubicacion[3] = "Nivel 1";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E4-N1.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E4-N1.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape4n1escom");
@@ -425,7 +427,7 @@
         ubicacion[2] = "Edificio 4";
         ubicacion[3] = "Nivel 2";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E4-N2.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E4-N2.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape4n2escom");
@@ -443,7 +445,7 @@
         ubicacion[2] = "Edificio 4";
         ubicacion[3] = "Nivel 3";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E4-N3.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E4-N3.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape4n3escom");
@@ -461,7 +463,7 @@
         ubicacion[2] = "Edificio 5";
         ubicacion[3] = "Nivel 1";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E5-N1.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E5-N1.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape5n1escom");
@@ -479,7 +481,7 @@
         ubicacion[2] = "Edificio 5";
         ubicacion[3] = "Nivel 2";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E5-N2.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E5-N2.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape5n2escom");
@@ -497,7 +499,7 @@
         ubicacion[2] = "Edificio 5";
         ubicacion[3] = "Nivel 3";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E5-N3.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E5-N3.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape5n3escom");
@@ -515,7 +517,7 @@
         ubicacion[2] = "Edificio 5";
         ubicacion[3] = "Sotano";
 
-        $("#imgplano").attr("src", "../resources/img/ESCOM-E5-sotano.png");
+        $("#imgplano").attr("src", "../../resources/img/ESCOM-E5-sotano.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mape5nsescom");
@@ -533,7 +535,7 @@
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 1";
 
-        $("#imgplano").attr("src", "../resources/img/CIDETEC-N1.png");
+        $("#imgplano").attr("src", "../../resources/img/CIDETEC-N1.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mapn1cidetec");
@@ -550,7 +552,7 @@
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 2";
 
-        $("#imgplano").attr("src", "../resources/img/CIDETEC-N2.png");
+        $("#imgplano").attr("src", "../../resources/img/CIDETEC-N2.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mapn2cidetec");
@@ -567,7 +569,7 @@
         ubicacion[2] = "Edificio 1";
         ubicacion[3] = "Nivel 3";
 
-        $("#imgplano").attr("src", "../resources/img/CIDETEC-N3.png");
+        $("#imgplano").attr("src", "../../resources/img/CIDETEC-N3.png");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mapn3cidetec");
@@ -584,7 +586,7 @@
         ubicacion[2] = "Ediicio 1";
         ubicacion[3] = "Nivel 0";
 
-        $("#imgplano").attr("src", "../resources/img/CIC-N0.jpg");
+        $("#imgplano").attr("src", "../../resources/img/CIC-N0.jpg");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mapn0");
@@ -602,7 +604,7 @@
         ubicacion[2] = "Ediicio 1";
         ubicacion[3] = "Nivel 2";
 
-        $("#imgplano").attr("src", "../resources/img/CIC-N2.jpg");
+        $("#imgplano").attr("src", "../../resources/img/CIC-N2.jpg");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mapn2");
@@ -620,7 +622,7 @@
         ubicacion[2] = "Ediicio 1";
         ubicacion[3] = "Nivel 3";
 
-        $("#imgplano").attr("src", "../resources/img/CIC-N3.jpg");
+        $("#imgplano").attr("src", "../../resources/img/CIC-N3.jpg");
         $("#imgplano").attr("width", "1080");
         $("#imgplano").attr("height", "720");
         $("#imgplano").attr("usemap", "#mapn3");

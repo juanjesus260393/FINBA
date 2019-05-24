@@ -71,10 +71,10 @@ class mdlinventory {
      *  a dicha informacion.
      */
 
-    public static function deleteinventory($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $status, $cantidad,$image) {
+    public static function deleteinventory($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $status, $cantidad, $image) {
         $candelete = inventoryhelper::validationDeleteinventory($status, $cantidad);
         if ($candelete) {
-            mdlinventory::deleteInventorytable($id_inventorydelete, $id_spendersdelete, $id_nomenclature,$image );
+            mdlinventory::deleteInventorytable($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $image);
         } else {
             inventoryhelper::cantDelete();
         }
@@ -85,7 +85,7 @@ class mdlinventory {
      *  Funcion encargada de eliminar los elementos del inventario esta funcion se manda a llamar en la funcion deleteinventory
      */
 
-    public static function deleteInventorytable($id_inventorydelete, $id_spendersdelete, $id_nomenclature,$image) {
+    public static function deleteInventorytable($id_inventorydelete, $id_spendersdelete, $id_nomenclature, $image) {
         $con = mdlconection::connect();
         mdlinventory::deleteImageinventory($image);
         $deleteenergyspenders = "Delete from energy_spenders where id_spenders = '" . $id_spendersdelete . "'";
@@ -101,18 +101,19 @@ class mdlinventory {
             die('Error: ' . mysqli_error($con));
         }
     }
-    
-     /*
+
+    /*
      *  deleteImageinventory
      *  Funcion que elimina la imagen vinculada al inventario
      */
-    
-public static function deleteImageinventory($image) {
+
+    public static function deleteImageinventory($image) {
         if (!empty($image)) {
             $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/img/inventario/";
             unlink($ruta . $image);
         }
     }
+
     /*
      *  insertinventorytable
      *  Funcion que inserta en las diferentes tablas relacionadas al inventario la informacion del registro del inventario

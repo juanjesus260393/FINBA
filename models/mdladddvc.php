@@ -117,11 +117,11 @@ class mdladddvc {
             $Nom6 = filter_input(INPUT_POST, 'siete');
             $Nom7 = filter_input(INPUT_POST, 'ocho');
             echo $queryinsertnomen = "INSERT INTO nomenclature (id_nomenclature, school, building_number, level, orientation, location, reference, registry_number)"
-            . " VALUES (" . $y . ", '" . $Nom1 . "', '" . $Nom2 . "', '" . $Nom3 . "', '" . $Nom4 . "', '" . $Nom5 . "', '" . $Nom6 . "', " . $Nom7 . ")";
+            . " VALUES (" . $y . ", '" . $Nom1 . "', '" . $Nom2 . "', '" . $Nom3 . "', '" . $Nom4 . "', '" . $Nom5 . "', '" . $Nom6 . "', " . $Nom7 . ");";
             $queryRes = $dbhNom->query($queryinsertnomen);
             if ($queryRes) {
                 $this->insertDevice($y);
-                $queryRes->close();
+                
             }$dbhNom->close();
         }
     }
