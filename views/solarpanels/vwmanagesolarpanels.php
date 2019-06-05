@@ -3,7 +3,6 @@ include('../views/template1.php');
 ?>
 <div class="container">
 
-
     <div id="content">
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
             <li class="active">
@@ -32,8 +31,11 @@ include('../views/template1.php');
             <p>orange orange orange orange orange</p>
         </div>
         <div class="tab-pane" id="balance">
-            <h1>Yellow</h1>
-            <p>yellow yellow yellow yellow yellow</p>
+            <?php
+            if($_SESSION['Schoolsname'] == "CIC" || $_SESSION['Schoolsname'] == "ESCOM" || $_SESSION['Schoolsname'] == "ESCOM" ){
+               include('../views/solarpanels/graph/vwgeneralgraph.php'); 
+            }
+            ?>
         </div>
         <div class="tab-pane" id="administracion">
             <?php

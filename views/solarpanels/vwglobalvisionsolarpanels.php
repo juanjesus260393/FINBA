@@ -40,7 +40,7 @@ mdlsecurity::validateToken();
                             <h2>Rendimiento</h2>
                         </div>
                         <div class="content">
-                            <?php include('../views/solarpanels/vwcarouselpanelsrendimiento.php'); ?>
+                            <?php include('../views/solarpanels/slider/vwcarouselpanelsrendimiento.php'); ?>
                         </div>
                     </a>
                 </span>
@@ -52,7 +52,7 @@ mdlsecurity::validateToken();
                             <h2>Ahorro total de Co2</h2>
                         </div>
                         <div class="content">
-                            <?php include('../views/solarpanels/vwcarruselahorroco2.php'); ?>
+                            <?php include('../views/solarpanels/slider/vwcarruselahorroco2.php'); ?>
                         </div>
                     </a>
                 </span>

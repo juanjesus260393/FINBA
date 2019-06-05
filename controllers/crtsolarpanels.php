@@ -69,6 +69,14 @@ $deletei = filter_input(INPUT_GET, 'deletei');
 $id_solar_panelu = filter_input(INPUT_GET, 'id_solar_panelu');
 $disabledu = filter_input(INPUT_GET, 'disabledu');
 
+//Variable para obtener el nombre del investor
+$name_investore = filter_input(INPUT_POST, 'nameinvestorhiden');
+if(!empty($name_investore)){
+    $panels = new mdlsolarpanel;
+    $dateinvestorgraph = $panels->getDatagraphinvestor($name_investore);
+    
+}
+
 //Se llama al metodo eliminar investor
 if ($deletei && !empty($number_investore) && !empty($id_sola_nomenclature)) {
     mdlsolarpanel::deleteInvestor($number_investore, $id_sola_nomenclature, $statusi, $imagei);

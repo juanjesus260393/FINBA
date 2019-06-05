@@ -22,5 +22,15 @@ class mdlconection {
         $conexion = mysqli_connect("localhost", "root", "P4SSW0RD", "dbfinba");
         return $conexion;
     }
+    
+       /*
+     *  connect
+     *  funcion que establece la coneccion con la base de datos en base a las credenciales proporcionadas.
+     */
+
+    public static function connectGraph() {
+        $conexion = mysqli_connect("localhost", "root", "P4SSW0RD", "graficas");
+        return $conexion;
+    }
 
 }

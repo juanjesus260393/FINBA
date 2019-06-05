@@ -22,6 +22,7 @@ class mdlsolarpanel {
 //Variables necesarias para la obtencion de la lista de los paneles registrados
     private $panels;
     private $investor;
+    private $dateinvestorgraph;
     private $dbh;
 
     public function __construct() {
@@ -64,6 +65,25 @@ class mdlsolarpanel {
             }
         }
         return $this->investor;
+    }
+
+    /*
+     *  getDatagraphinvestor
+     *  Funcion que se encarga de obtener los invesor registrados por cada escuela
+     */
+
+    public function getDatagraphinvestor($name_investore) {
+        session_start();
+        $getinvestor = "SELECT * from dbfinba.investor i inner join dbfinba.investor_mesure m
+        on i.number_investor = m.number_investor where i.name_investor =  '" . $name_investore . "'";
+        if (empty($this->dbh->query($getinvestor))) {
+            $this->$dateinvestorgraph[] = NULL;
+        } else {
+            foreach ($this->dbh->query($getinvestor) as $investorarray) {
+                $this->$dateinvestorgraph[] = $investorarray;
+            }
+        }
+        return $this->$dateinvestorgraph;
     }
 
     /*
