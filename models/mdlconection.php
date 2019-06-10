@@ -22,5 +22,10 @@ class mdlconection {
         $conexion = mysqli_connect("localhost", "root", "P4SSW0RD", "dbfinba");
         return $conexion;
     }
+    
+    public static function connectSeeds() {
+        $conexion = mysqli_connect("148.204.63.238", "root", "BD.S33d5", "ipn");
+        return $conexion;
+    }
 
 }

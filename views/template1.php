@@ -97,10 +97,26 @@
                                 STM
                             </a> </li>
                             <li>
-                                <a href="../views/Grafica.php">
+                                <a href="#graficas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <i class="fas fa-chart-bar"></i>
                                 Monitoreo
-                            </a> </li>
+                            </a> 
+                                <ul class="collapse list-unstyled" id="graficas">
+                                <li>
+                                   <a href="../controllers/crtmonitoreo.php">
+                                <i class="fas fa-chart-bar"></i>
+                                Tablero General
+                            </a> 
+                                </li>
+                                <li>
+                                         <a href="">
+                                <i class="fas fa-chart-bar"></i>
+                                UPS1
+                            </a> 
+                                </li>
+                            </ul>
+                            
+                            </li>
                         
                         <li>
                             <a href="#" >
