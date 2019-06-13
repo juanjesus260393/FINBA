@@ -14,12 +14,20 @@ include('../views/template1.php');
     <div id="my-tab-content" class="tab-content">
         <div class="tab-pane active" id="inventory">
             <?php
-            include('../views/inventory/vwincludeinventory.php');
+            if ($_SESSION['type_user'] == 'administrator') {
+                include('../views/inventory/vwincludeinventoryadministrator.php');
+            } else {
+                include('../views/inventory/vwincludeinventory.php');
+            }
             ?>
         </div>
         <div class="tab-pane" id="register">
             <?php
-            include('../views/inventory/vwaddinventory.php');
+            if ($_SESSION['type_user'] == 'administrator') {
+                
+            } else {
+                include('../views/inventory/vwaddinventory.php');
+            }
             ?>
         </div>
     </div>

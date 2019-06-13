@@ -166,7 +166,9 @@ if ($insert && !empty($insert)) {
 else {
     $panels = new mdlsolarpanel;
     $listofsolarpanels = $panels->getSolarpanels();
+    $listofsolarpanelsadministrator = $panels->getSolarpanelsadministrator();
     $listofinvestors = $panels->getInvestor();
+    $listofinvestorsadministrator = $panels->getInvestoradministrator();
     require_once("../views/solarpanels/vwmanagesolarpanels.php");
 }
 

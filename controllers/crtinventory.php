@@ -104,6 +104,7 @@ if (!empty($updateinventorynew) && !empty($id_spendersupdatenew) && !empty($id_n
 else {
     $inventory = new mdlinventory;
     $listofinventario = $inventory->getinventory();
+    $listofinventarioadministrador = $inventory->getinventoryadministrator();
     require_once("../views/inventory/vwmanageinventory.php");
 }
  

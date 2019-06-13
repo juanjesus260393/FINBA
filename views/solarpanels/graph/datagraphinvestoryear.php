@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 //setting header to json
 header('Content-Type: application/json');
@@ -12,14 +13,18 @@ $mysqli = mdlconection::connect();
 if (!$mysqli) {
     die("Connection failed: " . $mysqli->error);
 }
+$year_actual = date('Y');
 
+$mysqli->query("SET lc_time_names = 'es_ES'");
 //query to get data from the table
-$query = sprintf("SELECT i.name_investor, round (sum(m.total_installation), 2) as total FROM dbfinba.solar_nomenclature n inner join dbfinba.investor i on n.id_solar_nomenclature 
-    = i.id_sola_nomenclature
-inner join dbfinba.investor_mesure m on i.number_investor = m.number_investor where n.school = '".$_SESSION['Schoolsname']."'");
+$query = sprintf("select round(sum(m.total_installation),2) total, monthname(m.date_mesure) 
+mes from dbfinba.investor i inner join dbfinba.solar_nomenclature s on i.id_sola_nomenclature = 
+s.id_solar_nomenclature inner join dbfinba.investor_mesure m on i.number_investor = m.number_investor
+where s.school = '" . $_SESSION['Schoolsname'] . "' and year(m.date_mesure) = $year_actual group by month(m.date_mesure)");
 
 //execute query
 $result = $mysqli->query($query);
+
 
 //loop through the returned data
 $data = array();

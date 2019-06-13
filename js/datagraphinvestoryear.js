@@ -1,22 +1,22 @@
 $(document).ready(function(){
   $.ajax({
-    url: "http://localhost/finbaproject/FINBA/views/solarpanels/graph/datagraphinvestor.php",
+    url: "http://localhost/finbaproject/FINBA/views/solarpanels/graph/datagraphinvestoryear.php",
     method: "GET",
     success: function(data) {
       console.log(data);
-      var player = [];
+      var mes = [];
       var score = [];
 
       for(var i in data) {
-        player.push(data[i].name_investor);
+        mes.push(data[i].mes);
         score.push(data[i].total);
       }
 
       var chartdata = {
-        labels: player,
+        labels: mes,
         datasets : [
           {
-            label: 'Total kWh Generado',
+            label: 'Total kWh Generado al año',
             backgroundColor: 'rgba(200, 200, 200, 0.75)',
             borderColor: 'rgba(200, 200, 200, 0.75)',
             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
@@ -26,7 +26,7 @@ $(document).ready(function(){
         ]
       };
 
-      var ctx = $("#mycanvas");
+      var ctx = $("#mycanvasyear");
 
       var barGraph = new Chart(ctx, {
         type: 'bar',

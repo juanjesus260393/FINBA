@@ -25,7 +25,7 @@
         closedir($dir_handle);
         if (!empty($filenam)) {
             echo 'almacenando informacion';
-            $file = $filenam . ".xlsx";
+           echo $file = $filenam.".xlsx";
             $routeandfile = "investormeasures/" . $file;
             //Nombre del archivo a ejecutar
             $archivo = $routeandfile;

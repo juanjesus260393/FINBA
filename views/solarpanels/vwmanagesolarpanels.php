@@ -32,24 +32,39 @@ include('../views/template1.php');
         </div>
         <div class="tab-pane" id="balance">
             <?php
-            if($_SESSION['Schoolsname'] == "CIC" || $_SESSION['Schoolsname'] == "ESCOM" || $_SESSION['Schoolsname'] == "ESCOM" ){
-               include('../views/solarpanels/graph/vwgeneralgraph.php'); 
+            if ($_SESSION['Schoolsname'] == "CIC" || $_SESSION['Schoolsname'] == "ESCOM" || $_SESSION['Schoolsname'] == "ESCOM") {
+                include('../views/solarpanels/graph/vwgeneralgraph.php');
+            } else {
+                include('../views/solarpanels/graph/vwgeneralgraphadministrator.php');
             }
             ?>
         </div>
         <div class="tab-pane" id="administracion">
             <?php
-            include('../views/solarpanels/vwsolarpanels.php');
+            if ($_SESSION['type_user'] == 'administrator') {
+                include('../views/solarpanels/vwsolarpanelsadministrator.php');
+            } else {
+                include('../views/solarpanels/vwsolarpanels.php');
+            }
             ?>
         </div>
         <div class="tab-pane" id="registrar">
             <?php
-            include('../views/solarpanels/vwaddsolarpanel.php');
+            if ($_SESSION['type_user'] == 'administrator') {
+                
+            } else {
+                include('../views/solarpanels/vwaddsolarpanel.php');
+            }
             ?>
         </div>
-             <div class="tab-pane" id="inversor">
+        <div class="tab-pane" id="inversor">
             <?php
-            include('../views/solarpanels/investor/vwaddinversor.php');
+            if ($_SESSION['type_user'] == 'administrator') {
+                
+            } else {
+
+                include('../views/solarpanels/investor/vwaddinversor.php');
+            }
             ?>
         </div>
     </div>
