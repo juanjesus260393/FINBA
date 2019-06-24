@@ -67,6 +67,7 @@
                             <?php 
                             if($_SESSION['type_user'] == 'administrator'){
                                include('../views/users/vwincludemanageusers.php');
+                               include('../views/Monitoreo/vwplanomonitoreo.php');
                             }else{
                             }
                             ?>
@@ -114,6 +115,14 @@
                                 UPS1
                             </a> 
                                 </li>
+                                   </li>
+                                <li>
+                                    <a  data-toggle='modal'  data-target='#modalmonitoreo' href="">
+                                    
+                                <i class="fas fa-chart-bar"></i>
+                                Sensores Puntuales
+                                   </a>
+                                </li>
                             </ul>
                             
                             </li>
@@ -158,5 +167,7 @@
                 </nav>
             </div>
 
+<?php 
 
+require('../views/Monitoreo/vwplanomonitoreo.php');
 
