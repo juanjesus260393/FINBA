@@ -1,10 +1,10 @@
 <!-- javascript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/Chart/Chart.min.js"></script>
-<script type="text/javascript" src="../js/datagraphinvestor.js"></script>
-<script type="text/javascript" src="../js/datagraphinvestoryear.js"></script>
-<script type="text/javascript" src="../js/datagraphinvestormonth.js"></script>
-<script type="text/javascript" src="../js/datagraphinvestortoday.js"></script>
+<script type="text/javascript" src="../js/datagraphinvestoradmin.js"></script>
+<script type="text/javascript" src="../js/datagraphinvestoryearadmin.js"></script>
+<script type="text/javascript" src="../js/datagraphinvestormonthadmin.js"></script>
+<script type="text/javascript" src="../js/datagraphinvestortodayadmin.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <style type="text/css">
@@ -32,23 +32,23 @@
             </div>
             <div id="my-tab-content" class="tab-content">
                 <div class="tab-pane" id="day">
-                     <?php
-                    include('../views/solarpanels/graph/includegraphtoday.php');
+                    <?php
+                    include('../views/solarpanels/graph/includegraphtodayadmin.php');
                     ?>
                 </div>
                 <div class="tab-pane" id="month">
-                     <?php
-                    include('../views/solarpanels/graph/includegraphmonth.php');
+                    <?php
+                    include('../views/solarpanels/graph/includegraphmonthadmin.php');
                     ?>
                 </div>
                 <div class="tab-pane" id="year">
-                      <?php
-                    include('../views/solarpanels/graph/includegraphyear.php');
+                    <?php
+                    include('../views/solarpanels/graph/includegraphyearadmin.php');
                     ?>
                 </div>
                 <div class="tab-pane" id="total">
                     <?php
-                    include('../views/solarpanels/graph/includegraphtotal.php');
+                    include('../views/solarpanels/graph/includegraphtotaladmin.php');
                     ?>
                 </div>
             </div>
