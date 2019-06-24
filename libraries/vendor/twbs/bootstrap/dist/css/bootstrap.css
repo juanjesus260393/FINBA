@@ -3914,10 +3914,12 @@ input[type="button"].btn-block {
 }
 
 .tab-content > .tab-pane {
+     position: absolute; left: 540px;
   display: none;
 }
 
 .tab-content > .active {
+     position: absolute; left: 540px;
   display: block;
 }
 

@@ -22,6 +22,7 @@ class mdlsolarpanel {
 //Variables necesarias para la obtencion de la lista de los paneles registrados
     private $panels;
     private $investor;
+    private $dateinvestorgraph;
     private $dbh;
 
     public function __construct() {
@@ -46,7 +47,24 @@ class mdlsolarpanel {
         }
         return $this->panels;
     }
+    /*
+     *  getSolarpanels
+     *  Funcion que se encarga de obtener los paneles registrados por el usuario que ha iniciado sesion
+     */
 
+    public function getSolarpanelsadministrator() {
+        session_start();
+        $getpanels = "SELECT * FROM dbfinba.solar_panel s inner join dbfinba.solar_nomenclature n on
+        s.id_solar_nomenclature=n.id_solar_nomenclature order by n.school";
+        if (empty($this->dbh->query($getpanels))) {
+            $this->panels[] = NULL;
+        } else {
+            foreach ($this->dbh->query($getpanels) as $panelsarray) {
+                $this->panels[] = $panelsarray;
+            }
+        }
+        return $this->panels;
+    }
     /*
      *  getInvestor
      *  Funcion que se encarga de obtener los invesor registrados por cada escuela
@@ -64,6 +82,44 @@ class mdlsolarpanel {
             }
         }
         return $this->investor;
+    }
+
+    /*
+     *  getInvestor
+     *  Funcion que se encarga de obtener los invesor registrados por cada escuela
+     */
+
+    public function getInvestoradministrator() {
+        session_start();
+        $getinvestor = "SELECT * FROM dbfinba.investor i inner join dbfinba.solar_nomenclature s 
+        on i.id_sola_nomenclature = s.id_solar_nomenclature order by s.school";
+        if (empty($this->dbh->query($getinvestor))) {
+            $this->investor[] = NULL;
+        } else {
+            foreach ($this->dbh->query($getinvestor) as $investorarray) {
+                $this->investor[] = $investorarray;
+            }
+        }
+        return $this->investor;
+    }
+
+    /*
+     *  getDatagraphinvestor
+     *  Funcion que se encarga de obtener los invesor registrados por cada escuela
+     */
+
+    public function getDatagraphinvestor($name_investore) {
+        session_start();
+        $getinvestor = "SELECT * from dbfinba.investor i inner join dbfinba.investor_mesure m
+        on i.number_investor = m.number_investor where i.name_investor =  '" . $name_investore . "'";
+        if (empty($this->dbh->query($getinvestor))) {
+            $this->$dateinvestorgraph[] = NULL;
+        } else {
+            foreach ($this->dbh->query($getinvestor) as $investorarray) {
+                $this->$dateinvestorgraph[] = $investorarray;
+            }
+        }
+        return $this->$dateinvestorgraph;
     }
 
     /*
@@ -98,18 +154,26 @@ class mdlsolarpanel {
                 panelHelper::cantInsert();
             } else {
                 $numberbuild = mdlsolarpanel::getRowp($number_investorp);
-                if (empty($number_build_solar)) {
-                    $number_build_solar = '1';
+                $location = mdlsolarpanel::getLocation($number_investorp);
+                if (empty($location_investor)) {
+                    $location_investor = 'techo';
                 }
-                if ($numberbuild == $number_build_solar) {
-                    $newimage = mdlsolarpanel::uploadPanelimage($id_image_panel);
-                    $id_nomenclature = mdlsolarpanel::insertNomeclaturetable($school_investor, $location_investor, $number_build_solar);
-                    $id_solar_panel = mdlsolarpanel::insertPaneltable($panelname, $newimage, $number_panel, $row, $id_nomenclature, $number_investorp);
-                    if (empty($id_solar_panel) && empty($id_nomenclature)) {
-                        panelHelper::cantInsert();
-                    }
+                if ($location != $location_investor) {
+                    panelHelper::cantInsertlocation();
                 } else {
-                    panelHelper::cantInsertpanel();
+                    if (empty($number_build_solar)) {
+                        $number_build_solar = '1';
+                    }
+                    if ($numberbuild == $number_build_solar) {
+                        $newimage = mdlsolarpanel::uploadPanelimage($id_image_panel);
+                        $id_nomenclature = mdlsolarpanel::insertNomeclaturetable($school_investor, $location_investor, $number_build_solar);
+                        $id_solar_panel = mdlsolarpanel::insertPaneltable($panelname, $newimage, $number_panel, $row, $id_nomenclature, $number_investorp);
+                        if (empty($id_solar_panel) && empty($id_nomenclature)) {
+                            panelHelper::cantInsert();
+                        }
+                    } else {
+                        panelHelper::cantInsertpanel();
+                    }
                 }
             }
         } else {
@@ -132,6 +196,25 @@ class mdlsolarpanel {
             $row = $rowrow['number_build_solar'];
         } else {
             $row = $rowrow['number_build_solar'];
+        }
+        return $row;
+    }
+
+    /*
+     *  getRowp
+     *  Funcion que otiene la fila del investor que se va a guardar 
+     */
+
+    public static function getLocation($number_investorp) {
+        $con = mdlconection::connect();
+        $searchinvestorrow = "SELECT n.location FROM dbfinba.solar_nomenclature n inner join dbfinba.investor i 
+            on n.id_solar_nomenclature = i.id_sola_nomenclature where i.number_investor  = '" . $number_investorp . "'";
+        $resultofsearchinvestorrow = mysqli_query($con, $searchinvestorrow) or die(mysqli_error());
+        $rowrow = mysqli_fetch_array($resultofsearchinvestorrow);
+        if (!$rowrow[0]) {
+            $row = $rowrow['location'];
+        } else {
+            $row = $rowrow['location'];
         }
         return $row;
     }

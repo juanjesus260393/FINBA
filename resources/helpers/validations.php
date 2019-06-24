@@ -294,8 +294,8 @@ class panelHelper {
         "<body onload=\"javascript:history.back()\">" .
         "</body></html>";
     }
-    
-      /*
+
+    /*
      *  cantInsertpanel
      *  funcion que envia una alerta para que no se pueda agregar un investor
      */
@@ -303,6 +303,20 @@ class panelHelper {
     public static function cantInsertpanel() {
         echo '<script language = javascript>
 	alert("El edificio del panel no es igual al del inversor")
+           	</script>';
+        echo '<script language = javascript>
+	self.location = "../controllers/crtsolarpanels.php"
+	</script>';
+    }
+
+    /*
+     *  cantInsertpanel
+     *  funcion que envia una alerta para que no se pueda agregar un investor
+     */
+
+    public static function cantInsertlocation() {
+        echo '<script language = javascript>
+	alert("La ubicacion del panel no es igual a la del inversor")
            	</script>';
         echo '<script language = javascript>
 	self.location = "../controllers/crtsolarpanels.php"
@@ -353,6 +367,23 @@ class panelHelper {
             $location = $location_investor;
         }
         return $location;
+    }
+
+}
+
+class investorHelper {
+
+    public static function getBumberinvestor($investorname) {
+        $con = mdlconection::connect();
+        $searchnumberinvestor = "SELECT i.number_investor FROM dbfinba.investor i where i.name_investor ='$investorname'";
+        $resultofsearchnumberinvestor = mysqli_query($con, $searchnumberinvestor) or die(mysqli_error());
+        $rownumberinvestor = mysqli_fetch_array($resultofsearchnumberinvestor);
+        if (!$rownumberinvestor[0]) {
+            
+        } else {
+            $number_investor = $rownumberinvestor['number_investor'];
+        }
+        return $number_investor;
     }
 
 }

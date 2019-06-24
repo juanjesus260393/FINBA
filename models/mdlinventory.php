@@ -50,7 +50,27 @@ class mdlinventory {
         }
         return $this->inventory;
     }
+    /*
+     *  getinventory
+     *  Funcion que se encarga de obtener los elementos registrados en la tabla inventario.
+     */
 
+    public function getinventoryadministrator() {
+        session_start();
+        $getinventory = "SELECT e.spender_name, e.quantity, n.school,n.reference, i.enabled, i.username,i.id_inventory, e.id_spenders,n.id_nomenclature, 
+        i.img_inventory FROM dbfinba.inventory i inner join dbfinba.energy_spenders e on i.id_spenders = e.id_spenders inner join 
+        dbfinba.nomenclature n on i.id_nomenclature = n.id_nomenclature;";
+        if (empty($this->dbh->query($getinventory))) {
+            $this->inventory[] = NULL;
+        } else {
+            foreach ($this->dbh->query($getinventory) as $inventoryarray) {
+                $this->inventory[] = $inventoryarray;
+                //print_r($usersarray);
+            }
+        }
+        return $this->inventory;
+    }
+    
     /*
      *  insertinventory
      *  Funcion que registrar la informacion del invetario en las diferentes tablas involucradas

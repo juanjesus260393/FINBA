@@ -7,12 +7,7 @@ mdlsecurity::validateToken();
 include('../views/template1.php');
 
 ?>
-<script> 
-   $(document).ready(function(){
-  // Show the Modal on load
-  $("#modalmonitoreo").modal("show");
-});
-    
+<script>    
     
     
     
@@ -85,7 +80,7 @@ foreach ($promaño as $promxmes){
   
   
     <div>
-        <h3>Graficas Tablero General</h3>
+        <h3>Graficas <?php echo $Nom6; ?></h3>
         <canvas id="myChart2"></canvas>
 
 <script>

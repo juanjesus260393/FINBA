@@ -23,8 +23,18 @@ class mdlconection {
         return $conexion;
     }
     
+
     public static function connectSeeds() {
         $conexion = mysqli_connect("148.204.63.238", "root", "BD.S33d5", "ipn");
+    }
+       /*
+     *  connect
+     *  funcion que establece la coneccion con la base de datos en base a las credenciales proporcionadas.
+     */
+
+    public static function connectGraph() {
+        $conexion = mysqli_connect("localhost", "root", "P4SSW0RD", "graficas");
+
         return $conexion;
     }
 
