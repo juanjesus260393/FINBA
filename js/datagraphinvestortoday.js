@@ -5,18 +5,20 @@ $(document).ready(function(){
     success: function(data) {
       console.log(data);
       var score = [];
+      var hora = [];
 
       for(var i in data) {
         score.push(data[i].total);
+         hora.push(data[i].hora);
       }
 
       var chartdata = {
-        labels: ['hoy'],
+        labels: hora,
         datasets : [
           {
-            label: 'Total kWh Generado el dia de hoy',
-            backgroundColor: 'rgba(200, 200, 200, 0.75)',
-            borderColor: 'rgba(200, 200, 200, 0.75)',
+            label: 'kWh Generados por hora',
+            //backgroundColor: 'rgba(200, 200, 200, 0.75)',
+            borderColor: 'rgb(255, 99, 132)',
             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
             hoverBorderColor: 'rgba(200, 200, 200, 1)',
             data: score
@@ -27,7 +29,7 @@ $(document).ready(function(){
       var ctx = $("#mycanvastoday");
 
       var barGraph = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: chartdata
       });
     },

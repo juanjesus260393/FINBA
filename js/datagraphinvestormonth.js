@@ -8,7 +8,7 @@ $(document).ready(function () {
             var mes = [];
             
             for (var i in data) {
-                mes.push(i);
+                mes.push(data[i].dia);
                 score.push(data[i].total);
             }
 
@@ -16,8 +16,8 @@ $(document).ready(function () {
                 labels: mes,
                 datasets: [
                     {
-                        label: 'Total kWh Generado durante el mes',
-                        backgroundColor: 'rgba(200, 200, 200, 0.75)',
+                        label: 'Total kWh Generado',
+                        backgroundColor: 'rgba(241, 90, 34, 1)',
                         borderColor: 'rgba(200, 200, 200, 0.75)',
                         hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
                         hoverBorderColor: 'rgba(200, 200, 200, 1)',

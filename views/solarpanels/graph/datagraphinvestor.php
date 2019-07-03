@@ -14,9 +14,10 @@ if (!$mysqli) {
 }
 
 //query to get data from the table
-$query = sprintf("SELECT i.name_investor, round (sum(m.total_installation), 2) as total FROM dbfinba.solar_nomenclature n inner join dbfinba.investor i on n.id_solar_nomenclature 
-    = i.id_sola_nomenclature
-inner join dbfinba.investor_mesure m on i.number_investor = m.number_investor where n.school = '".$_SESSION['Schoolsname']."'");
+$query = sprintf("SELECT i.name_investor, round (sum(m.total_installation), 2) as total  
+FROM dbfinba.investor i inner join dbfinba.solar_nomenclature n
+on i.id_sola_nomenclature = n.id_solar_nomenclature inner join dbfinba.investor_mesure m 
+on i.number_investor = m.number_investor where n.school = '".$_SESSION['Schoolsname']."' group by i.name_investor");
 
 //execute query
 $result = $mysqli->query($query);

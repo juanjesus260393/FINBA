@@ -6,8 +6,9 @@
     ?>
 </div>
 <div>
+    <link rel="stylesheet" href="../css/scrolltabla.css">
     <center><h1>Inversores</h1></center>   
-    <center> <table class="table">
+    <center> <table class="table table-fixed">
             <thead>
                 <tr>
                     <th>N° de Inversor</th>
@@ -82,7 +83,7 @@
             </tbody>
         </table></center>
     <center><h1>Paneles Solares</h1></center>   
-    <center> <table class="table">
+    <center> <table class="table table-fixed">
             <thead>
                 <tr>
                     <th>Nombre del Panel</th>

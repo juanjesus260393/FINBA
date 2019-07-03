@@ -7,8 +7,9 @@
 </div>
 
 <div class="container">
+    <link rel="stylesheet" href="../css/scrolltabla.css">
     <center><h2>Inventario</h2></center>   
-    <center> <table class="table">
+    <center> <table class="table table-fixed">
             <thead>
                 <tr>
                     <th>Nombre</th>

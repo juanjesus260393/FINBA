@@ -20,3 +20,7 @@ clear: both;
 .table-fixed thead > tr > th {
 float: left;
 }
+div.dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
