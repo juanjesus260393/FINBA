@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: "http://localhost/finbaproject/FINBA/views/solarpanels/graph/datagraphinvestortodayadmin.php",
+        url: "../views/solarpanels/graph/datagraphinvestortodayadmin.php",
         method: "GET",
         success: function (data) {
             console.log(data);

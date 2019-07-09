@@ -13,8 +13,8 @@
  */
 
 //Modelos adicionales que requiere el archivo, dado que en algunas casos llama funciones especificas
-require_once('C:/xampp/htdocs/finbaproject/FINBA/models/mdlconection.php');
-require_once('C:/xampp/htdocs/finbaproject/FINBA/models/mdlauth.php');
+require_once('mdlconection.php');
+require_once('mdlauth.php');
 
 class mdlsecurity {
     /*

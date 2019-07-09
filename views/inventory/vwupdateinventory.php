@@ -1,7 +1,7 @@
 <div hidden="true">
     <?php
     session_start();
-    require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlsecurity.php");
+    require_once("../models/mdlsecurity.php");
     mdlsecurity::validateToken();
     ?>  
 </div>

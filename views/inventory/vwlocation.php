@@ -8,7 +8,7 @@
         $("#imgplano").attr("width", "850");
         $("#imgplano").attr("height", "600");
         $("#niveltext").text("");
-        $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
+        $("#info").text("Selecciona el nivel en el que se colocara el equipo del inventario");
     }
     function back2() {
         $("#imgplano").attr("src", "../resources/img/cidetec.jpg");
@@ -95,7 +95,7 @@
         $("#imgplano").attr("usemap", "#levels");
         //$("#atrasSchool").removeClass("d-none");
         $("#niveltext").text("CIC");
-        $("#info").text("Selecciona en la imgen en que nivel se colocara el sensor");
+        $("#info").text("Selecciona en la imagen en que nivel se colocara el sensor");
     }
     function settoE1() {
         $("#imgplano").attr("src", "../resources/img/lvlsescom.jpg");
@@ -519,7 +519,7 @@
     <div class="modal1-dialog2" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ubicación del Sensor</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ubicación del Equipo del inventario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

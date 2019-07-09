@@ -51,7 +51,7 @@ if ($closesesion) {
 //Se llama a la vista cambiar contraseña
 if (!empty($changedpass) && $changedpass) {
     $passsearch = Mdlauth::searchPassprevious();
-    require_once("../views/users/vwalterpassword.php");
+    require_once('../views/users/vwalterpassword.php');
 }
 //Se llama a la funcion resetear la contraseña
 if (!empty($usernameresetpass) && !empty($resetpass) && $resetpass == '1') {
@@ -62,7 +62,7 @@ if (!empty($usernameresetpass) && !empty($resetpass) && $resetpass == '1') {
 }
 //Se llama la funcion cambiar contraseña y/o informacion del usuario
 if (!empty($valueforpassword) && $valueforpassword == 'valueforpassword') {
-    Mdlauth::changedPassword($newpassword, $nameprevious, $newname, $firstnameprevious, $newfirstname, $secondnameprevious, $newsecondname, $workpositionprevious, $workpositionnew,$passprevious);
+    Mdlauth::changedPassword($newpassword, $nameprevious, $newname, $firstnameprevious, $newfirstname, $secondnameprevious, $newsecondname, $workpositionprevious, $workpositionnew, $passprevious);
     echo '<script language = javascript>
 	self.location = "../views/vwmenuprincipal.php"
 	</script>';

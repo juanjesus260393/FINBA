@@ -13,7 +13,7 @@
 
 //Modelos adicionales que requiere el archivo, dado que algunas funciones se encuentran en dichos archivos
 require_once('mdlconection.php');
-require_once("C:/xampp/htdocs/finbaproject/FINBA/resources/helpers/validations.php");
+require_once('../resources/helpers/validations.php');
 
 //require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlauth.php");
 //Evitar Notificar todos los errores de PHP
@@ -129,7 +129,7 @@ class mdlinventory {
 
     public static function deleteImageinventory($image) {
         if (!empty($image)) {
-            $ruta = "C:/xampp/htdocs/finbaproject/FINBA/resources/img/inventario/";
+            $ruta = "../resources/img/inventario/";
             unlink($ruta . $image);
         }
     }
@@ -160,7 +160,7 @@ class mdlinventory {
     public static function uploadImageinventory($img_inventory) {
         $identificadornuevaimagen = validations::generateRamdonids();
         $new_image_panel = $identificadornuevaimagen . ".jpg";
-        move_uploaded_file($_FILES['img_inventory']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/img/inventario/$new_image_panel");
+        move_uploaded_file($_FILES['img_inventory']['tmp_name'], "../resources/img/inventario/$new_image_panel");
         $image_name_insert = $new_image_panel;
 
         return $image_name_insert;

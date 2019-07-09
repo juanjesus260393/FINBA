@@ -2,8 +2,8 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'C:/xampp/htdocs/finbaproject/FINBA/libraries/vendor/autoload.php';
-require 'C:/xampp/htdocs/finbaproject/FINBA/libraries/vendor/auxx.php';
+require '../libraries/vendor/autoload.php';
+require '../libraries/vendor/auxx.php';
 
 Class mailer {
 

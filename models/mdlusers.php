@@ -13,8 +13,8 @@
 
 //Modelos adicionales que requiere el archivo, dado que algunas funciones se encuentran en dichos archivos
 require_once('mdlconection.php');
-require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlauth.php");
-require_once("C:/xampp/htdocs/finbaproject/FINBA/resources/helpers/validations.php");
+require_once("mdlauth.php");
+require_once("../resources/helpers/validations.php");
 
 // Evitar Notificar todos los errores de PHP
 error_reporting(0);
@@ -288,7 +288,7 @@ class mdlusers {
         } else {
             $identificadornuevaimagen = validations::generateRamdonids();
             $new_image_panel = $identificadornuevaimagen . ".jpg";
-            move_uploaded_file($_FILES['idimg_user']['tmp_name'], "C:/xampp/htdocs/finbaproject/FINBA/resources/img/logotipos/$new_image_panel");
+            move_uploaded_file($_FILES['idimg_user']['tmp_name'], "../resources/img/logotipos/$new_image_panel");
             $image_name_insert = $new_image_panel;
         }
         return $image_name_insert;

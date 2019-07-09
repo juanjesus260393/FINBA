@@ -2,7 +2,7 @@
 
 //modelos o auxiliares adicionales para la administracion de la informacion relacionada con la administracion de los paneles solares
 require_once("../models/mdlsolarpanel.php");
-require_once("C:/xampp/htdocs/finbaproject/FINBA/resources/helpers/validations.php");
+require_once("../resources/helpers/validations.php");
 
 //Variable para busquedad de paneles
 $searchpanels = filter_input(INPUT_POST, 'searchpanels');
