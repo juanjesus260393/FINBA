@@ -141,7 +141,7 @@ class mdlinventory {
 
     public static function insertinventorytable($username, $quantity, $elementname, $school, $building_number, $level, $orientation, $location, $reference, $registry_number, $img_inventory) {
         $con = mdlconection::connect();
-        $image_name_insert = mdlinventory::uploadImageinventory($img_inventory);
+        $image_name_insert = mdlinventory::uploadImageinventory();
         $id_invetory = validations::generateRamdonids();
         $id_spenders = mdlinventory::insertenergy_spenderstable($elementname, $quantity);
         $id_nomenclature = mdlinventory::insertnomenclaturetable($school, $building_number, $level, $orientation, $location, $reference, $registry_number);
@@ -157,12 +157,11 @@ class mdlinventory {
      *  Funcion que almacena la imagen de un elemento del inventario
      */
 
-    public static function uploadImageinventory($img_inventory) {
+    public static function uploadImageinventory() {
         $identificadornuevaimagen = validations::generateRamdonids();
         $new_image_panel = $identificadornuevaimagen . ".jpg";
         move_uploaded_file($_FILES['img_inventory']['tmp_name'], "../resources/img/inventario/$new_image_panel");
         $image_name_insert = $new_image_panel;
-
         return $image_name_insert;
     }
 
