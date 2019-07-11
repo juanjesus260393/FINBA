@@ -15,9 +15,9 @@
 
 //modelos adicionales que requiere este archivo debido a sus diferentes funciones que incluyen
 require_once('mdlconection.php');
-require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlsecurity.php");
-require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlusers.php");
-require_once("C:/xampp/htdocs/finbaproject/FINBA/resources/sendmails/mailer.php");
+require_once('mdlsecurity.php');
+require_once('mdlusers.php');
+require_once('../resources/sendmails/mailer.php');
 
 class Mdlauth {
     /*

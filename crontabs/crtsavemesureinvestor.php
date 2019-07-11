@@ -25,7 +25,7 @@
         closedir($dir_handle);
         if (!empty($filenam)) {
             echo 'almacenando informacion';
-           echo $file = $filenam.".xlsx";
+            echo $file = $filenam . ".xlsx";
             $routeandfile = "investormeasures/" . $file;
             //Nombre del archivo a ejecutar
             $archivo = $routeandfile;
@@ -55,7 +55,7 @@
                 $kWh = $porciones[1];
                 $kWp = $porciones[2];
                 $it = $porciones[3];
-                $dateregysterinvestor = date("Y-m-d", strtotime($dat));
+                $dateregysterinvestor = date("Y-m-d h:i:s", strtotime($dat));
                 $sql = "INSERT INTO  dbfinba.investor_mesure (date_mesure, epikWh, epikWp,total_installation,number_investor)"
                         . " VALUES('$dateregysterinvestor','$kWh','$kWp','$it','$numberinvestor')";
                 $result = $mysqli->query($sql);

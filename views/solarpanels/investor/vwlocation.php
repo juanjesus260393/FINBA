@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="col-10" style="overflow-x: auto;">
-                        <img  id="imgplano" src="../resources/img/edificios/cic.jpg" width="645" height="645" alt="Escuelas" usemap="#schoolsi">
+                        <img  id="imgplano" src="../resources/img/edificios/cic.JPG" width="645" height="645" alt="Escuelas" usemap="#schoolsi">
                         <map name="schoolsi">
                             <area id="techo" shape="poly"   coords="288,145,633,302,464,640,126,480" alt="Ubicacion" nohref onclick="settoCIC1(this);return false;">
                             <area id="estacionamiento" shape="rect"  coords="68,7,205,91" alt="Ubicacion" nohref onclick="settoCIC1(this);return false;">

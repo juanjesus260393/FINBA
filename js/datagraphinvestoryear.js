@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $.ajax({
-    url: "http://localhost:100/finbaproject/FINBA/views/solarpanels/graph/datagraphinvestoryear.php",
+    url: "../views/solarpanels/graph/datagraphinvestoryear.php",
     method: "GET",
     success: function(data) {
       console.log(data);
@@ -16,8 +16,8 @@ $(document).ready(function(){
         labels: mes,
         datasets : [
           {
-            label: 'Total kWh Generado al año',
-            backgroundColor: 'rgba(200, 200, 200, 0.75)',
+            label: 'Total kWh Generado',
+            backgroundColor: 'rgba(255,0,0,0.6)',
             borderColor: 'rgba(200, 200, 200, 0.75)',
             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
             hoverBorderColor: 'rgba(200, 200, 200, 1)',

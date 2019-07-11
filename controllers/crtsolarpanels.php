@@ -2,7 +2,7 @@
 
 //modelos o auxiliares adicionales para la administracion de la informacion relacionada con la administracion de los paneles solares
 require_once("../models/mdlsolarpanel.php");
-require_once("C:/xampp/htdocs/finbaproject/FINBA/resources/helpers/validations.php");
+require_once("../resources/helpers/validations.php");
 
 //Variable para busquedad de paneles
 $searchpanels = filter_input(INPUT_POST, 'searchpanels');
@@ -68,6 +68,14 @@ $deletei = filter_input(INPUT_GET, 'deletei');
 //Informacion para deshabilitar los paneles solares
 $id_solar_panelu = filter_input(INPUT_GET, 'id_solar_panelu');
 $disabledu = filter_input(INPUT_GET, 'disabledu');
+
+//Busqueda de informacion por dia
+$searchfordayusr = filter_input(INPUT_POST, 'searchfordayusr');
+if(!empty($searchfordayusr)){
+    $panels = new mdlsolarpanel;
+    $dateinvestorgraph = $panels->getDatagraphinvestorforday($searchfordayusr);
+    
+}
 
 //Variable para obtener el nombre del investor
 $name_investore = filter_input(INPUT_POST, 'nameinvestorhiden');

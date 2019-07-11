@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="col-10" style="overflow-x: auto;">
-                        <img  id="imgescom" src="../resources/img/edificios/escom.jpg" width="645" height="645" alt="Escuelas" usemap="#escom">
+                        <img  id="imgescom" src="../resources/img/edificios/escom.JPG" width="645" height="645" alt="Escuelas" usemap="#escom">
                         <map name="escom">
                             <area id="1" shape="poly" coords="267,20,350,59,73,505,20,486" alt="Ubicacion" nohref onclick="settoESC(this);return false;">
                             <area id="2" shape="poly" coords="305,250,405,292,289,508,189,460" alt="Ubicacion" nohref onclick="settoESC(this);return false;">

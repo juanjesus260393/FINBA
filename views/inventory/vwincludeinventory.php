@@ -1,14 +1,15 @@
 <div hidden="true">
     <?php
     session_start();
-    require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlsecurity.php");
+    require_once("../models/mdlsecurity.php");
     mdlsecurity::validateToken();
     ?>
 </div>
 
 <div class="container">
+    <link rel="stylesheet" href="../css/scrolltabla.css">
     <center><h2>Inventario</h2></center>   
-    <center> <table class="table">
+    <center> <table class="table table-fixed">
             <thead>
                 <tr>
                     <th>Nombre</th>

@@ -1,7 +1,7 @@
 <?php
 
 //requieres adicionales
-require_once("C:/xampp/htdocs/finbaproject/FINBA/resources/helpers/validations.php");
+require_once("../resources/helpers/validations.php");
 require_once("../models/mdlinventory.php");
 
 //Variables post

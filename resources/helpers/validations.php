@@ -12,8 +12,8 @@
  */
 
 //Requieres adiionales
-require_once('C:/xampp/htdocs/finbaproject/FINBA/models/mdlconection.php');
-require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlauth.php");
+require_once('../models/mdlconection.php');
+require_once("../models/mdlauth.php");
 
 class validations {
     /*

@@ -11,7 +11,7 @@
  * 
  */
 session_start();
-require_once("C:/xampp/htdocs/finbaproject/FINBA/models/mdlsecurity.php");
+require_once("../../models/mdlsecurity.php");
 require_once '../../models/mdladddvc.php';
 mdlsecurity::validateToken();
 $mdlupdate= new mdladddvc();
