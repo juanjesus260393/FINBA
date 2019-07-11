@@ -25,10 +25,11 @@ class mdlmonitoreo {
     }
     public function getMeasuresMes($mestoquery, $añotoquery){
         $medidasmes[]=0;
-        //SELECT DAY(fecha), AVG(medida) FROM measures WHERE MONTH(fecha)=6 GROUP BY DAY(fecha)
         $dbhMedidaMes= mdlconection::connect();
+        //$dbhMedidaMes= mdlconection::connectSeeds();
         $querymes="SELECT DAY(fecha), AVG(medida) FROM measures WHERE MONTH(fecha)=".$mestoquery." AND YEAR(fecha)=".$añotoquery." GROUP BY DAY(fecha)";
-        //var_dump($querymes);
+        //$querymes="SELECT DAY(measure_date), AVG(measure) FROM device_measures_1006 WHERE MONTH(measure_date)=".$mestoquery." AND YEAR(measure_date)=".$añotoquery." GROUP BY DAY(measure_date)";
+      
         $resquerymes=$dbhMedidaMes->query($querymes);
         while($fl=$resquerymes->fetch_row()){
             $medidasmes[]=$fl;
@@ -49,7 +50,6 @@ class mdlmonitoreo {
         while($fl=$resqueryaño->fetch_row()){
             $medidasaño[]=$fl;
         }
-        
         return $medidasaño;
     }
     public function  getMeasuresDia(){

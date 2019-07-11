@@ -15,10 +15,10 @@ require_once ("../models/mdlconection.php");
 
 
 
-            $Nom1 = filter_input(INPUT_POST, 'dos');
-            $Nom2 = substr(filter_input(INPUT_POST, 'tres'), -1);
-            $Nom3 = substr(filter_input(INPUT_POST, 'cuatro'), -1);
-            $Nom6 = filter_input(INPUT_POST, 'siete');
+            $Nom1 = filter_input(INPUT_POST, 'dosp');
+            $Nom2 = substr(filter_input(INPUT_POST, 'tresp'), -1);
+            $Nom3 = substr(filter_input(INPUT_POST, 'cuatrop'), -1);
+            $Nom6 = filter_input(INPUT_POST, 'sietep');
 
 $obj_mdlmonitoreo = new mdlmonitoreoPuntual();
 $measures=$obj_mdlmonitoreo->getMeasures();
@@ -36,15 +36,15 @@ $meshoy = date("m");
 $añohoy = date("Y");
 
 if($auxconsulta){
-    $prommes=$obj_mdlmonitoreo->getMeasuresMes($mesañoconsulta[1], $mesañoconsulta[0]);
+    $prommes=$obj_mdlmonitoreo->getMeasuresMes($mesañoconsulta[1], $mesañoconsulta[0], $Nom1, $Nom2, $Nom3, $Nom6);
 }else{
-$prommes=$obj_mdlmonitoreo->getMeasuresMes($meshoy, $añohoy);
+$prommes=$obj_mdlmonitoreo->getMeasuresMes($meshoy, $añohoy, $Nom1, $Nom2, $Nom3, $Nom6);
 }
 
 if($añoconsulta){
-    $promaño=$obj_mdlmonitoreo->getMeasuresaño($añoconsulta);
+    $promaño=$obj_mdlmonitoreo->getMeasuresaño($añoconsulta, $Nom1, $Nom2, $Nom3, $Nom6);
 }else{
-$promaño=$obj_mdlmonitoreo->getMeasuresaño($añohoy);
+$promaño=$obj_mdlmonitoreo->getMeasuresaño($añohoy, $Nom1, $Nom2, $Nom3, $Nom6);
 }
 
 $nmed=$obj_mdlmonitoreo->getnumMed();

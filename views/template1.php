@@ -48,6 +48,7 @@
                 <nav id="sidebar">
                     <div class="sidebar-header">
                         <?php   
+                        
                         $imagen_panel =  $_SESSION['idimg_user'];
                         echo ('<img src="../resources/img/logotipos/' . $imagen_panel . '" width="50" height="50">');
                         ?>
@@ -63,14 +64,13 @@
                                 Inicio
                             </a>
                         </li>
-                        <li class="active"> 
-                            <?php 
+                        <li> 
+                       <?php 
                             if($_SESSION['type_user'] == 'administrator'){
                                include('../views/users/vwincludemanageusers.php');
-                               include('../views/Monitoreo/vwplanomonitoreo.php');
+                             
                             }else{
-                            }
-                            ?>
+                            }?>
                         </li>
                             <li>
                             <form action="../controllers/crtinventory.php" method="post">
@@ -109,13 +109,7 @@
                                 Tablero General
                             </a> 
                                 </li>
-                                <li>
-                                         <a href="">
-                                <i class="fas fa-chart-bar"></i>
-                                UPS1
-                            </a> 
-                                </li>
-                                   </li>
+                                                                  
                                 <li>
                                     <a  data-toggle='modal'  data-target='#modalmonitoreo' href="">
                                     

@@ -130,11 +130,14 @@ var chart2 = new Chart(ctx2, {
         <h3>Graficas Tablero General x Mes</h3>
         <div class="row">
         <label for="example-month-input" class="col-2 col-form-label">MES</label>
-         <form method="POST" action="">
+        <form method="POST" action="../controllers/crtmonitoreopuntual.php">
              <input class="" id="mestoquery" name="mestoquery" type="month" value="2019-06" id="example-month-input">
-            <input class="btn btn-primary" type="submit">
-  
-             </form></div>
+             <input type="hidden" id="dosp" name="dosp" value="<?php echo $Nom1; ?>" readonly style="border: 0; background-color: #fafafa; outline: none;" />
+             <input type="hidden" id="tresp" name="tresp" value="<?php echo $Nom2; ?>" readonly style="border: 0; background-color: #fafafa; outline: none;" />
+             <input type="hidden" id="cuatrop" name="cuatrop" value="<?php echo $Nom3; ?>" readonly style="border: 0; background-color: #fafafa; outline: none;" />
+             <input type="hidden" id="sietep" name="sietep" value="<?php echo $Nom6; ?>" readonly style="border: 0; background-color: #fafafa; outline: none;" />
+             <input class="btn btn-primary" type="submit">
+         </form></div>
         <canvas id="myChart3"></canvas>
 
         
@@ -221,6 +224,13 @@ var chart3 = new Chart(ctx3, {
       <option value="2034">2034</option>
       <option value="2035">2035</option>
     </select>
+             <input type="hidden" id="dosp" name="dosp" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+             <input type="hidden" id="tresp" name="tresp" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+             <input type="hidden" id="cuatrop" name="cuatrop"readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+             <input type="hidden" id="cincop" name="cincop" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+             <input type="hidden" id="seisp" name="seisp" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+             <input type="hidden" id="sietep" name="sietep" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
+             <input type="hidden" id="ochop" name="ochop" readonly style="border: 0; background-color: #fafafa; outline: none;" required=""/>
             <input class="btn btn-primary" type="submit">
   
              </form></div>

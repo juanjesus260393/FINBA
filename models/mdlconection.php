@@ -25,7 +25,11 @@ class mdlconection {
     
 
     public static function connectSeeds() {
-        $conexion = mysqli_connect("148.204.63.238", "root", "BD.S33d5", "ipn");
+        $conexion2 = mysqli_connect("148.204.63.238", "root", "BD.S33d5", "ipn");
+        echo 'a'.mysqli_connect_error($conexion2);
+        
+        return $conexion2;
+        
     }
        /*
      *  connect

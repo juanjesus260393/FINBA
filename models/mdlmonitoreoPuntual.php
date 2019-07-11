@@ -15,7 +15,7 @@ session_start();
 class mdlmonitoreoPuntual {
 
     private $dbh;
-    private $mac;
+    
     private $a;
 
     public function __construct() {
@@ -23,29 +23,54 @@ class mdlmonitoreoPuntual {
         $this->medidas= array();
         
     }
-    public function getMeasuresMes($mestoquery, $añotoquery){
+   public function getMeasuresMes($mestoquery, $añotoquery, $escuela, $edificio, $piso, $lugar){
         $medidasmes[]=0;
         //SELECT DAY(fecha), AVG(medida) FROM measures WHERE MONTH(fecha)=6 GROUP BY DAY(fecha)
         $dbhMedidaMes= mdlconection::connect();
-        $querymes="SELECT DAY(fecha), AVG(medida) FROM measures WHERE MONTH(fecha)=".$mestoquery." AND YEAR(fecha)=".$añotoquery." GROUP BY DAY(fecha)";
-        //var_dump($querymes);
+        
+        $qyueryauxiliar="SELECT de.id_device_finba FROM device_finba de INNER JOIN nomenclature nom ON de.id_nomenclature=nom.id_nomenclature WHERE nom.school='".$escuela."' AND nom.building_number='".$edificio."' AND nom.level='".$piso."' AND nom.reference='".$lugar."'";                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
+      
+                                                                                                                                                                                                                                                                                                                                                              
+           $result[0]=$dbhMedidaMes->query($qyueryauxiliar);
+        while ($filas = $result[0]->fetch_row()) {
+            $mac= $filas[0];
+        }
+       
+        if(!$mac){
+        $mac=0;}
+        
+        
+        
+        $querymes="SELECT DAY(date_measure), AVG(measure) FROM device_finba_measures WHERE id_device_finba='".$mac."' AND MONTH(date_measure)=".$mestoquery." AND YEAR(date_measure)=".$añotoquery." GROUP BY DAY(date_measure)";
+        var_dump($querymes);
         $resquerymes=$dbhMedidaMes->query($querymes);
+       
         while($fl=$resquerymes->fetch_row()){
             $medidasmes[]=$fl;
         }
-        
+        var_dump($medidasmes);
         return $medidasmes;
     }
     
-        public function getMeasuresaño($añotoqueryaño){
+        public function getMeasuresaño($añotoqueryaño, $escuela, $edificio, $piso, $lugar){
         $medidasaño[]=0;
-        //SELECT DAY(fecha), AVG(medida) FROM measures WHERE MONTH(fecha)=6 GROUP BY DAY(fecha)
         $dbhMedidaMAño= mdlconection::connect();
+        
+           $qyueryauxiliar="SELECT de.id_device_finba FROM device_finba de INNER JOIN nomenclature nom ON de.id_nomenclature=nom.id_nomenclature WHERE nom.school='".$escuela."' AND nom.building_number='".$edificio."' AND nom.level='".$piso."' AND nom.reference='".$lugar."'";                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
+           $mac=0;
+           $result[0]=$dbhMedidaMAño->query($qyueryauxiliar);
+        while ($filas = $result[0]->fetch_row()) {
+            $mac= $filas[0];
+        }
+        //if(!$mac){$mac=0;}
+        //SELECT DAY(fecha), AVG(medida) FROM measures WHERE MONTH(fecha)=6 GROUP BY DAY(fecha)
+        
         $queryesp="SET lc_time_names = 'es_MX';";
         $dbhMedidaMAño->query($queryesp);
-        $queryaño="SELECT MONTHNAME(fecha), AVG(medida) FROM measures WHERE YEAR(fecha)=".$añotoqueryaño." GROUP BY MONTH(fecha)";
-      // var_dump($queryaño);
+        $queryaño="SELECT MONTHNAME(date_measure), AVG(measure ) FROM device_finba_measures WHERE id_device_finba='".$mac."' AND YEAR(date_measure)=".$añotoqueryaño." GROUP BY MONTH(date_measure)";
+        
         $resqueryaño=$dbhMedidaMAño->query($queryaño);
+        
         while($fl=$resqueryaño->fetch_row()){
             $medidasaño[]=$fl;
         }
@@ -53,18 +78,18 @@ class mdlmonitoreoPuntual {
         return $medidasaño;
     }
     public function  getMeasuresDia($escuela, $edificio, $piso, $lugar){
+        
          date_default_timezone_set('America/Mexico_City');
          $hoy = date("Y-m-d");
         $dbhMedida= mdlconection::connect();
        
         $qyueryauxiliar="SELECT de.id_device_finba FROM device_finba de INNER JOIN nomenclature no ON de.id_nomenclature=no.id_nomenclature WHERE no.school='".$escuela."' AND no.building_number='".$edificio."' AND no.level='".$piso."' AND no.reference='".$lugar."'";                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
         $result[0]=$dbhMedida->query($qyueryauxiliar);
+        $mac=0;
         while ($filas = $result[0]->fetch_row()) {
             $mac= $filas[0];
-        }if(!$mac){$mac=0;}
-          
-echo $mac;
-
+        }
+        //if(!$mac){$mac=0;}
                                                                                                                                         
         $querygetMedidas="SELECT AVG(measure) FROM device_finba_measures WHERE id_device_finba='".$mac."' AND date_measure BETWEEN '".$hoy." 00:00:00' AND '".$hoy." 00:59:59'";
         $res[0]=$dbhMedida->query($querygetMedidas);
