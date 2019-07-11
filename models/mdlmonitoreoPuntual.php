@@ -121,6 +121,9 @@ class mdlmonitoreoPuntual {
             $promhr[4] = $filas[0];
         }if(!$promhr[4]){$promhr[4]=0;}
         
+        
+        
+        
         $querygetMedidas="SELECT AVG(measure) FROM device_finba_measures WHERE id_device_finba='".$mac."' AND date_measure BETWEEN '".$hoy." 05:00:00' AND '".$hoy." 05:59:59'";
         $res[5]=$dbhMedida->query($querygetMedidas);
         while ($filas = $res[5]->fetch_row()) {
