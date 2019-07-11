@@ -47,6 +47,7 @@ class mdlsolarpanel {
         }
         return $this->panels;
     }
+
     /*
      *  getSolarpanels
      *  Funcion que se encarga de obtener los paneles registrados por el usuario que ha iniciado sesion
@@ -65,6 +66,7 @@ class mdlsolarpanel {
         }
         return $this->panels;
     }
+
     /*
      *  getInvestor
      *  Funcion que se encarga de obtener los invesor registrados por cada escuela
@@ -119,7 +121,16 @@ class mdlsolarpanel {
                 $this->$dateinvestorgraph[] = $investorarray;
             }
         }
-        return $this->$dateinvestorgraph;
+        return $this->dateinvestorgraph;
+    }
+
+    /*
+     *  getDatagraphinvestor
+     *  Funcion que se encarga de obtener los invesor registrados por cada escuela
+     */
+
+    public function getDatagraphinvestorforday($searchfordayusr) {
+
     }
 
     /*

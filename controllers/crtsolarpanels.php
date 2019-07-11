@@ -69,6 +69,14 @@ $deletei = filter_input(INPUT_GET, 'deletei');
 $id_solar_panelu = filter_input(INPUT_GET, 'id_solar_panelu');
 $disabledu = filter_input(INPUT_GET, 'disabledu');
 
+//Busqueda de informacion por dia
+$searchfordayusr = filter_input(INPUT_POST, 'searchfordayusr');
+if(!empty($searchfordayusr)){
+    $panels = new mdlsolarpanel;
+    $dateinvestorgraph = $panels->getDatagraphinvestorforday($searchfordayusr);
+    
+}
+
 //Variable para obtener el nombre del investor
 $name_investore = filter_input(INPUT_POST, 'nameinvestorhiden');
 if(!empty($name_investore)){
