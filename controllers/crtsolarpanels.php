@@ -69,20 +69,24 @@ $deletei = filter_input(INPUT_GET, 'deletei');
 $id_solar_panelu = filter_input(INPUT_GET, 'id_solar_panelu');
 $disabledu = filter_input(INPUT_GET, 'disabledu');
 
+$balancegeneral = filter_input(INPUT_POST, 'balancegeneral');
+
+if(!empty($balancegeneral)){
+    require '../views/Dispositivos/vwmonitoreo.php';
+}
+
 //Busqueda de informacion por dia
 $searchfordayusr = filter_input(INPUT_POST, 'searchfordayusr');
-if(!empty($searchfordayusr)){
+if (!empty($searchfordayusr)) {
     $panels = new mdlsolarpanel;
-    $dateinvestorgraph = $panels->getDatagraphinvestorforday($searchfordayusr);
-    
+    $dateinvestorgraphtoday = $panels->getDatagraphinvestorforday($searchfordayusr);
 }
 
 //Variable para obtener el nombre del investor
 $name_investore = filter_input(INPUT_POST, 'nameinvestorhiden');
-if(!empty($name_investore)){
+if (!empty($name_investore)) {
     $panels = new mdlsolarpanel;
     $dateinvestorgraph = $panels->getDatagraphinvestor($name_investore);
-    
 }
 
 //Se llama al metodo eliminar investor

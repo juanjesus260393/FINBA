@@ -8,10 +8,6 @@ include('../views/template1.php');
             <li class="active">
                 <a class="nav-link active" href="#vision" data-toggle="tab">Vision Global</a>
             </li>
-            <li><a class="nav-link active" href="#analisis" data-toggle="tab">Analisis</a>
-            </li>
-            <li><a class="nav-link active" href="#balance" data-toggle="tab">Balance Energetico</a>
-            </li>
             <li><a class="nav-link active" href="#administracion" data-toggle="tab">Sistemas Fotovolaticos</a>
             </li>
             <li><a class="nav-link active" href="#registrar" data-toggle="tab">Registrar Panel</a>
@@ -24,19 +20,6 @@ include('../views/template1.php');
         <div class="tab-pane active" id="vision">
             <?php
             include('../views/solarpanels/vwglobalvisionsolarpanels.php');
-            ?>
-        </div>
-        <div class="tab-pane" id="analisis">
-            <h1>Orange</h1>
-            <p>orange orange orange orange orange</p>
-        </div>
-        <div class="tab-pane" id="balance">
-            <?php
-            if ($_SESSION['Schoolsname'] == "CIC" || $_SESSION['Schoolsname'] == "ESCOM" || $_SESSION['Schoolsname'] == "ESCOM") {
-                include('../views/solarpanels/graph/vwgeneralgraph.php');
-            } else {
-                include('../views/solarpanels/graph/vwgeneralgraphadministrator.php');
-            }
             ?>
         </div>
         <div class="tab-pane" id="administracion">

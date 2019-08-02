@@ -47,9 +47,8 @@
                 <!-- Sidebar  -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
-                        <?php   
-                        
-                        $imagen_panel =  $_SESSION['idimg_user'];
+                        <?php
+                        $imagen_panel = $_SESSION['idimg_user'];
                         echo ('<img src="../resources/img/logotipos/' . $imagen_panel . '" width="50" height="50">');
                         ?>
                         <h3>FINBA Monitoreo de Servicios</h3>
@@ -65,14 +64,15 @@
                             </a>
                         </li>
                         <li> 
-                       <?php 
-                            if($_SESSION['type_user'] == 'administrator'){
-                               include('../views/users/vwincludemanageusers.php');
-                             
-                            }else{
-                            }?>
+                            <?php
+                            if ($_SESSION['type_user'] == 'administrator') {
+                                include('../views/users/vwincludemanageusers.php');
+                            } else {
+                                
+                            }
+                            ?>
                         </li>
-                            <li>
+                        <li>
                             <form action="../controllers/crtinventory.php" method="post">
                                 <div hidden="true">
                                     <!-- Variable para cerrar sesion -->
@@ -82,45 +82,66 @@
                                 <input type="hidden" name="mess" value= "">
                             </form> 
                         </li>
+
                         <li>
-                            <form action="../controllers/crtsolarpanels.php" method="post">
-                                <div hidden="true">
-                                    <!-- Variable para cerrar sesion -->
-                                    <input class="col-8" type="text" id="searchpanels" name="searchpanels" value="true">
-                                </div>
-                                <a href="javascript:;" onclick="parentNode.submit();"><i class="fas fa-sun"></i>Sistema Fotovoltaico</a>
-                                <input type="hidden" name="mess" value= "">
-                            </form> 
+                            <a href="#panel" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-sun"></i>
+                                Sistema Fotovoltaico
+                            </a> 
+                            <ul class="collapse list-unstyled" id="panel">
+                                <li>
+                                    <form action="../controllers/crtsolarpanels.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="searchpanels" name="searchpanels" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();"><i class="fas fa-columns"></i>Panel General</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form> 
+                                </li>
+                                <li>
+                                    <form action="../controllers/crtsolarpanels.php" method="post">
+                                        <div hidden="true">
+                                            <!-- Variable para cerrar sesion -->
+                                            <input class="col-8" type="text" id="balancegeneral" name="balancegeneral" value="true">
+                                        </div>
+                                        <a href="javascript:;" onclick="parentNode.submit();"><i class="fas fa-chart-bar"></i>Balance General</a>
+                                        <input type="hidden" name="mess" value= "">
+                                    </form> 
+                                </li>
+                            </ul>
+
                         </li>
+
                         <li>
                             <a href="../controllers/crtadddvc.php">
                                 <i class="fas fa-code-branch"></i>
                                 STM
                             </a> </li>
-                            <li>
-                                <a href="#graficas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <li>
+                            <a href="#graficas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <i class="fas fa-chart-bar"></i>
                                 Monitoreo
                             </a> 
-                                <ul class="collapse list-unstyled" id="graficas">
+                            <ul class="collapse list-unstyled" id="graficas">
                                 <li>
-                                   <a href="../controllers/crtmonitoreo.php">
-                                <i class="fas fa-chart-bar"></i>
-                                Tablero General
-                            </a> 
+                                    <a href="../controllers/crtmonitoreo.php">
+                                        <i class="fas fa-chart-bar"></i>
+                                        Tablero General
+                                    </a> 
                                 </li>
-                                                                  
+
                                 <li>
                                     <a  data-toggle='modal'  data-target='#modalmonitoreo' href="">
-                                    
-                                <i class="fas fa-chart-bar"></i>
-                                Sensores Puntuales
-                                   </a>
+
+                                        <i class="fas fa-chart-bar"></i>
+                                        Sensores Puntuales
+                                    </a>
                                 </li>
                             </ul>
-                            
-                            </li>
-                        
+
+                        </li>
+
                         <li>
                             <a href="#" >
                                 <i class="fas fa-code-branch"></i>
@@ -161,7 +182,7 @@
                 </nav>
             </div>
 
-<?php 
+            <?php
+            require('../views/Monitoreo/vwplanomonitoreo.php');
 
-require('../views/Monitoreo/vwplanomonitoreo.php');
-
+            
